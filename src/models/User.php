@@ -16,6 +16,10 @@ class User extends Db
 
     }
 
+
+
+
+
 // Récupération des infos d'un seul utilisateur
     public static function getInfoUser()
     {
@@ -32,6 +36,56 @@ class User extends Db
     }
 
 
+/********************************** Vérifications **************************************/  
+// Vérification pseudo
+public static function verifPseudo($pseudo){
+    // Si pseudo est vide
+    if(empty($pseudo)){
+        $msg .="Veuillez saisir votre pseudo";
+    }
+    // Si pseudo n'existe pas dans la BDD
+    if(!empty($pseudo)){
+        // Pour chaque ligne de la table user
+        for($i=0; $i>=count(self::getAllUsers());$i++){
+            // Si pseudo est différent de tous les pseudos de la table user
+            if($pseudo!=getAllUsers()[$i]["pseudo"]){
+                $msg .="Le pseudo n'existe pas";
+            }
+        }
+    }
+}
+
+// Vérification mot de passe
+public static function verifMdp($mdp){
+    // Si mdp est vide
+    if(empty($mdp)){
+        $msg .="Veuillez saisir votre mot de passe";
+    }
+    // Si mdp n'existe pas dans la BDD
+    if(!empty($mdp)){
+        // Pour chaque ligne de la table user
+        for($i=0; $i<=count(self::getAllUsers());$i++){
+            // Si mdp est différent de tous les mdps de la table user
+            if(password_verify($mdp,getAllUsers()[$i]["pw"]) == false){
+                $msg .="Le mdp est incorrect";
+            }
+        }
+    }
+}
+
+
+
+
+// Vérification des infos de l'utilisateur pour la connexion
+    public static function connexionVerif()
+    {
+    //     self::verifPseudo($pseudo);
+    //     self::verifMdp($mdp);
+
+
+
+
+    }
 
 
 
@@ -39,7 +93,7 @@ class User extends Db
 
 
 }
-
+//Ne plus rien mettre
 
 
 

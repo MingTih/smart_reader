@@ -64,7 +64,6 @@ $routes = [
     '/historiqueDetail'     => ['ProductController', 'dealDetail'], 
 
     // Admin
-//iauhdiauhdaizdauizdh
 
 
 ];

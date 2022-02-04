@@ -5,7 +5,7 @@ include VIEWS.'inc/header.php';
 echo "<pre>";
     print_r ($infoUser);
 echo "</pre>";
-$id=$_GET["id"];
+$id=$_GET["id"]; // Plus tard, quand on aura  une session récup l'info dedans
 
 ?>
 
