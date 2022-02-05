@@ -47,7 +47,7 @@ $routes = [
 
     // Table user : Utilisateurs--------------------------------------------------------
     '/monCompte'            => ['UserController', 'compteDetail'],
-    '/modifMonCompte'       => ['UserController', 'modifCompte'],
+    '/modifCompte'          => ['UserController', 'replaceUser'],
     '/connexion'            => ['UserController', 'connexion'],
     '/inscription'          => ['UserController', 'inscription'],
 

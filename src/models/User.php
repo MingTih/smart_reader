@@ -84,7 +84,12 @@ public static function verifMdp($mdp){
 
 
 
-
+    }
+    public static function insertUser($data)
+    {
+        $request="REPLACE INTO user VALUES (:id_user, :name, :firstname, :pseudo, :pw, :email, :birthdate, :address, :inscription_date, :point, :photo, :admin, :disabled )";
+        $response=self::getDb()->prepare($request);
+        $response->execute($data);
     }
 
 
