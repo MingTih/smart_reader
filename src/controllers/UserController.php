@@ -21,6 +21,10 @@ class UserController
     public static function connexion()
     {
     // Vérifier la connexion de l'utilisateur--------
+        // Si compte existe, redirection page monCompte
+        if(User::isConnected()){
+            header("location:".BASE_PATH."monCompte");
+        }
         // Si POST n'est pas vide, stocke les données POST dans des variables :
         if(!empty($_POST)){
             $pseudo=$_POST["pseudo"];

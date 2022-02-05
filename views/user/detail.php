@@ -6,13 +6,13 @@ include VIEWS.'inc/header.php';
 //     print_r ($infoUser);
 // echo "</pre>";
 
-echo "<pre>";
-    print_r ($_SESSION["pseudo"]);
-echo "</pre>";
+// echo "<pre>";
+//     print_r ($_SESSION["pseudo"]);
+// echo "</pre>";
 
-echo "<pre>";
-    print_r ($_GET);
-echo "</pre>";
+// echo "<pre>";
+//     print_r ($_GET);
+// echo "</pre>";
 
 // Test déconnexion, à retirer et mettre dans le head (pareil pour l.50)
 if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
