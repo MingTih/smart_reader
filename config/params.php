@@ -46,9 +46,9 @@ $routes = [
     '/detailLivre'          => ['BookController', 'bookDetail'],
 
     // Table user : Utilisateurs--------------------------------------------------------
-    '/monCompte'            => ['UserController', 'compteDetail'],
+    '/monCompte'            => ['UserController', 'compteDetail'], //OK
     '/modifMonCompte'       => ['UserController', 'modifCompte'],
-    '/connexion'            => ['UserController', 'connexion'],
+    '/connexion'            => ['UserController', 'connexion'],  //OK
     '/inscription'          => ['UserController', 'inscription'],
 
     // Table et API : Offres, demandes et échanges
