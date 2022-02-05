@@ -35,6 +35,16 @@ class User extends Db
 
 
 /********************************** Vérifications **************************************/  
+
+// Vérification si connecté
+    public static function isConnected(){
+        if(isset($_SESSION["pseudo"])){
+            return true;
+        }
+    }
+
+
+
 // Vérification pseudo
     public static function verifPseudo($pseudo){
 
@@ -63,7 +73,6 @@ class User extends Db
             return true;
         }
     }
-
 
 
 
@@ -104,6 +113,18 @@ class User extends Db
     }
 
 
+
+
+
+
+// Destruction SESSION pour déconnexion
+    public static function destroySession($deconnexion){
+        // Si SESSION existe et que "deconnexion" dans GET :
+        if(isset($_SESSION["pseudo"]) && $deconnexion=="ok"){
+            //Détruit la session
+            session_destroy(); 
+        }
+    }
 
 
 

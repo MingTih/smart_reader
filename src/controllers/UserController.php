@@ -5,6 +5,11 @@ class UserController
 
     public static function compteDetail()
     {
+    // Si pas de compte, redirige sur page connexion
+        if(!User::isConnected()){
+            header("location:".BASE_PATH."connexion");
+        }
+    
     // Récupération des info d'un seul user
         $infoUser = User::getInfoUser();
 
@@ -38,17 +43,29 @@ class UserController
                 
                 // Si pseudo n'est pas dans la BDD ou si mdp ne correspond pas :
                 if($infoUser == ""){
-                    $msg .= "<div class=\"alert alert-danger\" role=\"alert\">Le pseudo ou le mot de passe est incorrect. Veuillez réesayer.</div>";
-                }elseif(!password_verify($mdp, $infoUser["pw"])){
-                    $msg .= "<div class=\"alert alert-danger\" role=\"alert\">Le pseudo ou le mot de passe est incorrect. Veuillez réesayer.</div>";
+                    $msg .= "<div class=\"alert alert-danger\" role=\"alert\">Le pseudo ou le mot de passe est incorrect. Veuillez réesayer1.</div>";
+                }elseif($mdp != $infoUser['pw']){
+                    $msg .= "<div class=\"alert alert-danger\" role=\"alert\">Le pseudo ou le mot de passe est incorrect. Veuillez réesayer2.</div>";
                 }else{
                     User::connexionValid($infoUser);
                 }
             }
+            // !password_verify($mdp, $infoUser["pw"])
+            // $mdp != $infoUser['pw']
 
         }
 
         include VIEWS . "user/connexion.php";
+    }
+
+    public static function deconnexion($deconnexion){
+        
+        if($deconnexion == "ok")
+            User::destroySession($deconnexion);
+
+            // Redirection accueil
+            header("location:".BASE_PATH);
+
     }
 
 

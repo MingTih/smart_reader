@@ -27,7 +27,7 @@ const VIEWS = BASE_DIR . 'views/';
 const MODELS = BASE_DIR . 'src/models/';
 const CONTROLLERS = BASE_DIR . 'src/controllers/';
 const PHOTO = BASE_DIR.'public\\upload\\';
-const COVER = '../../public/upload/';
+const COVER = '../../public/uploads/';
 
 /**
  * Liste des actions/méthodes possibles (les routes du routeur)
