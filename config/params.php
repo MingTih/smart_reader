@@ -27,7 +27,7 @@ const VIEWS = BASE_DIR . 'views/';
 const MODELS = BASE_DIR . 'src/models/';
 const CONTROLLERS = BASE_DIR . 'src/controllers/';
 const PHOTO = BASE_DIR.'public\\upload\\';
-const COVER = '../../public/upload/';
+const COVER = '../../public/uploads/';
 
 /**
  * Liste des actions/méthodes possibles (les routes du routeur)
@@ -46,9 +46,15 @@ $routes = [
     '/detailLivre'          => ['BookController', 'bookDetail'],
 
     // Table user : Utilisateurs--------------------------------------------------------
+<<<<<<< HEAD
     '/monCompte'            => ['UserController', 'compteDetail'],
     '/modifCompte'          => ['UserController', 'replaceUser'],
     '/connexion'            => ['UserController', 'connexion'],
+=======
+    '/monCompte'            => ['UserController', 'compteDetail'], //OK
+    '/modifMonCompte'       => ['UserController', 'modifCompte'],
+    '/connexion'            => ['UserController', 'connexion'],  //OK
+>>>>>>> 78d969921ce90d0ef5347fc7c37e83edcd430b2e
     '/inscription'          => ['UserController', 'inscription'],
 
     // Table et API : Offres, demandes et échanges
@@ -64,7 +70,6 @@ $routes = [
     '/historiqueDetail'     => ['ProductController', 'dealDetail'], 
 
     // Admin
-//iauhdiauhdaizdauizdh
 
 
 ];
