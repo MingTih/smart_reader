@@ -18,7 +18,6 @@ class UserController
 
     }
 
-<<<<<<< HEAD
     public static function replaceUser()
     {
 
@@ -69,7 +68,8 @@ class UserController
             ]);
        }
                 include VIEWS . 'user/modifCompte.php';
-=======
+    }         
+
     public static function connexion()
     {
     // Vérifier la connexion de l'utilisateur--------
@@ -121,7 +121,6 @@ class UserController
 
             // Redirection accueil
             header("location:".BASE_PATH);
->>>>>>> 78d969921ce90d0ef5347fc7c37e83edcd430b2e
 
     }
 

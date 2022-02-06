@@ -33,14 +33,12 @@ class User extends Db
         return $preparedRequest->fetch(PDO::FETCH_ASSOC); 
     }
 
-<<<<<<< HEAD
     public static function insertUser($data)
     {
         $request="REPLACE INTO user VALUES (:id_user, :name, :firstname, :pseudo, :pw, :email, :birthdate, :address, :inscription_date, :point, :photo, :admin, :disabled )";
         $response=self::getDb()->prepare($request);
         $response->execute($data);
-=======
-
+    }
 /********************************** Vérifications **************************************/  
 
 // Vérification si connecté
@@ -48,7 +46,6 @@ class User extends Db
         if(isset($_SESSION["pseudo"])){
             return true;
         }
->>>>>>> 78d969921ce90d0ef5347fc7c37e83edcd430b2e
     }
 
 
