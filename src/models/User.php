@@ -2,7 +2,8 @@
 
 class User extends Db
 {
-// Récupération de tous les utilisateurs (admin)
+
+// Récupération de tous les utilisateurs (admin)------------------------------------
     public static function getAllUsers()
     {
     // Requête SQL pour l'affichage
@@ -16,15 +17,12 @@ class User extends Db
 
     }
 
-
-
-
-
-// Récupération des infos d'un seul utilisateur
+// Récupération des infos d'un seul utilisateur--------------------------------------
     public static function getInfoUser()
     {
     // Récupération de la variable en GET
-        $id = $_GET['id'];
+        // $id = $_GET['id'];
+        $id = $_SESSION['id_user'];
     // Requête SQL pour l'affichage de l'utilisateur grâce à $id
         $request = "SELECT * FROM user WHERE id_user=?";
     // Préparation
@@ -91,8 +89,97 @@ public static function verifMdp($mdp){
         $response=self::getDb()->prepare($request);
         $response->execute($data);
     }
+/********************************** Vérifications **************************************/  
+
+// Vérification si connecté
+    public static function isConnected(){
+        if(isset($_SESSION["pseudo"])){
+            return true;
+        }
+    }
 
 
+
+// Vérification pseudo
+    public static function verifPseudo($pseudo){
+
+        // true si pseudo n'existe pas
+        if(!isset($pseudo)){
+            return true;
+        }
+
+        // true si pseudo est vide
+        if(empty($pseudo)){
+            return true;
+        }
+
+    }
+
+// Vérification mot de passe
+    public static function verifMdp($mdp){
+
+        // true si mdp n'existe pas
+        if(!isset($mdp)){
+            return true;
+        }
+
+        // Si mdp est vide
+        if(empty($mdp)){
+            return true;
+        }
+    }
+
+
+
+// Vérification des infos de l'utilisateur pour la connexion
+    public static function connexionVerif($pseudo,$mdp)
+        {       
+
+        // Si pseudo pas vide et est valide
+        if(!empty($pseudo) && !self::verifPseudo($pseudo)){
+
+            // Connexion avec la base de données
+            $resquest = "SELECT * FROM user WHERE pseudo=?";
+            $preparedRequest = self::getDb()->prepare($resquest);
+            $preparedRequest->execute([$pseudo]);
+            return $preparedRequest->fetch(PDO::FETCH_ASSOC);
+        }
+    }
+
+// Création SESSION si connexionVerif Ok:
+    public static function connexionValid($infoUser){
+        $_SESSION["id_user"] = $infoUser["id_user"];
+        $_SESSION["nom"] = $infoUser["name"];
+        $_SESSION["prenom"] = $infoUser["firstname"];
+        $_SESSION["pseudo"] = $infoUser["pseudo"];
+        $_SESSION["email"] = $infoUser["email"];
+        $_SESSION["birthdate"] = $infoUser["birthdate"];
+        $_SESSION["address"] = $infoUser["address"];
+        $_SESSION["inscription_date"] = $infoUser["inscription_date"];
+        $_SESSION["point"] = $infoUser["point"];
+        $_SESSION["point"] = $infoUser["point"];
+        $_SESSION["admin"] = $infoUser["admin"];
+        $_SESSION["disabled"] = $infoUser["disabled"];
+
+
+        header("location:".BASE_PATH."monCompte");
+        exit;
+
+    }
+
+
+
+
+
+
+// Destruction SESSION pour déconnexion
+    public static function destroySession($deconnexion){
+        // Si SESSION existe et que "deconnexion" dans GET :
+        if(isset($_SESSION["pseudo"]) && $deconnexion=="ok"){
+            //Détruit la session
+            session_destroy(); 
+        }
+    }
 
 
 
