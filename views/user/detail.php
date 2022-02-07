@@ -2,9 +2,9 @@
 
 include VIEWS.'inc/header.php'; 
 
-// echo "<pre>";
-//     print_r ($infoUser);
-// echo "</pre>";
+echo "<pre>";
+    print_r ($infoUser);
+echo "</pre>";
 
 // echo "<pre>";
 //     print_r ($_SESSION["pseudo"]);
@@ -40,7 +40,7 @@ if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
                 <li>Points : <?=$infoUser['point'];?></li>
             </ul>
             <div class="photo col-5">
-                <img src="<?=$infoUser['photo'];?>" alt="photo de profil de <?=$infoUser['pseudo'];?>">
+                <img src="<?=PHOTO.$infoUser['photo'];?>" alt="photo de profil de <?=$infoUser['pseudo'];?>">
             </div>
         </div>
     </div>
