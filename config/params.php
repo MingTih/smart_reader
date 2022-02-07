@@ -26,7 +26,7 @@ const PUBLIC_FOLDER = BASE_DIR . 'public\\';
 const VIEWS = BASE_DIR . 'views/';
 const MODELS = BASE_DIR . 'src/models/';
 const CONTROLLERS = BASE_DIR . 'src/controllers/';
-const PHOTO = BASE_DIR.'public\\upload\\';
+const PHOTO = BASE_DIR.'public\\uploads\\';
 const COVER = '../../public/uploads/';
 
 /**
@@ -49,7 +49,7 @@ $routes = [
     '/monCompte'            => ['UserController', 'compteDetail'],
     '/modifCompte'          => ['UserController', 'replaceUser'],
     '/connexion'            => ['UserController', 'connexion'],
-    '/inscription'          => ['UserController', 'inscription'],
+    '/inscription'          => ['UserController', 'replaceUser'],
 
     // Table et API : Offres, demandes et échanges
     '/mesOffres'            => ['ProductController', 'offersList'],

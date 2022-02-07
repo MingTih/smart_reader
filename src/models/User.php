@@ -33,11 +33,11 @@ class User extends Db
         return $preparedRequest->fetch(PDO::FETCH_ASSOC); 
     }
 
-    public static function insertUser($data)
+    public static function insertUser(array $data)
     {
-        $request="REPLACE INTO user VALUES (:id_user, :name, :firstname, :pseudo, :pw, :email, :birthdate, :address, :inscription_date, :point, :photo, :admin, :disabled )";
+        $request="REPLACE INTO user VALUES (:id_user,:name, :firstname, :pseudo, :pw, :email, :birthdate, :address, :inscription_date, :point,:photo, :admin, :disabled)";
         $response=self::getDb()->prepare($request);
-        $response->execute($data);
+        return $response->execute($data);
     }
 /********************************** Vérifications **************************************/  
 
@@ -132,7 +132,36 @@ class User extends Db
     }
 
 
+    public static function verifPhoto($photo){
 
+            // Controle du format de la photo
+
+        if (isset($photo)){ // Je ne veux faire le controle que si la photo existe
+            return true;
+        }
+        
+        if (!empty($photo)){
+            return true;
+        }
+
+    }
+
+
+    public static function savePhoto($pseudo,$photo){
+
+        
+    // Enregistrement de la photo, puis a l'enregistrement en bdd
+
+        if (empty($msg)){
+            // On ne procede a l'enregistrement que s'il n'y a pas de message d'erreurs
+
+
+            $cheminTelechargement = PHOTO. 'photo_profil\\' . $pseudo . "-" . time() . "-" . $photo["name"];
+            return $cheminTelechargement;
+
+        }
+    
+    }
 
 }
 //Ne plus rien mettre

@@ -20,54 +20,73 @@ class UserController
 
     public static function replaceUser()
     {
+        if (!empty($_FILES)){
+            $pseudo= $_POST['pseudo'];
+            $photo = $_FILES['photo'];
+            $msg = '';
 
-            // Controle du format de la photo
-    
-        if ($_FILES["photo"]){ // Je ne veux faire le controle que si la photo existe
-
-            if (!verifPhoto()){
+            if (!User::verifPhoto($photo)){
                 $msg .= "<div class=\"alert alert-danger\" role=\"alert\">
                 Votre photo n'est pas valide. Seul les jpg, jpeg et png sont acceptés
-        </div>";
-            }
-
-        }
-        // Enregistrement de la photo, puis a l'enregistrement en bdd
-
-        if (empty($msg)){
-            // On ne procede a l'enregistrement que s'il n'y a pas de message d'erreurs
-
-
-            $cheminTelechargement = BASE_DIR.'public\\upload\\' . $pseudo . "-" . time() . "-" . $_FILES["photo"]["name"];
-
-            if (!move_uploaded_file($_FILES["photo"]["tmp_name"], $cheminTelechargement)){
-                $msg .= "<div class=\"alert alert-danger\" role=\"alert\">
-                Quelque chose ne s'est pas passé correctement au niveau de l'enregistrement de votre fichier
-        </div>";
+                </div>";
             }
         }
+
+        echo '<pre>';
+        print_r($_POST);
+        echo '</pre>';
 
        /// insert et modif
        if (!empty($_POST)){
-            User::insertUser([
-                'id_user' => $_POST['id_user'],
+
+
+           $cheminDb=User::savePhoto($pseudo, $photo);
+
+           if (!move_uploaded_file($_FILES["photo"]["tmp_name"], $cheminDb)){
+            $msg .= "<div class=\"alert alert-danger\" role=\"alert\">
+            Quelque chose ne s'est pas passé correctement au niveau de l'enregistrement de votre fichier
+            </div>";
+        }
+
+
+        if (empty($msg)){
+
+            $resultat = User::insertUser([
+                'id_user' => 0,
                 'name' => $_POST['name'],
                 'firstname' => $_POST['firstname'],
                 'pseudo' => $_POST['pseudo'],
-                'pw' => $_POST['pw'],
+                'pw' => password_hash($_POST["pw"],PASSWORD_DEFAULT),
                 'email' => $_POST['email'],
                 'birthdate' => $_POST['birthdate'],
                 'address' => $_POST['address'],
-                'inscription_date' => $_POST['inscription_date'],
-                'point' => $_POST['point'],
-                // 'photo' =>,
-                'admin' => $_POST['admin'],
-                'disabled' => $_POST['disabled'],
+                'inscription_date' => null,
+                'point' => 0,
+                'photo' => $cheminDb,
+                'admin' => 0,
+                'disabled' => 0,
                 
 
             ]);
+            if ($resultat){
+                $msg .= "<div class=\"alert alert-success\" role=\"alert\">
+                Bravo $pseudo ! 
+                Un nouvel utilisateur a bien été enregistré ! 
+          </div>";
+            }else{
+                $msg .= "<div class=\"alert alert-danger\" role=\"alert\">
+                Quelque chose ne s'est pas passé correctement au niveau de l'enregistrement en base de donnée
+          </div>";
+            }
+        }
+            
+            
+
+           
+    
        }
-                include VIEWS . 'user/modifCompte.php';
+                // include VIEWS . 'user/modifCompte.php';
+                include VIEWS . 'user/inscription.php';
     }         
 
     public static function connexion()
@@ -100,7 +119,7 @@ class UserController
                 // Si pseudo n'est pas dans la BDD ou si mdp ne correspond pas :
                 if($infoUser == ""){
                     $msg .= "<div class=\"alert alert-danger\" role=\"alert\">Le pseudo ou le mot de passe est incorrect. Veuillez réesayer1.</div>";
-                }elseif($mdp != $infoUser['pw']){
+                }elseif(!password_verify($mdp, $infoUser["pw"])){
                     $msg .= "<div class=\"alert alert-danger\" role=\"alert\">Le pseudo ou le mot de passe est incorrect. Veuillez réesayer2.</div>";
                 }else{
                     User::connexionValid($infoUser);
@@ -123,7 +142,6 @@ class UserController
             header("location:".BASE_PATH);
 
     }
-
 
 
 
