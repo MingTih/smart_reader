@@ -33,61 +33,11 @@ class User extends Db
         return $preparedRequest->fetch(PDO::FETCH_ASSOC); 
     }
 
-
-/********************************** Vérifications **************************************/  
-// Vérification pseudo
-public static function verifPseudo($pseudo){
-    // Si pseudo est vide
-    if(empty($pseudo)){
-        $msg .="Veuillez saisir votre pseudo";
-    }
-    // Si pseudo n'existe pas dans la BDD
-    if(!empty($pseudo)){
-        // Pour chaque ligne de la table user
-        for($i=0; $i>=count(self::getAllUsers());$i++){
-            // Si pseudo est différent de tous les pseudos de la table user
-            if($pseudo!=getAllUsers()[$i]["pseudo"]){
-                $msg .="Le pseudo n'existe pas";
-            }
-        }
-    }
-}
-
-// Vérification mot de passe
-public static function verifMdp($mdp){
-    // Si mdp est vide
-    if(empty($mdp)){
-        $msg .="Veuillez saisir votre mot de passe";
-    }
-    // Si mdp n'existe pas dans la BDD
-    if(!empty($mdp)){
-        // Pour chaque ligne de la table user
-        for($i=0; $i<=count(self::getAllUsers());$i++){
-            // Si mdp est différent de tous les mdps de la table user
-            if(password_verify($mdp,getAllUsers()[$i]["pw"]) == false){
-                $msg .="Le mdp est incorrect";
-            }
-        }
-    }
-}
-
-
-
-
-// Vérification des infos de l'utilisateur pour la connexion
-    public static function connexionVerif()
+    public static function insertUser(array $data)
     {
-    //     self::verifPseudo($pseudo);
-    //     self::verifMdp($mdp);
-
-
-
-    }
-    public static function insertUser($data)
-    {
-        $request="REPLACE INTO user VALUES (:id_user, :name, :firstname, :pseudo, :pw, :email, :birthdate, :address, :inscription_date, :point, :photo, :admin, :disabled )";
+        $request="REPLACE INTO user VALUES (:id_user,:name, :firstname, :pseudo, :pw, :email, :birthdate, :address, :inscription_date, :point,:photo, :admin, :disabled)";
         $response=self::getDb()->prepare($request);
-        $response->execute($data);
+        return $response->execute($data);
     }
 /********************************** Vérifications **************************************/  
 
@@ -182,7 +132,36 @@ public static function verifMdp($mdp){
     }
 
 
+    public static function verifPhoto($photo){
 
+            // Controle du format de la photo
+
+        if (isset($photo)){ // Je ne veux faire le controle que si la photo existe
+            return true;
+        }
+        
+        if (!empty($photo)){
+            return true;
+        }
+
+    }
+
+
+    public static function savePhoto($pseudo,$photo){
+
+        
+    // Enregistrement de la photo, puis a l'enregistrement en bdd
+
+        if (empty($msg)){
+            // On ne procede a l'enregistrement que s'il n'y a pas de message d'erreurs
+
+
+            $cheminTelechargement = PHOTO. 'photo_profil\\' . $pseudo . "-" . time() . "-" . $photo["name"];
+            return $cheminTelechargement;
+
+        }
+    
+    }
 
 }
 //Ne plus rien mettre

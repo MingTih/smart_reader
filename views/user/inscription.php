@@ -1,11 +1,10 @@
 <?php
-
 include VIEWS.'inc/header.php'; 
 
 ?>
-<h1 class= "text-center">Modifier mon Compte</h1>
+<h1 class= "text-center">Inscription</h1>
 
-<form  method="post" class="mx-auto w-50">
+<form  method="post" enctype="multipart/form-data" class="mx-auto w-50">
   <fieldset>
     
     <div class="form-group" >
@@ -24,14 +23,14 @@ include VIEWS.'inc/header.php';
     </div>
 
     <div class="form-group">
-      <label for="pw" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mot de passe</font></font></label>
+      <label for="pw" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;">Mot de passe</font></label>
       <input type="password" class="form-control form-control-lg" id="pw" placeholder="Mot de passe" name="pw">
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="pw2" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Confirmer votre mot de passe</font></font></label>
       <input type="password" class="form-control form-control-lg" id="pw2" placeholder="Confirmation mot de passe" name="pw">
-    </div>
+    </div> -->
 
     <div class="form-group">
       <label for="email" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Adresse e-mail</font></font></label>
@@ -59,5 +58,4 @@ include VIEWS.'inc/header.php';
   </fieldset>
 </form>
 
-
-<?php  include VIEWS.'inc/footer.php'; ?>
+<?php include VIEWS.'inc/footer.php'; ?>
