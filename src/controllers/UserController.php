@@ -3,6 +3,7 @@
 class UserController
 {
 
+/************************************* monCompte *********************************************************************/
     public static function compteDetail()
     {
     // Si pas de compte, redirige sur page connexion
@@ -17,8 +18,7 @@ class UserController
 
 
     }
-
-    
+/*******************************************INSCRIPTION et MODIFICATION ***********************************************/    
     public static function replaceUser()
     {
         if (!empty($_FILES)){
@@ -90,6 +90,7 @@ class UserController
                 include VIEWS . 'user/inscription.php';
     }         
 
+/*******************************************CONNEXION *********************************************************/
     public static function connexion()
     {
     // Vérifier la connexion de l'utilisateur--------
@@ -119,9 +120,9 @@ class UserController
                 
                 // Si pseudo n'est pas dans la BDD ou si mdp ne correspond pas :
                 if($infoUser == ""){
-                    $msg .= "<div class=\"alert alert-danger\" role=\"alert\">Le pseudo ou le mot de passe est incorrect. Veuillez réesayer1.</div>";
+                    $msg .= "<div class=\"alert alert-danger\" role=\"alert\">Le pseudo ou le mot de passe est incorrect. Veuillez réesayer.</div>";
                 }elseif(!password_verify($mdp, $infoUser["pw"])){
-                    $msg .= "<div class=\"alert alert-danger\" role=\"alert\">Le pseudo ou le mot de passe est incorrect. Veuillez réesayer2.</div>";
+                    $msg .= "<div class=\"alert alert-danger\" role=\"alert\">Le pseudo ou le mot de passe est incorrect. Veuillez réesayer.</div>";
                 }else{
                     User::connexionValid($infoUser);
                 }

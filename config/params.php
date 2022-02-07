@@ -29,6 +29,8 @@ const CONTROLLERS = BASE_DIR . 'src/controllers/';
 const PHOTO = BASE_DIR.'public\\uploads\\';
 const COVER = '../../public/uploads/';
 
+const API_KEY = "AIzaSyAzFkhp4TZ1_TvOfKk3f7O7r3pgk2lMxFQ";
+
 /**
  * Liste des actions/méthodes possibles (les routes du routeur)
  */
@@ -46,10 +48,16 @@ $routes = [
     '/detailLivre'          => ['BookController', 'bookDetail'],
 
     // Table user : Utilisateurs--------------------------------------------------------
-    '/monCompte'            => ['UserController', 'compteDetail'],
+    '/monCompte'            => ['UserController', 'compteDetail'], //OK
     '/modifCompte'          => ['UserController', 'replaceUser'],
+<<<<<<< HEAD
     '/connexion'            => ['UserController', 'connexion'],
     '/inscription'          => ['UserController', 'replaceUser'],
+=======
+    '/connexion'            => ['UserController', 'connexion'],//OK
+    '/inscription'          => ['UserController', 'inscription'],
+    //Déconnexion OK
+>>>>>>> daadca0254963ae992fc1bd314541469f39131c0
 
     // Table et API : Offres, demandes et échanges
     '/mesOffres'            => ['ProductController', 'offersList'],

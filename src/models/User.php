@@ -48,8 +48,6 @@ class User extends Db
         }
     }
 
-
-
 // Vérification pseudo
     public static function verifPseudo($pseudo){
 
@@ -96,6 +94,7 @@ class User extends Db
         }
     }
 
+/********************************************** CONNEXION ***************************************************** */
 // Création SESSION si connexionVerif Ok:
     public static function connexionValid($infoUser){
         $_SESSION["id_user"] = $infoUser["id_user"];
@@ -116,10 +115,6 @@ class User extends Db
         exit;
 
     }
-
-
-
-
 
 
 // Destruction SESSION pour déconnexion
