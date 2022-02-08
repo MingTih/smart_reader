@@ -72,10 +72,7 @@ class UserController
 
             ]);
             if ($resultat){
-                $msg .= "<div class=\"alert alert-success\" role=\"alert\">
-                Bravo $pseudo ! 
-                Un nouvel utilisateur a bien été enregistré ! 
-          </div>";
+                header("location:".BASE_PATH. "connexion");
             }else{
                 $msg .= "<div class=\"alert alert-danger\" role=\"alert\">
                 Quelque chose ne s'est pas passé correctement au niveau de l'enregistrement en base de donnée
