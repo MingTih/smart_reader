@@ -40,12 +40,12 @@ if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
                 <li>Points : <?=$infoUser['point'];?></li>
             </ul>
             <div class="photo col-5">
-                <img src="<?=PHOTO.$infoUser['photo'];?>" alt="photo de profil de <?=$infoUser['pseudo'];?>">
+                <img src="<?=COVER."photo_profil/".$_SESSION['readPhoto'][1]?>" alt="photo de profil de <?=$_SESSION['pseudo'];?>"> 
             </div>
         </div>
     </div>
 
-    <a href="http://localhost/smart_reader/public/index.php/modifMonCompte?id=<?=$id?>" class="btn btn-success mx-5">Modifier mon profil</a>
+    <a href="http://localhost/smart_reader/public/index.php/modifCompte" class="btn btn-success mx-5">Modifier mon profil</a>
 
     <a href="#" class="btn btn-danger mx-5">Supprimer mon compte</a>
 

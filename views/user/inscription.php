@@ -54,7 +54,7 @@ include VIEWS.'inc/header.php';
 
 
     </fieldset>
-    <button type="submit" class="btn btn-primary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Soumettre</font></font></button>
+    <button type="submit" class="btn btn-primary"><font style="vertical-align: inherit;">Valider</font></button>
   </fieldset>
 </form>
 

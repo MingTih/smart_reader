@@ -18,13 +18,15 @@ class UserController
 
 
     }
-/*******************************************INSCRIPTION et MODIFICATION ***********************************************/    
+/*******************************************INSCRIPTION ***********************************************/    
     public static function replaceUser()
     {
         if (!empty($_FILES)){
             $pseudo= $_POST['pseudo'];
             $photo = $_FILES['photo'];
             $msg = '';
+
+                        // Controle du format de la photo
 
             if (!User::verifPhoto($photo)){
                 $msg .= "<div class=\"alert alert-danger\" role=\"alert\">
@@ -33,11 +35,11 @@ class UserController
             }
         }
 
-        echo '<pre>';
-        print_r($_POST);
-        echo '</pre>';
+        // echo '<pre>';
+        // print_r($_POST);
+        // echo '</pre>';
 
-       /// insert et modif
+       /// insert 
        if (!empty($_POST)){
 
 
@@ -80,15 +82,84 @@ class UserController
           </div>";
             }
         }
-            
-            
-
-           
-    
-       }
-                // include VIEWS . 'user/modifCompte.php';
+      }
                 include VIEWS . 'user/inscription.php';
-    }         
+    }
+
+/******************************************* MODIFICATION ***********************************************/    
+
+    public static function updateUser()
+    {
+
+        // echo '<pre>';
+        // print_r($_FILES);
+        // print_r($_POST);
+        // print_r($_SESSION);
+        // echo '</pre>';
+
+       /// modif
+       if (!empty($_POST)){
+        $pseudo= $_POST['pseudo'];
+       
+        $msg = '';
+
+
+            
+            if (empty($msg)){
+
+                if (!isset($_FILES['photo'])){
+                    $cheminModifPhoto = $_SESSION["photo"];
+                } else{
+                    $cheminModifPhoto = User::savePhoto($pseudo, $_FILES['photo']);
+
+                    if (!move_uploaded_file($_FILES["photo"]["tmp_name"], $cheminModifPhoto)){
+                    $msg .= "<div class=\"alert alert-danger\" role=\"alert\">
+                    Quelque chose ne s'est pas passé correctement au niveau de l'enregistrement de votre fichier
+                    </div>";}
+                }
+                 
+                
+        
+                $resultat = User::insertUser([
+                    'id_user' => $_SESSION["id_user"],
+                    'name' => $_POST['name'],
+                    'firstname' => $_POST['firstname'],
+                    'pseudo' => $_POST['pseudo'],
+                    // 'pw' => password_hash($_POST["pw"],PASSWORD_DEFAULT),
+                    'email' => $_POST['email'],
+                    'birthdate' => $_POST['birthdate'],
+                    'address' => $_POST['address'],
+                    'inscription_date' => null,
+                    'point' => $_SESSION["point"],
+                    'photo' => $cheminModifPhoto,
+                    'admin' => $_SESSION["admin"],
+                    'disabled' => $_SESSION["disabled"],
+                    
+
+                ]);
+        
+                $_SESSION['nom'] = $_POST['name'];
+                $_SESSION['prenom'] = $_POST['firstname'];
+                $_SESSION['pseudo'] = $_POST['pseudo'];
+                // $_SESSION['pw'] = password_hash($_POST["pw"],PASSWORD_DEFAULT);
+                $_SESSION['email'] = $_POST['email'];
+                $_SESSION['birthdate'] = $_POST['birthdate'];
+                $_SESSION['address'] = $_POST['address'];
+                $_SESSION['photo'] = $cheminModifPhoto;
+                $_SESSION["readPhoto"] = User::explodePhoto($_SESSION["photo"]);
+
+                if ($resultat){
+                    header("location:".BASE_PATH. "monCompte");
+                }else{
+                    $msg .= "<div class=\"alert alert-danger\" role=\"alert\">
+                    Quelque chose ne s'est pas passé correctement au niveau de l'enregistrement en base de donnée
+                    </div>";
+                }
+            }
+            
+       }
+                        include VIEWS . 'user/modifCompte.php';
+    }
 
 /*******************************************CONNEXION *********************************************************/
     public static function connexion()
@@ -127,8 +198,6 @@ class UserController
                     User::connexionValid($infoUser);
                 }
             }
-            // !password_verify($mdp, $infoUser["pw"])
-            // $mdp != $infoUser['pw']
 
         }
 
