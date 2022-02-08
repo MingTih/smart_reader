@@ -22,7 +22,7 @@ class BookController
     public static function bookDetail()
     {
     // Récupération détail d'un livre 
-        $livreInfo = Book::oneBooks();
+        $livreInfo = Book::oneBooks($_GET['id']);
         $detailLivre = $livreInfo["volumeInfo"];
 
         include VIEWS . "book/detail.php";

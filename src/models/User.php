@@ -77,8 +77,6 @@ class User extends Db
         }
     }
 
-
-
 // Vérification des infos de l'utilisateur pour la connexion
     public static function connexionVerif($pseudo,$mdp)
         {       
@@ -94,9 +92,17 @@ class User extends Db
         }
     }
 
+/************************************* Eclater chemin photo****************************************************/
+    public static function explodePhoto($photoRoad){
+        return explode("photo_profil\\",$photoRoad);
+    }
+
 /********************************************** CONNEXION ***************************************************** */
 // Création SESSION si connexionVerif Ok:
+
+
     public static function connexionValid($infoUser){
+        
         $_SESSION["id_user"] = $infoUser["id_user"];
         $_SESSION["nom"] = $infoUser["name"];
         $_SESSION["prenom"] = $infoUser["firstname"];
@@ -106,9 +112,10 @@ class User extends Db
         $_SESSION["address"] = $infoUser["address"];
         $_SESSION["inscription_date"] = $infoUser["inscription_date"];
         $_SESSION["point"] = $infoUser["point"];
-        $_SESSION["point"] = $infoUser["point"];
+        $_SESSION["photo"] = $infoUser["photo"];
         $_SESSION["admin"] = $infoUser["admin"];
         $_SESSION["disabled"] = $infoUser["disabled"];
+        $_SESSION["readPhoto"] = self::explodePhoto($infoUser["photo"]);
 
 
         header("location:".BASE_PATH."monCompte");
@@ -157,6 +164,7 @@ class User extends Db
         }
     
     }
+
 
 }
 //Ne plus rien mettre

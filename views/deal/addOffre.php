@@ -2,17 +2,14 @@
 
 include VIEWS.'inc/header.php'; 
 
-echo "<pre>";
-    print_r ($detailLivre);
-echo "</pre>";
-
 ?>
+<main>
+    <div class="main">
+        <h1 class='text-center'>Ajouter une offre</h1>
 
+        <h2><?=$detailLivre["title"]?></h2>
 
-<div id="livre" class="container">
-        <h1 class="m-5"><?=$detailLivre["title"]?></h1>
-
-    <div class="container-fluid">
+        <div class="container-fluid">
         <div class="row">
             <ul class="col-7 text-decoration-none">
                 <li>Titre : <?=$detailLivre["title"]?></li>
@@ -28,7 +25,6 @@ echo "</pre>";
                 </li>
                 <li>Editeur: <?=$detailLivre["publisher"]?></li>
                 <li>Date de parution : <?=$detailLivre["publishedDate"]?></li>
-                <li>Résumé : <?=(isset($detailLivre["description"]))?$detailLivre["description"]:"Description non disponible";?></li>
                 <li>ISBN : <?=$detailLivre["industryIdentifiers"][1]["identifier"]?></li>
                 <li>Etat : </li>
                 <li>Genre : </li>
@@ -50,18 +46,27 @@ echo "</pre>";
         </div>
     </div>
 
-    <a href="<?=BASE_PATH?>listeLivres" class="btn btn-success mx-5">Retour à la liste des livres</a>
 
-    <a href="<?=BASE_PATH.'addSouhait?id='.$_GET['id']?>" class="btn btn-primary">Ajouter à ma liste de souhaits</a>
-    <a href="<?=BASE_PATH.'addOffre?id='.$_GET['id']?>" class="btn btn-warning">Ajouter à ma liste d'offres</a>
+        <form action="" method="post">
+            <label for="etat" class='d-block'>Etat du livre</label>
+            <select name="etat" id="etat">
+                <option value="" disabled required>--Veuillez sélectionner l'état de votre livre--</option>
+                <option value="mauvais">Abîmé - 1 point</option>                
+                <option value="bon">Bon - 2 points</option>
+                <option value="neuf">Neuf - 3 points</option>
+                <option value="rare">Rare - 4 points</option>
+            </select>
+
+        </form>
+
+        <a href="#" class="btn btn-success m-5">Ajouter</a>
+
+<!-- "<\?=//BASE_PATH?>mesOffres" -->
+    </div>
+
+    <?=(isset($msg))?$msg:""?>
 
 
-</div>
-
-
-
-
-
-
+</main>
 
 <?php  include VIEWS.'inc/footer.php'; ?>

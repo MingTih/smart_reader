@@ -64,7 +64,7 @@ if(!empty($_POST)){
                     }      
                 ?>
             </p>
-            <a href="book/detail.php" class="btn btn-primary">Détails</a>
+            <a href="<?=BASE_PATH.'detailLivre?id='.$book['id']?>" class="btn btn-primary">Détails</a>
         </div>
     </div>
 

@@ -50,23 +50,17 @@ $routes = [
     // Table user : Utilisateurs--------------------------------------------------------
     '/monCompte'            => ['UserController', 'compteDetail'], //OK
     '/modifCompte'          => ['UserController', 'replaceUser'],
-<<<<<<< HEAD
     '/connexion'            => ['UserController', 'connexion'],
     '/inscription'          => ['UserController', 'replaceUser'],
-=======
-    '/connexion'            => ['UserController', 'connexion'],//OK
-    '/inscription'          => ['UserController', 'inscription'],
-    //Déconnexion OK
->>>>>>> daadca0254963ae992fc1bd314541469f39131c0
 
     // Table et API : Offres, demandes et échanges
-    '/mesOffres'            => ['ProductController', 'offersList'],
-    '/supprOffre'           => ['ProductController', 'deleteOffer'],
-    '/addOffre'             => ['ProductController', 'addOffer'],
+    '/mesOffres'            => ['DealController', 'offersList'],
+    '/supprOffre'           => ['DealController', 'deleteOffer'],
+    '/addOffre'             => ['DealController', 'addOffer'],
 
-    '/mesSouhaits'          => ['ProductController', 'wishList'], 
-    '/supprSouhait'         => ['ProductController', 'deleteWish'],
-    '/addSouhait'           => ['ProductController', 'addWish'],
+    '/mesSouhaits'          => ['DealController', 'wishList'], 
+    '/supprSouhait'         => ['DealController', 'deleteWish'],
+    '/addSouhait'           => ['DealController', 'addWish'],
 
     '/historique'           => ['ProductController', 'dealList'], 
     '/historiqueDetail'     => ['ProductController', 'dealDetail'], 

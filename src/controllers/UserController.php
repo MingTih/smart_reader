@@ -79,11 +79,7 @@ class UserController
                 Quelque chose ne s'est pas passé correctement au niveau de l'enregistrement en base de donnée
           </div>";
             }
-        }
-            
-            
-
-           
+        }           
     
        }
                 // include VIEWS . 'user/modifCompte.php';
@@ -127,9 +123,6 @@ class UserController
                     User::connexionValid($infoUser);
                 }
             }
-            // !password_verify($mdp, $infoUser["pw"])
-            // $mdp != $infoUser['pw']
-
         }
 
         include VIEWS . "user/connexion.php";
@@ -144,14 +137,6 @@ class UserController
             header("location:".BASE_PATH);
 
     }
-
-
-
-
-
-
-
-
 }
 
 
