@@ -33,6 +33,8 @@ class User extends Db
         return $preparedRequest->fetch(PDO::FETCH_ASSOC); 
     }
 
+
+    /**Ajouter et modifier dans la base de données */
     public static function insertUser(array $data)
     {
         $request="REPLACE INTO user VALUES (:id_user,:name, :firstname, :pseudo, :pw, :email, :birthdate, :address, :inscription_date, :point,:photo, :admin, :disabled)";
@@ -77,8 +79,6 @@ class User extends Db
         }
     }
 
-
-
 // Vérification des infos de l'utilisateur pour la connexion
     public static function connexionVerif($pseudo,$mdp)
         {       
@@ -94,9 +94,17 @@ class User extends Db
         }
     }
 
+/************************************* Eclater chemin photo****************************************************/
+    public static function explodePhoto($photoRoad){
+        return explode("photo_profil\\",$photoRoad);
+    }
+
 /********************************************** CONNEXION ***************************************************** */
 // Création SESSION si connexionVerif Ok:
+
+
     public static function connexionValid($infoUser){
+        
         $_SESSION["id_user"] = $infoUser["id_user"];
         $_SESSION["nom"] = $infoUser["name"];
         $_SESSION["prenom"] = $infoUser["firstname"];
@@ -106,10 +114,10 @@ class User extends Db
         $_SESSION["address"] = $infoUser["address"];
         $_SESSION["inscription_date"] = $infoUser["inscription_date"];
         $_SESSION["point"] = $infoUser["point"];
-        $_SESSION["point"] = $infoUser["point"];
+        $_SESSION["photo"] = $infoUser["photo"];
         $_SESSION["admin"] = $infoUser["admin"];
         $_SESSION["disabled"] = $infoUser["disabled"];
-
+        $_SESSION["readPhoto"] = self::explodePhoto($infoUser["photo"]);
 
         header("location:".BASE_PATH."monCompte");
         exit;
@@ -126,10 +134,9 @@ class User extends Db
         }
     }
 
-
+/**Controles sur la photo */
     public static function verifPhoto($photo){
 
-            // Controle du format de la photo
 
         if (isset($photo)){ // Je ne veux faire le controle que si la photo existe
             return true;
@@ -141,11 +148,10 @@ class User extends Db
 
     }
 
-
+    // Enregistrement de la photo, puis a l'enregistrement en bdd
     public static function savePhoto($pseudo,$photo){
 
         
-    // Enregistrement de la photo, puis a l'enregistrement en bdd
 
         if (empty($msg)){
             // On ne procede a l'enregistrement que s'il n'y a pas de message d'erreurs
@@ -157,6 +163,7 @@ class User extends Db
         }
     
     }
+
 
 }
 //Ne plus rien mettre
