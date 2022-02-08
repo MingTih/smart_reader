@@ -2,12 +2,12 @@
 
 include VIEWS.'inc/header.php'; 
 
-echo "<pre>";
-    print_r ($infoUser);
-echo "</pre>";
+// echo "<pre>";
+//     print_r ($infoUser);
+// echo "</pre>";
 
 // echo "<pre>";
-//     print_r ($_SESSION["pseudo"]);
+//     print_r ($_SESSION);
 // echo "</pre>";
 
 // echo "<pre>";
@@ -30,14 +30,14 @@ if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
     <div class="container-fluid">
         <div class="row">
             <ul class="col-7 text-decoration-none">
-                <li>Nom : <?=$infoUser['name'];?></li>
-                <li>Prenom : <?=$infoUser['firstname'];?></li>
-                <li>Pseudo: <?=$infoUser['pseudo'];?></li>
-                <li>Email : <?=$infoUser['email'];?></li>
-                <li>Date de naissance : <?=$infoUser['birthdate'];?></li>
-                <li>Adresse : <?=$infoUser['address'];?></li>
-                <li>Date d'inscription : <?=$infoUser['inscription_date'];?></li>
-                <li>Points : <?=$infoUser['point'];?></li>
+                <li>Nom : <?=$_SESSION['nom'];?></li>
+                <li>Prenom : <?=$_SESSION['prenom'];?></li>
+                <li>Pseudo: <?=$_SESSION['pseudo'];?></li>
+                <li>Email : <?=$_SESSION['email'];?></li>
+                <li>Date de naissance : <?=$_SESSION['birthdate'];?></li>
+                <li>Adresse : <?=$_SESSION['address'];?></li>
+                <li>Date d'inscription : <?=$_SESSION['inscription_date'];?></li>
+                <li>Points : <?=$_SESSION['point'];?></li>
             </ul>
             <div class="photo col-5">
                 <img src="<?=COVER."photo_profil/".$_SESSION['readPhoto'][1]?>" alt="photo de profil de <?=$_SESSION['pseudo'];?>"> 

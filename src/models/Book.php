@@ -19,11 +19,11 @@ class Book extends Db
     }
 
     // Fonction pour afficher le détail d'un livre en particulier
-    public static function oneBooks()
+    public static function oneBooks($idLivre)
     {
 
         // Récupération d'un livre en particulier
-        $OneBookJson = file_get_contents('https://www.googleapis.com/books/v1/volumes/dZFqPgAACAAJ?key='.API_KEY);
+        $OneBookJson = file_get_contents('https://www.googleapis.com/books/v1/volumes/'.$idLivre.'?key='.API_KEY);
         // URL temporaire pour test, à remplacé par une variable
         
         $OneBookPhp = json_decode($OneBookJson, true);

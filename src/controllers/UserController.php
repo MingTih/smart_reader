@@ -195,7 +195,6 @@ class UserController
                     User::connexionValid($infoUser);
                 }
             }
-
         }
 
         include VIEWS . "user/connexion.php";
@@ -210,14 +209,6 @@ class UserController
             header("location:".BASE_PATH);
 
     }
-
-
-
-
-
-
-
-
 }
 
 
