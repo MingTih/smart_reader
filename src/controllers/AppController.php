@@ -8,6 +8,3 @@ class AppController
         
     }
 
-    //bonjour
-
-}

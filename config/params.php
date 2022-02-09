@@ -40,18 +40,18 @@ $routes = [
     '/qui_sommes_nous'           => ['AppController', 'who'],
     '/contact'                   => ['AppController', 'contact'],
     '/mentions_legales'          => ['AppController', 'legal'],
-    '/politique_confidentialite' => ['AppController', 'rgpd'],
     '/erreur'                    => ['AppController', 'erreur'],
 
     // API : Livres--------------------------------------------------------------
     '/listeLivres'          => ['BookController', 'booksListing'],
-    '/detailLivre'          => ['BookController', 'bookDetail'],
+    '/detailLivre'          => ['BookController', 'bookDetail'],//OK
 
     // Table user : Utilisateurs--------------------------------------------------------
     '/monCompte'            => ['UserController', 'compteDetail'], //OK
-    '/modifCompte'          => ['UserController', 'updateUser'],
-    '/connexion'            => ['UserController', 'connexion'],
-    '/inscription'          => ['UserController', 'replaceUser'],
+    '/modifCompte'          => ['UserController', 'updateUser'],//OK
+    '/connexion'            => ['UserController', 'connexion'],//OK
+    '/inscription'          => ['UserController', 'replaceUser'],//OK
+    // '/suppression'          => ['UserController', 'disabled'],
     //Déconnexion OK
 
     // Table et API : Offres, demandes et échanges
