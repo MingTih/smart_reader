@@ -40,28 +40,29 @@ $routes = [
     '/qui_sommes_nous'           => ['AppController', 'who'],
     '/contact'                   => ['AppController', 'contact'],
     '/mentions_legales'          => ['AppController', 'legal'],
-    '/politique_confidentialite' => ['AppController', 'rgpd'],
     '/erreur'                    => ['AppController', 'erreur'],
 
     // API : Livres--------------------------------------------------------------
     '/listeLivres'          => ['BookController', 'booksListing'],
-    '/detailLivre'          => ['BookController', 'bookDetail'],
+    '/detailLivre'          => ['BookController', 'bookDetail'], //OK
 
     // Table user : Utilisateurs--------------------------------------------------------
     '/monCompte'            => ['UserController', 'compteDetail'], //OK
-    '/modifCompte'          => ['UserController', 'updateUser'],
-    '/connexion'            => ['UserController', 'connexion'],
-    '/inscription'          => ['UserController', 'replaceUser'],
+    '/modifCompte'          => ['UserController', 'updateUser'],//OK
+    '/connexion'            => ['UserController', 'connexion'],//OK
+    '/inscription'          => ['UserController', 'replaceUser'],//OK
+    // '/suppression'          => ['UserController', 'disabled'],
     //Déconnexion OK
+    //Suppression compte
 
     // Table et API : Offres, demandes et échanges
     '/mesOffres'            => ['DealController', 'offersList'],
     '/supprOffre'           => ['DealController', 'deleteOffer'],
-    '/addOffre'             => ['DealController', 'addOffer'],
+    '/addOffre'             => ['DealController', 'addOffer'], //OK
 
     '/mesSouhaits'          => ['DealController', 'wishList'], 
     '/supprSouhait'         => ['DealController', 'deleteWish'],
-    '/addSouhait'           => ['DealController', 'addWish'],
+    '/addSouhait'           => ['DealController', 'addWish'], //OK
 
     '/historique'           => ['ProductController', 'dealList'], 
     '/historiqueDetail'     => ['ProductController', 'dealDetail'], 

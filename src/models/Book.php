@@ -19,7 +19,7 @@ class Book extends Db
     }
 
     // Fonction pour afficher le détail d'un livre en particulier
-    public static function oneBooks($idLivre)
+    public static function oneBook($idLivre)
     {
 
         // Récupération d'un livre en particulier
