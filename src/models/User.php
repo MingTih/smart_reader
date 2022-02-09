@@ -109,6 +109,7 @@ class User extends Db
         $_SESSION["nom"] = $infoUser["name"];
         $_SESSION["prenom"] = $infoUser["firstname"];
         $_SESSION["pseudo"] = $infoUser["pseudo"];
+        $_SESSION["pw"] = $infoUser["pw"];
         $_SESSION["email"] = $infoUser["email"];
         $_SESSION["birthdate"] = $infoUser["birthdate"];
         $_SESSION["address"] = $infoUser["address"];

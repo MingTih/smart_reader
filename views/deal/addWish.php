@@ -11,7 +11,7 @@ include VIEWS.'inc/header.php';
 ?>
 <main>
     <div class="main">
-        <h1 class='text-center'>Ajouter une offre</h1>
+        <h1 class='text-center'>Ajouter une demande</h1>
 
         <h2><?=$detailLivre["title"]?></h2>
 
