@@ -165,6 +165,31 @@ class User extends Db
     
     }
 
+//     // Desactivation de compte
+//     public static function disabledSession($disabled){
+//         // Si SESSION existe :
+//         if(isset($_SESSION["id_user"])){
+            
+//             //Desactivation du compte
+//             $requete = ("UPDATE user SET disabled=:disabled WHERE id_user=:id_user");
+//             $requetePrepare = self::getDb()->prepare($requete);
+//             $requetePrepare->execute($disabled);
+//         }
+//     }
+// // Selection de tous les users en disabled
+//     public static function getAllDisabled($data)
+//     {
+//     // Requête SQL pour selectionner tous les users disabled
+//         $request = "SELECT * FROM user WHERE disabled=:disabled";
+//     // Préparation de la requête avec connexion à la BDD
+//         $preparedRequest = self::getDb()->prepare($request);
+//     // Execution de la requête
+//         $preparedRequest->execute($data);
+//     // Retour des infos de tous les utilisateurs sous forme de liste 
+//         return $preparedRequest->fetchAll(PDO::FETCH_ASSOC);
+
+//     }
+
 
 }
 //Ne plus rien mettre

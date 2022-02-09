@@ -49,8 +49,9 @@ $routes = [
     // Table user : Utilisateurs--------------------------------------------------------
     '/monCompte'            => ['UserController', 'compteDetail'], //OK
     '/modifCompte'          => ['UserController', 'updateUser'],//OK
-    '/connexion'            => ['UserController', 'connexion'], //OK
-    '/inscription'          => ['UserController', 'replaceUser'], //OK
+    '/connexion'            => ['UserController', 'connexion'],//OK
+    '/inscription'          => ['UserController', 'replaceUser'],//OK
+    // '/suppression'          => ['UserController', 'disabled'],
     //Déconnexion OK
     //Suppression compte
 

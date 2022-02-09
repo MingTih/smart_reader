@@ -54,6 +54,8 @@ include VIEWS.'inc/header.php';
 
     </fieldset>
     <button type="submit" class="btn btn-primary"><font style="vertical-align: inherit;">Modifier</font></button>
+    <a href="<?=BASE_PATH?>"; class="btn btn-danger">Annuler</a>
+
   </fieldset>
 </form>
 

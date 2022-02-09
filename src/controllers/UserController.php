@@ -2,7 +2,17 @@
 
 class UserController
 {
-
+    // public static function disconectedDisabled(){
+    //     if(isset($_SESSION["id_user"]) && isset($_GET["supprimer"])){
+    //         UserController::disabled($_GET["supprimer"]);
+    //         UserController::deconnexion($_GET["supprimer"]);
+    //     }
+    // }
+    // if (UserController::isDisabled()){
+    //     header("location:" . BASE_PATH);
+    //     exit;
+    // }
+    
 /************************************* monCompte *********************************************************************/
     public static function compteDetail()
     {
@@ -21,6 +31,12 @@ class UserController
 /*******************************************INSCRIPTION ***********************************************/    
     public static function replaceUser()
     {
+           // Vérifier la connexion de l'utilisateur, si ok redirection vers modifCompte
+
+           if(User::isConnected()){
+            header("location:".BASE_PATH."monCompte");
+        }
+ 
         if (!empty($_FILES)){
             $pseudo= $_POST['pseudo'];
             $photo = $_FILES['photo'];
@@ -84,9 +100,13 @@ class UserController
     }
 
 /******************************************* MODIFICATION ***********************************************/    
+public static function updateUser()
+{
+    // Vérifier la connexion de l'utilisateur, si ok redirection vers modifCompte
 
-    public static function updateUser()
-    {
+        if(!User::isConnected()){
+            header("location:".BASE_PATH."connexion");
+        }
 
         // echo '<pre>';
         // print_r($_FILES);
@@ -122,7 +142,7 @@ class UserController
                     'name' => $_POST['name'],
                     'firstname' => $_POST['firstname'],
                     'pseudo' => $_POST['pseudo'],
-                    // 'pw' => password_hash($_POST["pw"],PASSWORD_DEFAULT),
+                    'pw' => $_SESSION["pw"],
                     'email' => $_POST['email'],
                     'birthdate' => $_POST['birthdate'],
                     'address' => $_POST['address'],
@@ -130,7 +150,7 @@ class UserController
                     'point' => $_SESSION["point"],
                     'photo' => $cheminModifPhoto,
                     'admin' => $_SESSION["admin"],
-                    'disabled' => $_SESSION["disabled"],
+                    'disabled' => "NULL",
                     
 
                 ]);
@@ -156,7 +176,7 @@ class UserController
             
        }
                         include VIEWS . 'user/modifCompte.php';
-    }
+}
 
 /*******************************************CONNEXION *********************************************************/
     public static function connexion()
@@ -166,6 +186,11 @@ class UserController
         if(User::isConnected()){
             header("location:".BASE_PATH."monCompte");
         }
+        // if ( User::getAllDisabled(['disabled'=>1])){
+        //     $msg="Le compte n'est plus actif, veuillez contacter le service client pour le réactiver ou bien créer un nouveau compte.";
+            // header("location:" . BASE_PATH);
+            // exit;
+        // }
         // Si POST n'est pas vide, stocke les données POST dans des variables :
         if(!empty($_POST)){
             $pseudo=$_POST["pseudo"];
@@ -209,7 +234,40 @@ class UserController
             header("location:".BASE_PATH);
 
     }
+
+//     public static function disabled(){
+        
+//             User::disabledSession([
+//                 "disabled"=>1,
+//                 "id_user" => $_SESSION["id_user"]
+//             ]);
+        
+//             // Redirection accueil
+//             header("location:".BASE_PATH);
+        
+//     }
+
+//    public static function isDisabled(){
+
+//         if ($_SESSION["disabled"] ===1){ 
+//             return true;
+//         }
+
+//         return false;
+
+//  }
+
+    // public static function allDisabled(){
+
+    //     if ( User::getAllDisabled(['disabled'=>1])){
+    //         header("location:" . BASE_PATH);
+    //         exit;
+    //     }
+
+    // }
 }
+
+
 
 
 
