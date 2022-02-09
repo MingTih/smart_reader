@@ -56,13 +56,15 @@ $routes = [
     //Suppression compte
 
     // Table et API : Offres, demandes et échanges
-    '/mesOffres'            => ['DealController', 'offersList'],
+    '/mesOffres'            => ['DealController', 'offersList'], //OK
     '/supprOffre'           => ['DealController', 'deleteOffer'],
     '/addOffre'             => ['DealController', 'addOffer'], //OK
 
-    '/mesSouhaits'          => ['DealController', 'wishList'], 
+    '/mesSouhaits'          => ['DealController', 'wishList'], //OK
     '/supprSouhait'         => ['DealController', 'deleteWish'],
     '/addSouhait'           => ['DealController', 'addWish'], //OK
+
+    '/modifDeal'            => ['DealController', 'modifDeal'],
 
     '/historique'           => ['ProductController', 'dealList'], 
     '/historiqueDetail'     => ['ProductController', 'dealDetail'], 

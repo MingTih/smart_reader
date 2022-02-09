@@ -4,7 +4,8 @@ include VIEWS.'inc/header.php';
 
 echo "<pre>";
     // print_r($_GET);
-    print_r($listeDemandes);
+    // print_r($listeOffres);
+    // print_r($test);
     // print_r($_SESSION);
     // print_r($_POST);
 echo "</pre>";
@@ -13,6 +14,16 @@ echo "</pre>";
 <main class="container">
     <h1 class="text-center">Liste de mes offres</h1>
 
+    <?php
+        if(empty($listeOffres)){
+    ?>
+        <div class="noRequest">
+            <p>Vous n'avez pas d'offre en cours.</p>
+        </div>
+    <?php
+        }else{
+    ?>
+    
     <table class="table">
         <thead>
             <tr>
@@ -21,6 +32,7 @@ echo "</pre>";
             <th scope="col">Auteur</th>
             <th scope="col">Editeur</th>
             <th scope="col">Etat</th>
+            <th scope="col">Point(s)</th>
             <th scope="col">Modifier</th>
             <th scope="col">Supprimer</th>
             </tr>
@@ -28,16 +40,12 @@ echo "</pre>";
 
         <tbody>
             <?php
-                foreach($listeDemandes as $demande){
-                    $id=$demande['id_book'];
-                    $livreInfo = Book::oneBook($id);
-                    $etat = Deal::PointToCondition($demande['point_offers']);
-                    $detailLivre = $livreInfo["volumeInfo"];         
+                foreach($listeOffres as $offre){
 
             ?>
                 <tr>
             
-                        <th scope="row"><?=$demande['dealing_date']?></th>
+                        <th scope="row"><?=$offre['dealing_date']?></th>
                         <td><?=$detailLivre['title']?></td>
                         <td>
                             <?php
@@ -50,14 +58,17 @@ echo "</pre>";
                             ?>
                         </td>
                         <td><?=$detailLivre['publisher']?></td>
-                        <td><?=$etat?></td>
-                        <td><a href="" class="btn btn-warning">Modifier</a></td>
-                        <td><a href="" class="btn btn-danger">Supprimer</a></td>
+                        <td><?=$offre["etat"]?></td>
+                        <td><?=$offre["point_offers"]?></td>
+                        <td><a href="<?=BASE_PATH.'modifDeal?deal='.$offre['id_deal']?>" class="btn btn-warning">Modifier</a></td>
+                        <td><a href="?deleteDeal=ok" class="btn btn-danger">Supprimer</a></td>
                 </tr>
             <?php
                 }
             ?>
         </tbody>
     </table>
-
+    <?php
+        }
+    ?>
 </main>
