@@ -2,12 +2,12 @@
 
 include VIEWS.'inc/header.php'; 
 
-// echo "<pre>";
+echo "<pre>";
     // print_r($_GET);
     // print_r($livreInfo);
-    // print_r($_SESSION);
-    // print_r($_POST);
-// echo "</pre>";
+    print_r($_SESSION);
+    print_r($_POST);
+echo "</pre>";
 ?>
 <main>
     <div class="main">

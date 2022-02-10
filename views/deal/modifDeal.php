@@ -4,7 +4,7 @@ include VIEWS.'inc/header.php';
 
 echo "<pre>";
     // print_r($_GET);
-    // print_r($livreInfo);
+    print_r($oneDealArray);
     print_r($deal);
     // print_r($_SESSION);
     // print_r($_POST);
@@ -56,14 +56,16 @@ echo "</pre>";
 
         <form action="" method="post">
             <label for="etat" class='d-block'>Etat du livre</label>
-            <select name="etat" id="etat" value="<?=$etat?>">
-                <option value="1">Abîmé - 1 point</option>                
-                <option value="2">Bon - 2 points</option>
-                <option value="3">Neuf - 3 points</option>
-                <option value="4">Rare - 4 points</option>
+            <select name="etat" id="etat">
+                <option value="mauvais" <?=$point==1? "selected":""?>>Abîmé - 1 point</option>                
+                <option value="bon" <?=$point==2? "selected":""?>>Bon - 2 points</option>
+                <option value="neuf" <?=$point==3? "selected":""?>>Neuf - 3 points</option>
+                <option value="rare" <?=$point==4? "selected":""?>>Rare - 4 points</option>
             </select>
 
-            <input type="submit" class="btn btn-primary">
+            <input type="submit" class="btn btn-primary" value="Modifier">
+
+            <a href="<?=BASE_PATH.$cancelModifRoad;?>" class="btn btn-danger">Annuler</a>
 
         </form>
 

@@ -2,7 +2,7 @@
 
 class Deal extends Db
 {
-//Ajouter, à la table deal, un livre ----------------------------------------------------------
+//Ajouter, à la table deal, un livre (add)----------------------------------------------------------
     public static function addDeal($data){
 
         $resquest = "INSERT INTO dealing (id_deal,id_user, id_book, dealing_position, point_offers, point_deal, dealing_date) VALUES (:id_deal,:id_user,:id_book,:dealing_position,:point_offers,:point_deal,:dealing_date)";
@@ -11,14 +11,24 @@ class Deal extends Db
         
     }
 
-//Modifier le nombre de points pour les deals ----------------------------------------------------------
+//Modifier le nombre de points pour les deals (modifier)----------------------------------------------------------
     public static function updateDeal($data){
         $request = "UPDATE dealing SET point_offers = :point_offers WHERE id_deal=:id_deal";
         $preparedRequest = self::getDb()->prepare($request);
         return $preparedRequest->execute($data);
     }
     
-// Affichage liste offres ou demandes -------------------------------------------------------------------
+// Affichage liste de toutes les offres ou de toutes les demandes (listes) de tous les utilisateurs-------------------------------------------------------------------
+public static function readAllDeals($data){
+    $request = "SELECT * FROM dealing WHERE dealing_position = :dealing_position";
+    $preparedRequest = self::getDb()->prepare($request);
+    $preparedRequest->execute($data);
+    return $preparedRequest->fetchAll(PDO::FETCH_ASSOC);
+}
+  
+
+
+// Affichage liste offres ou demandes (listes) d'un utilisateur en particulier-------------------------------------------------------------------
     public static function readDeal($data){
         $request = "SELECT * FROM dealing WHERE dealing_position = :dealing_position AND id_user=:id_user";
         $preparedRequest = self::getDb()->prepare($request);
@@ -36,7 +46,7 @@ class Deal extends Db
     }   
 
 
-// Connversion points <=> état ---------------------------------------------------------------------------
+// Conversion points <=> état (me suis compliquée la vie ici, changer si ya le temps avec BDD)---------------------------------------------------------------------------
     public static function pointToCondition($point){
         if($point==1){
             return "mauvais";
@@ -54,15 +64,38 @@ class Deal extends Db
 
     }
 
-    // 
- 
+// Connversion état <=> point état (me suis compliquée la vie ici, changer si ya le temps avec BDD)---------------------------------------------------------------------------
+public static function conditionToPoint($etat){
+    if($etat=="mauvais"){
+        return 1;
+    }
+    if($etat=="bon"){
+        return 2;
+    }
+    if($etat=="neuf"){
+        return 3;            
+    }
+    if($etat=="rare"){
+        return 4;
+        
+    }
+
+}
+
+// DELETE deal ------------------------------------------------------------------------------
+public static function deleteDeal($data){
+    $request = "DELETE FROM dealing WHERE id_deal = :id_deal";
+    $preparedRequest = self::getDb()->prepare($request);
+    $preparedRequest->execute($data);
+
+}
 
 
 
 
     
 }
-
+// Ne rien mettre après
 
 
 

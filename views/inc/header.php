@@ -23,3 +23,24 @@
 
     <link rel="stylesheet" href="../asset/css/style.css">
 </head>
+<!-- HEADER -->
+
+        <!-- --------------------------------LOG0--------------------------------------------- -->
+        <header id="header">        
+        <div class="logo-banniere d-flex">
+                <div class="logo">
+                        <img src="../asset/css/Images/logoFinalPlus3Px.png" width="150px" height="150 px" alt="logo_de_la_marque">
+                </div>
+
+                 <!--------------------------------- BANNIERE--------------------------------------- -->   
+                <div class="banniere d-flex">    
+                    <h1 class="titreSite">Le site d'échange de livres d'occasion</h1>
+                </div>
+                <!------------------------------------ Mascotte img----------------------- -->
+                
+        </div>
+        <div class="mascotte4 d-flex">
+            <img src="../asset/css/images/mascotte4.png" width="150px" height="150px" alt="image_mascotte_hibou">
+        </div>
+        
+    </header>

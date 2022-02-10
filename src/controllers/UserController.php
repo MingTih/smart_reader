@@ -227,11 +227,12 @@ public static function updateUser()
 
     public static function deconnexion($deconnexion){
         
-        if($deconnexion == "ok")
+        if($deconnexion == "ok"){
             User::destroySession($deconnexion);
 
             // Redirection accueil
             header("location:".BASE_PATH);
+        }
 
     }
 
