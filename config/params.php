@@ -44,7 +44,7 @@ $routes = [
 
     // API : Livres--------------------------------------------------------------
     '/listeLivres'          => ['BookController', 'booksListing'],
-    '/detailLivre'          => ['BookController', 'bookDetail'],//OK
+    '/detailLivre'          => ['BookController', 'bookDetail'], //OK
 
     // Table user : Utilisateurs--------------------------------------------------------
     '/monCompte'            => ['UserController', 'compteDetail'], //OK
@@ -53,15 +53,18 @@ $routes = [
     '/inscription'          => ['UserController', 'replaceUser'],//OK
     // '/suppression'          => ['UserController', 'disabled'],
     //Déconnexion OK
+    //Suppression compte
 
     // Table et API : Offres, demandes et échanges
-    '/mesOffres'            => ['DealController', 'offersList'],
+    '/mesOffres'            => ['DealController', 'offersList'], //OK
     '/supprOffre'           => ['DealController', 'deleteOffer'],
-    '/addOffre'             => ['DealController', 'addOffer'],
+    '/addOffre'             => ['DealController', 'addOffer'], //OK
 
-    '/mesSouhaits'          => ['DealController', 'wishList'], 
+    '/mesSouhaits'          => ['DealController', 'wishList'], //OK
     '/supprSouhait'         => ['DealController', 'deleteWish'],
-    '/addSouhait'           => ['DealController', 'addWish'],
+    '/addSouhait'           => ['DealController', 'addWish'], //OK
+
+    '/modifDeal'            => ['DealController', 'modifDeal'],
 
     '/historique'           => ['ProductController', 'dealList'], 
     '/historiqueDetail'     => ['ProductController', 'dealDetail'], 

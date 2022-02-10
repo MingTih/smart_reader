@@ -2,16 +2,17 @@
 
 include VIEWS.'inc/header.php'; 
 
-// echo "<pre>";
+echo "<pre>";
     // print_r($_GET);
     // print_r($livreInfo);
+    print_r($deal);
     // print_r($_SESSION);
     // print_r($_POST);
-// echo "</pre>";
+echo "</pre>";
 ?>
 <main>
     <div class="main">
-        <h1 class='text-center'>Ajouter une offre</h1>
+        <h1 class='text-center'>Modifier <?=$title?></h1>
 
         <h2><?=$detailLivre["title"]?></h2>
 
@@ -55,12 +56,11 @@ include VIEWS.'inc/header.php';
 
         <form action="" method="post">
             <label for="etat" class='d-block'>Etat du livre</label>
-            <select name="etat" id="etat">
-                <option value="">--Veuillez sélectionner l'état de votre livre--</option>
-                <option value="mauvais">Abîmé - 1 point</option>                
-                <option value="bon">Bon - 2 points</option>
-                <option value="neuf">Neuf - 3 points</option>
-                <option value="rare">Rare - 4 points</option>
+            <select name="etat" id="etat" value="<?=$etat?>">
+                <option value="1">Abîmé - 1 point</option>                
+                <option value="2">Bon - 2 points</option>
+                <option value="3">Neuf - 3 points</option>
+                <option value="4">Rare - 4 points</option>
             </select>
 
             <input type="submit" class="btn btn-primary">
