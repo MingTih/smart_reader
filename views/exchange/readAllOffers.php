@@ -4,16 +4,16 @@ include VIEWS.'inc/header.php';
 
 // echo "<pre>";
 //     print_r($_GET);
-//     print_r($listeOffres);
+//     print_r($listeAllOffres);
 //     print_r($offre);
 // echo "</pre>";
 ?>
 
 <main class="container">
-    <h1 class="text-center">Liste de mes offres</h1>
+    <h1 class="text-center">Liste de toutes les offres</h1>
 
     <?php
-        if(empty($listeOffres)){
+        if(empty($listeAllOffres)){
     ?>
         <div class="noRequest">
             <p><?=$msg1?></p>
@@ -25,20 +25,20 @@ include VIEWS.'inc/header.php';
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Date de l'offre'</th>
+                <th scope="col">Date de l'offre</th>
                 <th scope="col">Titre du livre</th>
                 <th scope="col">Auteur</th>
                 <th scope="col">Editeur</th>
                 <th scope="col">Etat</th>
                 <th scope="col">Point(s)</th>
+                <th scope="col">Possesseur</th>
                 <th scope="col">Modifier</th>
-                <th scope="col">Supprimer</th>
             </tr>
         </thead>
 
         <tbody>
             <?php
-                foreach($listeOffres as $offre){
+                foreach($listeAllOffres as $offre){
 
             ?>
                 <tr>
@@ -58,8 +58,8 @@ include VIEWS.'inc/header.php';
                         <td><?=$detailLivre['publisher']?></td>
                         <td><?=$offre["etat"]?></td>
                         <td><?=$offre["point_offers"]?></td>
-                        <td><a href="<?=BASE_PATH.'modifDeal?deal='.$offre['id_deal']?>" class="btn btn-warning">Modifier</a></td>
-                        <td><a href="?id=<?=$offre['id_deal']?>&&deleteDeal=ok" class="btn btn-danger">Supprimer</a></td>
+                        <td><?=$offre["owner"]?></td>
+                        <td><a href="<?=BASE_PATH."detailOffre"?>">Details</a></td>
                 </tr>
             <?php
                 }

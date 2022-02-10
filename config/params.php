@@ -29,7 +29,7 @@ const CONTROLLERS = BASE_DIR . 'src/controllers/';
 const PHOTO = BASE_DIR.'public\\uploads\\';
 const COVER = '../../public/uploads/';
 
-const API_KEY = "AIzaSyAzFkhp4TZ1_TvOfKk3f7O7r3pgk2lMxFQ";
+const API_KEY = "AIzaSyDAIV0lnh92aDhhOTZEkrgMcymuQR2V5q4";
 
 /**
  * Liste des actions/méthodes possibles (les routes du routeur)
@@ -43,7 +43,7 @@ $routes = [
     '/erreur'                    => ['AppController', 'erreur'],
 
     // API : Livres--------------------------------------------------------------
-    '/listeLivres'          => ['BookController', 'booksListing'],
+    '/listeLivres'          => ['BookController', 'booksListing'], //OK
     '/detailLivre'          => ['BookController', 'bookDetail'], //OK
 
     // Table user : Utilisateurs--------------------------------------------------------
@@ -53,9 +53,8 @@ $routes = [
     '/inscription'          => ['UserController', 'replaceUser'],//OK
     // '/suppression'          => ['UserController', 'disabled'],
     //Déconnexion OK
-    //Suppression compte
 
-    // Table et API : Offres, demandes et échanges
+    // Table dealing et API : Offres et demandes d'un utilisateur----------
     '/mesOffres'            => ['DealController', 'offersList'], //OK
     '/addOffre'             => ['DealController', 'addOffer'], //OK
 
@@ -63,12 +62,17 @@ $routes = [
     '/addSouhait'           => ['DealController', 'addWish'], //OK
 
     '/modifDeal'            => ['DealController', 'modifDeal'],//OK
-    '/supprDeal'            => ['DealController', 'supprDeal'],
+    // Supression => OK
 
-    '/historique'           => ['ProductController', 'dealList'], 
-    '/historiqueDetail'     => ['ProductController', 'dealDetail'], 
+    // Table exchange, dealing et user--------------------------------------
 
-    // Admin
+    'allOffres'              => ['ExchangeController', 'allOffersList'],
+    'allSouhaits'            => ['ExchangeController', 'allWishesList'],
+    'tradeDetail'            => ['ExchangeController', 'tradeDetail'],
+    'historique'             => ['ExchangeController', 'myTradesList'], 
+    'historiqueDetail'       => ['ExchangeController', 'tradeDetail'], 
+
+    // Admin----------------------------------------------------------------
     '/listUsers'            => ['AdminController', 'userslisting'], //OK
     '/addUser'              => ['AdminController', 'adduser'],
     // '/modifCompte'          => ['UserController', 'updateUser'],//OK

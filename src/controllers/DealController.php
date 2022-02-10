@@ -166,7 +166,7 @@ class DealController
             'dealing_position'=>'request',
         ]);
 
-        include VIEWS . "deal/readAllWishs.php";
+        include VIEWS . "deal/readAllWishes.php";
 
     }
     
@@ -178,15 +178,22 @@ class DealController
             exit;
         }
 
+        $msg1="";
+
         // Création d'une liste qui va regrouper toutes lignes de la table dealing
         $listeOffres = Deal::readDeal([
             'dealing_position'=>'offer',
             'id_user'=>$_SESSION['id_user']
         ]);
+
+        // Message si pas d'offres
+        if(empty($listeOffres)){
+            $msg1="Vous n'avez pas d'offre";
+        }
         
-        // Création d'un nouvel index dans la listeOffres et récupération des infos du livre grâce à l'id enregistré en BDD
+        // Création d'un nouvel index 'etat' dans la listeOffres et récupération des infos du livre grâce à l'id enregistré en BDD
         foreach($listeOffres as $cle=>$offre){
-            // De base, listeDemandes affiche une liste avec les données récup dans la base de données.
+            // De base, listeDemandes affiche une liste des données récup dans la base de données dans une liste.
                 // Ici, on va lui ajouter un index "etat" qui ne vient pas de la bdd
             $listeOffres[$cle]['etat']=Deal::pointToCondition($offre['point_offers']);
 
@@ -195,24 +202,41 @@ class DealController
             $detailLivre = $livreInfo["volumeInfo"];         
         }
 
+        // Supression de la ligne grâce au GET
+        if(isset($_GET['deleteDeal']) && $_GET['deleteDeal'] == "ok"){
+            Deal::deleteDeal([
+                'id_deal'=>$_GET['id']
+            ]);
+
+            // Redirection accueil
+            header("location:".BASE_PATH."mesOffres");
+            exit;
+        }
+                
+
         include VIEWS . "deal/readOffers.php";
 
     }
 
     // Afficher la liste des demandes d'un user------------------------------------------------------------
     public static function wishList(){
-        // Si pas de compte, redirige sur page connexion
         if(!User::isConnected()){
             header("location:".BASE_PATH."connexion");
             exit;
         }
         
+        $msg1="";
+
         $listeDemandes = Deal::readDeal([
             'dealing_position'=>'request',
             'id_user'=>$_SESSION['id_user']
         ]);
 
-        // Création d'un nouvel index dans la listeOffres et récupération des infos du livre grâce à l'id enregistré en BDD
+        // Message si pas d'offres
+        if(empty($listeDemandes)){
+            $msg1="Vous n'avez pas de demande pour l'instant.";
+        }
+        
         foreach($listeDemandes as $cle=>$demande){
             $listeDemandes[$cle]['etat']=Deal::pointToCondition($demande['point_offers']);
 
@@ -221,7 +245,16 @@ class DealController
 
         }
 
-        include VIEWS . "deal/readWishs.php";
+        if(isset($_GET['deleteDeal']) && $_GET['deleteDeal'] == "ok"){
+            Deal::deleteDeal([
+                'id_deal'=>$_GET['id']
+            ]);
+
+            header("location:".BASE_PATH."mesSouhaits");
+            exit;
+        }
+
+        include VIEWS . "deal/readWishes.php";
     }
 
     // Modifier les points d'un deal------------------------------------------------------------------------------------------
@@ -274,54 +307,13 @@ class DealController
                 header("location:".BASE_PATH.$cancelModifRoad);
                 exit;
             }
+
+
                 
             include VIEWS . "deal/modifDeal.php";
 
 
         }
-
-        // supprimer d'un deal------------------------------------------------------------------------------------------
-        public static function supprDeal(){
-            if(!User::isConnected()){
-                header("location:".BASE_PATH."connexion");
-                exit;
-            }
-
-            if(!isset($_GET['deleteDeal']) || empty($_GET['deleteDeal']) || !isset($_GET['id']) || empty($_GET['id'])){
-                header("location:".BASE_PATH."monCompte");
-                exit;
-            }
-
-            $oneDealArray = Deal::readOneDeal([
-                'id_deal'=>$_GET['id']
-            ]);   
-
-            // Création variables pour le titre de la page et redirections
-            foreach($oneDealArray as $cle=>$deal){
-                if($deal['dealing_position']=="offer"){
-                    $cancelModifRoad = "mesOffres";
-                }else{
-                    $cancelModifRoad = "mesSouhaits";
-                }
-            }
-
-
-
-            if($_GET['deleteDeal'] == "ok"){
-                Deal::deleteDeal([
-                    'id_deal'=>$_GET['id']
-                ]);
-
-            // Redirection accueil
-            header("location:".BASE_PATH.$cancelModifRoad);
-            exit;
-            }
-
-
-        }
-
-
-
 
 
 }

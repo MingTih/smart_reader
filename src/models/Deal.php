@@ -90,6 +90,15 @@ public static function deleteDeal($data){
 
 }
 
+// Contrôles---------------------------------------------------------------------------------
+public static function getControl($get){
+    if(!isset($get)){
+        return true;
+    }
+    if(empty($get)){
+        return true;
+    }
+}
 
 
 

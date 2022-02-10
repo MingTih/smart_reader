@@ -10,7 +10,7 @@ class BookController
 
     // TEST recherche => à relier avec la view header à la fin? ----------------
         if(!empty($_POST)){
-            $recherche=$_POST["search"];
+            $recherche=str_replace(' ', '+', $_POST["search"]);
             $booksFound = Book::searchBooks($recherche);
             $booksItem = $booksFound["items"];
         }
