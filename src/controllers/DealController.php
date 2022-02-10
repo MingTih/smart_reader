@@ -49,7 +49,7 @@ class DealController
                     }
                                 
                     if($_POST['etat']=="rare"){
-                        $point = 3;
+                        $point = 4;
                         echo $point;
                     }
 
@@ -118,7 +118,7 @@ class DealController
                     }
                                 
                     if($_POST['etat']=="rare"){
-                        $point = 3;
+                        $point = 4;
                         echo $point;
                     }
 
@@ -140,7 +140,37 @@ class DealController
         include VIEWS . "deal/addWish.php";
     }
 
-    // Afficher la liste des offres------------------------------------------------------------
+    // Afficher la liste des offres de tous les utilisateurs------------------------------------------------------------
+    public static function allOffersList(){
+        if(!User::isConnected()){
+            header("location:".BASE_PATH."connexion");
+            exit;
+        }
+
+        $listeAllOffres = Deal::readAllDeals([
+            'dealing_position'=>'offer',
+        ]);
+
+        include VIEWS . "deal/readAllOffers.php";
+
+    }
+
+    // Afficher la liste des demandes de tous les utilisateurs------------------------------------------------------------
+    public static function allWishList(){
+        if(!User::isConnected()){
+            header("location:".BASE_PATH."connexion");
+            exit;
+        }
+
+        $listeAllOffres = Deal::readAllDeals([
+            'dealing_position'=>'request',
+        ]);
+
+        include VIEWS . "deal/readAllWishs.php";
+
+    }
+    
+    // Afficher la liste des offres d'un user------------------------------------------------------------
     public static function offersList(){
         // Si pas de compte, redirige sur page connexion
         if(!User::isConnected()){
@@ -169,7 +199,7 @@ class DealController
 
     }
 
-    // Afficher la liste des demandes------------------------------------------------------------
+    // Afficher la liste des demandes d'un user------------------------------------------------------------
     public static function wishList(){
         // Si pas de compte, redirige sur page connexion
         if(!User::isConnected()){
@@ -196,52 +226,99 @@ class DealController
 
     // Modifier les points d'un deal------------------------------------------------------------------------------------------
         public static function modifDeal(){
+            
             if(!User::isConnected()){
                 header("location:".BASE_PATH."connexion");
+                exit;
             }
             
             //Si pas de GET, renvoie à monCompte
-            if(empty($_GET)){
+            if(!isset($_GET['deal']) || empty($_GET['deal'])){
                 header("location:".BASE_PATH."monCompte");
                 exit;
             }
+            
+            //
+            $oneDealArray = Deal::readOneDeal([
+                'id_deal'=>$_GET['deal']
+            ]);   
 
-            if(isset($_GET) && !empty($_GET)){
-               
-                $listeDeals = Deal::readOneDeal([
-                    'id_deal'=>$_GET['deal']
-                ]);   
-
-                // Création variable pour le titre de la page
-                foreach($listeDeals as $cle=>$deal){
-                    if($deal['dealing_position']=="offer"){
-                        $title = "mon offre";
-                    }else{
-                        $title = "ma demande";
-                    }
-
-                // Récupération des données du livre
-                    $livreInfo = Book::oneBook($deal["id_book"]);
-                    $detailLivre = $livreInfo["volumeInfo"]; 
-                
-                // Récupération de $etat:
-                    $point = $deal["point_offers"];
+            // Création variables pour le titre de la page et redirections
+            foreach($oneDealArray as $cle=>$deal){
+                if($deal['dealing_position']=="offer"){
+                    $title = "mon offre";
+                    $cancelModifRoad = "mesOffres";
+                }else{
+                    $title = "ma demande";
+                    $cancelModifRoad = "mesSouhaits";
                 }
 
-                //Modification du nombre de point dans la BDD
-                    Deal::updateDeal([
-                        'point_offers'=>$point,
-                        'id_deal'=>$deal["id_deal"]
-                    ]);
-
-
+                // Récupération des données du livre
+                $livreInfo = Book::oneBook($deal["id_book"]);
+                $detailLivre = $livreInfo["volumeInfo"]; 
+                
+                // Récupération de $etat pour le menu select.
+                $point = $deal["point_offers"];
             }
+
+            //Si POST n'est pas vide
+            if(!empty($_POST)){
+                //Convertion état livre à point
+                $newPoint = Deal::conditionToPoint($_POST['etat']);
+
+                //Modification du nombre de point dans la BDD
+                Deal::updateDeal([
+                    'point_offers'=>$newPoint,
+                    'id_deal'=>$deal["id_deal"]
+                ]);
+                header("location:".BASE_PATH.$cancelModifRoad);
+                exit;
+            }
+                
             include VIEWS . "deal/modifDeal.php";
 
 
         }
-    
-    
+
+        // supprimer d'un deal------------------------------------------------------------------------------------------
+        public static function supprDeal(){
+            if(!User::isConnected()){
+                header("location:".BASE_PATH."connexion");
+                exit;
+            }
+
+            if(!isset($_GET['deleteDeal']) || empty($_GET['deleteDeal']) || !isset($_GET['id']) || empty($_GET['id'])){
+                header("location:".BASE_PATH."monCompte");
+                exit;
+            }
+
+            $oneDealArray = Deal::readOneDeal([
+                'id_deal'=>$_GET['id']
+            ]);   
+
+            // Création variables pour le titre de la page et redirections
+            foreach($oneDealArray as $cle=>$deal){
+                if($deal['dealing_position']=="offer"){
+                    $cancelModifRoad = "mesOffres";
+                }else{
+                    $cancelModifRoad = "mesSouhaits";
+                }
+            }
+
+
+
+            if($_GET['deleteDeal'] == "ok"){
+                Deal::deleteDeal([
+                    'id_deal'=>$_GET['id']
+                ]);
+
+            // Redirection accueil
+            header("location:".BASE_PATH.$cancelModifRoad);
+            exit;
+            }
+
+
+        }
 
 
 

@@ -57,14 +57,13 @@ $routes = [
 
     // Table et API : Offres, demandes et échanges
     '/mesOffres'            => ['DealController', 'offersList'], //OK
-    '/supprOffre'           => ['DealController', 'deleteOffer'],
     '/addOffre'             => ['DealController', 'addOffer'], //OK
 
     '/mesSouhaits'          => ['DealController', 'wishList'], //OK
-    '/supprSouhait'         => ['DealController', 'deleteWish'],
     '/addSouhait'           => ['DealController', 'addWish'], //OK
 
-    '/modifDeal'            => ['DealController', 'modifDeal'],
+    '/modifDeal'            => ['DealController', 'modifDeal'],//OK
+    '/supprDeal'            => ['DealController', 'supprDeal'],
 
     '/historique'           => ['ProductController', 'dealList'], 
     '/historiqueDetail'     => ['ProductController', 'dealDetail'], 

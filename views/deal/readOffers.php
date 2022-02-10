@@ -3,10 +3,10 @@
 include VIEWS.'inc/header.php'; 
 
 echo "<pre>";
-    // print_r($_GET);
-    // print_r($listeOffres);
-    // print_r($test);
-    // print_r($_SESSION);
+    print_r($_GET);
+    // print_r($oneDealArray);
+    print_r($offre['id_deal']);
+    print_r($offre);
     // print_r($_POST);
 echo "</pre>";
 ?>
@@ -61,7 +61,7 @@ echo "</pre>";
                         <td><?=$offre["etat"]?></td>
                         <td><?=$offre["point_offers"]?></td>
                         <td><a href="<?=BASE_PATH.'modifDeal?deal='.$offre['id_deal']?>" class="btn btn-warning">Modifier</a></td>
-                        <td><a href="?deleteDeal=ok" class="btn btn-danger">Supprimer</a></td>
+                        <td><a href="?id=<?=$offre['id_deal']?>&&deleteDeal=ok" class="btn btn-danger">Supprimer</a></td>
                 </tr>
             <?php
                 }
