@@ -18,4 +18,9 @@
 <nav class="nav">
 
 </nav>
+
+<div>
+    <?= isset($msg)?$msg:"" ?>
+</div>
+
 <div class="container mt-4">

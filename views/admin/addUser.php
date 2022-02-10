@@ -18,32 +18,22 @@ include VIEWS.'inc/header.php';
     </div>
 
     <div class="form-group" >
-      <label for="pseudo" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pseudo</font></font></label>
+      <label for="pseudo" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;">Pseudo</font></label>
       <input type="text" class="form-control form-control-lg" id="pseudo" placeholder="pseudo" name="pseudo">
     </div>
 
     <div class="form-group">
-      <label for="pw" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;">Mot de passe</font></label>
-      <input type="password" class="form-control form-control-lg" id="pw" placeholder="Mot de passe" name="pw">
-    </div>
-
-    <!-- <div class="form-group">
-      <label for="pw2" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Confirmer votre mot de passe</font></font></label>
-      <input type="password" class="form-control form-control-lg" id="pw2" placeholder="Confirmation mot de passe" name="pw">
-    </div> -->
-
-    <div class="form-group">
-      <label for="email" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Adresse e-mail</font></font></label>
+      <label for="email" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;">Adresse e-mail</font></label>
       <input type="email" class="form-control form-control-lg" id="email" aria-describedby="emailHelp" placeholder="Adresse email" name="email">
     </div>
 
     <div class="form-group" >
-      <label for="birthdate" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Date d'anniversaire</font></font></label>
+      <label for="birthdate" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;">Date d'anniversaire</font></label>
       <input type="date" class="form-control form-control-lg" id="birthdate" placeholder="Date d'anniversaire" name="birthdate">
     </div>
 
     <div class="form-group" >
-      <label for="address" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Adresse</font></font></label>
+      <label for="address" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;">Adresse</font></label>
       <input type="text" class="form-control form-control-lg" id="address" placeholder="Adresse" name="address">
     </div>
 
@@ -59,3 +49,5 @@ include VIEWS.'inc/header.php';
 </form>
 
 <?php include VIEWS.'inc/footer.php'; ?>
+
+

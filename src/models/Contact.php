@@ -2,105 +2,73 @@
 
 class contact{
 
-    public static function contact(){
+    public static function verifEmail($email){
 
-        /* Récupération des informations du formulaire*/
-        if (get_magic_quotes_gpc())
-        {
-            $nom = stripslashes(trim($_POST['nom']));
-            $prenom = stripslashes(trim($_POST['prenom']));
-            $mail = stripslashes(trim($_POST['mail']));
-            $motif = stripslashes(trim($_POST['motif']));
-            $message = stripslashes(trim($_POST['message']));
-        }     
-        else      
-        {
-            $nom = trim($_POST['nom']);
-            $prenom = trim($_POST['prenom']);
-            $mail = trim($_POST['mail']);
-            $motif = trim($_POST['motif']);
-            $message = trim($_POST['message']);
-        }
-    /*Vérifie si l'adresse mail est au bon format */
-    $regex_mail = '/^[-+.w]{1,64}@[-.w]{1,64}.[-.w]{2,6}$/i'; 
-    /*Verifie qu il n y est pas d en tête dans les données*/
-    $regex_head = '/[nr]/';   
-    /*Vérifie qu il n y est pas d erreur dans adresse mail*/
-        if (!preg_match($regex_mail, $mail))
-        {
-            $alert = 'L\'adresse '.$mail.' n\'est pas valide';      
-        }
-        else
-        { 
-            $courriel = 1;
-        }   
-    /* On affiche l'erreur s'il y en a une */ 
-        if (!empty($alert))
-        {
-            $courriel = 0;
-        }     
-    /* On vérifie qu'il n'y a aucun header dans les champs */ 
-        if (preg_match($regex_head, $nom)
-            || preg_match($regex_head, $prenom)
-            || preg_match($regex_head, $mail)
-            || preg_match($regex_head, $motif)
-            || preg_match($regex_head, $message))
-        {  
-            $alert = 'En-têtes interdites dans les champs du formulaire'; 
-        }
-        else
-        { 
-            $header = 1;
-        }   
-    /* On affiche l'erreur s'il y en a une */ 
-        if (!empty($alert))
-        {
-            $header = 0;
-        }
-        if (empty($nom) 
-            || empty($message))
-        {  
-            $alert = 'Tous les champs doivent être renseignés';
-        } 
-        else
-        {  
-            $renseigne = 1;
-        }   
-    /* On affiche l'erreur s'il y en a une */ 
-        if (!empty($alert))
-        {
-            $renseigne = 0;
-        }
-    /* Si les variables sont bonne */
-        if ($renseigne == 1 AND $header == 1 AND $courriel == 1)
-        {
-    /*Envoi du mail*/
+        //on vérifie que le champ mail est correctement rempli
+        if(empty($email)) {
 
-    /*Le destinataire*/
-            $to="smartreaderprojet@gmail.com";
+            return true;
+            
+        }else{
 
-    /*Le sujet du message qui apparaitra*/
-            $sujet="Message depuis le site";
-            $msg = '';
-    /*Le message en lui même*/
-    /*$msg = 'Mail envoye depuis le site' "rnrn";*/
-            $msg .= 'Nom : '.$nom."rnrn";
-            $msg .= 'Prenom : '.$prenom."rnrn";
-            $msg .= 'Mail : '.$mail."rnrn";
-            $msg .= 'Motif : '.$motif."rnrn";
-            $msg .= 'Message : '.$message."rnrn";
-    /*Les en-têtes du mail*/
-            $headers = 'From: MESSAGE DU SITE SMART READER<smartreaderprojet@gmail.com>'."rn";
-            $headers .= "rn";
-    /*L'envoi du mail - Et page de redirection*/
-            mail($to, $sujet, $msg, $headers);
-            header('Location:' . BASE_PATH);
+            //on vérifie que l'adresse est correcte
+            if(!preg_match("#^[a-z0-9_-]+((\.[a-z0-9_-]+){1,})?@[a-z0-9_-]+((\.[a-z0-9_-]+){1,})?\.[a-z]{2,}$#i",$email)){
+
+                return true;
+
+            }
         }
-        else
-        {
-            header('Location:' . BASE_PATH);
+
+    }
+
+    public static function verifObjet($objet){
+
+        //on vérifie que le champ objet est correctement rempli
+        if(empty($objet)) {
+
+            return true;
         }
     }
 
-}
+    public static function verifMessage($message){
 
+        //on vérifie que le champ message n'est pas vide
+        if(empty($message)) {
+
+            return true;
+        }
+    }
+
+    public static function messageContact($mail){
+        //notre adresse mail
+        $AdresseMail="smartreaderprojet@gmail.com";
+
+        //tout est correctement renseigné, on envoi le email
+        //on renseigne les entêtes de la fonction email de PHP
+        $Entetes = "MIME-Version: 1.0\r\n";
+        $Entetes .= "Content-type: text/html; charset=UTF-8\r\n";
+        $Entetes .= "From: Smart Reader <".$AdresseMail.">\r\n";
+        //de préférence une adresse avec le même domaine de là où, vous utilisez ce code, cela permet un envoie quasi certain jusqu'au destinataire
+
+        $Entetes .= "Reply-To: Smart Reader <".$_POST['email'].">\r\n";
+
+        //on prépare les champs:
+        $email=$_POST['email']; 
+        $Objet='=?UTF-8?B?'.base64_encode($_POST['objet']).'?=';
+        //Cet encodage (base64_encode) est fait pour permettre aux informations binaires d'être manipulées par les systèmes qui ne gèrent pas correctement les 8 bits (=?UTF-8?B? est une norme afin de transmettre correctement les caractères de la chaine)
+        $message=$_POST['message'];
+        $mail=htmlentities($_POST['message'],ENT_QUOTES,"UTF-8");
+        //htmlentities() converti tous les accents en entités HTML, ENT_QUOTES Convertit en + les guillemets doubles et les guillemets simples, en entités HTML
+
+        //la fonction nl2br permet de conserver les sauts de ligne et la fonction base64_encode de conserver les accents dans le titre
+
+        //enfin, on envoi le email
+        if(mail($AdresseMail,$Objet,nl2br($message),$Entetes)){
+
+            return true;
+        }
+
+        return false;
+    }
+
+}
