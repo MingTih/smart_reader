@@ -29,18 +29,53 @@
         <header id="header">        
         <div class="logo-banniere d-flex">
                 <div class="logo">
-                        <img src="../asset/css/Images/logoFinalPlus3Px.png" width="150px" height="150 px" alt="logo_de_la_marque">
+                        <img src="../asset/Images/logoFinalPlus3Px.png" width="150px" height="150 px" alt="logo_de_la_marque">
                 </div>
 
-                 <!--------------------------------- BANNIERE--------------------------------------- -->   
+                 <!--------------------------------- BANNIERE------------------------------------------------- -->   
                 <div class="banniere d-flex">    
-                    <h1 class="titreSite">Le site d'échange de livres d'occasion</h1>
+                    <h1 class="titreSite">Le site d'échange de livres d'occasion</h1></br>
                 </div>
-                <!------------------------------------ Mascotte img----------------------- -->
+                    <h3 class="quote">"Lire c'est toucher du doigt les limites de son imagination..."</h3>
+                <!------------------------------------ Mascotte img------------------------------------------ -->
                 
         </div>
         <div class="mascotte4 d-flex">
-            <img src="../asset/css/images/mascotte4.png" width="150px" height="150px" alt="image_mascotte_hibou">
+            <img src="../asset/images/mascotte4.png" width="150px" height="150px" alt="image_mascotte_hibou">
         </div>
         
+<<<<<<< Updated upstream
     </header>
+=======
+
+         <!---------------------------------------Navbar------------------------------------------------  -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light colornav">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="#"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active a-btn" aria-current="page" href="#">S'inscrire</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link a-btn" href="#">Se connecter</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link a-btn" href="#">Nous contacter</a>
+                  </li>
+                  
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Livre, Auteur,ISBN" aria-label="Rechercher">
+                  <button class="btn btn-outline-success btncolor" type="submit">Rechercher</button>
+                </form>
+              </div>
+            </div>
+            
+            
+          </nav>
+    </header>
+>>>>>>> Stashed changes
