@@ -13,12 +13,15 @@
    display: flex;
    width: 100%;
    height: 150px;
-   justify-content: center;
+   /* justify-content: center; */
+   margin-left: 145px;
 }
 
-.titreSite{
+h1.titreSite{
+   position:absolute;
    color: #1f455f; 
    margin-top: 50px;
+   
 
 } 
 .mascotte4{
@@ -30,19 +33,35 @@
    margin: 0px 20px 0px 10px;
    float: right;
 }
+h3.quote{
+    position: absolute;
+       top: 0;
+       left: 0;
+       width:100%;
+       z-index:10;
+       color:#1f455f;
+       margin-top: 100px;
+       margin:100px 0px 8px; 
+       display: flex;
+       justify-content: center;
+       text-align: center;
+       font-family: lobster, sans-serif;
+}
+ h3.quotebis{
+    display:none;
 
- 
+ } 
  
 /* --------------------------------NAVBAR--------------------- */
 .colornav{
-   background-color:  #e1f1e1 !important;
+   background-color:  #D5E0D5 !important;
 }
 .btncolor{
    background:  linear-gradient(rgba(176, 100, 179, 0.5), rgba(53, 128, 121, 0.5));
    border: #E1D2DB solid 4px; 
    box-shadow: cadetblue;
    color:#fff;
-   /* border-radius: 25px; */
+   border-radius: 25px; 
    padding: 10px 10px;
    font-weight: 800;
 }
@@ -51,10 +70,8 @@
 .a-btn{
     margin-right: 30px;
    margin-left: 30px; 
-   color:#1F455F;
-   border: #E1D2DB solid 4px; 
+   color:#1F455F ! important;
    border-radius: 25px;
-   background:linear-gradient(rgba(241, 191, 243, 0.5), rgba(148, 238, 230, 0.5)) ;
    padding: 10px 10px;
    font-weight: 800;
 
@@ -66,29 +83,8 @@
 }
 
 /*---------------------------------- Carrousel------------------------------------*/
-h1 .titre{
-   font-family: lobster,sans-serif;
-   font-weight: 30px;
-   margin-top: 50px;
-  
-}
 
 
-.titreSlider {
-   position: absolute;
-   top: 0;
-   left: 0;
-   width:100%;
-   z-index:10;
-   color:#fff;
-   margin-top: 100px;
-   display: flex;
-   justify-content: center;
-   text-align: center;
-   background: rgba(217,203,160,0.4);
-   padding-top: 50px;
-   
-}
 
 .slider{
    position: relative;
@@ -106,7 +102,7 @@ h1 .titre{
    margin-top: 30px;
    margin-left: 40px;
    margin-right: 40px;
-   background: #e1f1e1;
+   color: #1F455F;
 }
 
 
@@ -125,6 +121,8 @@ h1 .titre{
    margin-top: 20px;
    text-align: center;
    padding-top: 40px;
+   color: #1F455F;
+   font-weight: 600;
 }
 
 .boite1{
@@ -137,7 +135,7 @@ h1 .titre{
 
 .boite2{
 
-   background: #B8CBB8;
+   background: #D5E0D5;
    width: 200px;
    height: 200px;
    border-radius: 50% 20% / 10% 40%;
@@ -175,16 +173,41 @@ h1 .titre{
 /* ---------------------------------@media------------------------------------------------- */
 /* --------------------------------------------------------------------------------------- */
 /* --------------------------------------------------------------------------------------- */
+
+
 @media (max-width:740px){
 
+   h1.titreSite{
+      margin-left: -150px;
+      font-size: 20px;
+      margin-top: 80px;
+   }
+
+
+   h3.quote{
+      display: none;
+   }
+
+   h3.quotebis{
+      display:block;
+      font-family: lobster, sans-serif;
+      text-align: center;
+      color: #1F455F;
+      margin-top: 20px;
+
+
+
+  
+   } 
+    .mascotte4resp img{
    
-   .mascotte4resp img{
-   
-       display:none; 
+       display:none;
        
    }
    .mascotte4 img{
-       display:none;  
+
+      width:130px; 
+      height:130px;  
    }
 
    .titreSlider {
@@ -273,7 +296,7 @@ body {
 
 .input {
 width: 76%;
-color: #fff;
+color: #1f455f;
 font-weight: 700;
 font-size: 14px;
 letter-spacing: 1px;
