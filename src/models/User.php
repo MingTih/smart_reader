@@ -18,17 +18,14 @@ class User extends Db
     }
 
 // Récupération des infos d'un seul utilisateur--------------------------------------
-    public static function getInfoUser()
+    public static function getInfoUser($data)
     {
-    // Récupération de la variable en GET
-        // $id = $_GET['id'];
-        $id = $_SESSION['id_user'];
     // Requête SQL pour l'affichage de l'utilisateur grâce à $id
-        $request = "SELECT * FROM user WHERE id_user=?";
+        $request = "SELECT * FROM user WHERE id_user=:id_user";
     // Préparation
         $preparedRequest = self::getDb()->prepare($request);
     // Execution de la requête
-        $preparedRequest->execute([$id]);
+        $preparedRequest->execute($data);
     // Retour des infos de l'utilisateur sous forme de liste
         return $preparedRequest->fetch(PDO::FETCH_ASSOC); 
     }

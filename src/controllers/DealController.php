@@ -197,10 +197,12 @@ class DealController
                 // Ici, on va lui ajouter un index "etat" qui ne vient pas de la bdd
             $listeOffres[$cle]['etat']=Deal::pointToCondition($offre['point_offers']);
 
-            // Récupération des info du livre grâce à $offre["id_book"]
-            $livreInfo = Book::oneBook($offre["id_book"]);
-            $detailLivre = $livreInfo["volumeInfo"];         
+            // Récupération des info du livre grâce à l'id dans dealing
+            $listeOffres[$cle]['api'] = Book::oneBook($listeOffres[$cle]["id_book"]);
         }
+
+     
+        
 
         // Supression de la ligne grâce au GET
         if(isset($_GET['deleteDeal']) && $_GET['deleteDeal'] == "ok"){
@@ -240,8 +242,7 @@ class DealController
         foreach($listeDemandes as $cle=>$demande){
             $listeDemandes[$cle]['etat']=Deal::pointToCondition($demande['point_offers']);
 
-            $livreInfo = Book::oneBook($demande["id_book"]);
-            $detailLivre = $livreInfo["volumeInfo"];         
+            $listeDemandes[$cle]['api'] = Book::oneBook($listeDemandes[$cle]["id_book"]);
 
         }
 

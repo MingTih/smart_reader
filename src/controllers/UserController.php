@@ -22,7 +22,9 @@ class UserController
         }
     
     // Récupération des info d'un seul user
-        $infoUser = User::getInfoUser();
+        $infoUser = User::getInfoUser([
+            'id_user'=>$_SESSION['id_user']
+        ]);
 
         include VIEWS . "user/detail.php";
 

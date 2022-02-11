@@ -2,11 +2,11 @@
 
 include VIEWS.'inc/header.php'; 
 
-// echo "<pre>";
-//     print_r($_GET);
-//     print_r($listeOffres);
-//     print_r($offre);
-// echo "</pre>";
+echo "<pre>";
+    // print_r($livreInfo);
+    print_r($listeOffres);
+    print_r($offre);
+echo "</pre>";
 ?>
 
 <main class="container">
@@ -44,18 +44,18 @@ include VIEWS.'inc/header.php';
                 <tr>
             
                         <th scope="row"><?=$offre['dealing_date']?></th>
-                        <td><?=$detailLivre['title']?></td>
+                        <td><?=$offre['api']['volumeInfo']['title']?></td>
                         <td>
                             <?php
-                            for($i=0; $i<count($detailLivre["authors"]); $i++)
-                                if($i+1 == count($detailLivre["authors"])){
-                                    echo $detailLivre["authors"][$i]; 
+                            for($i=0; $i<count($offre['api']['volumeInfo']["authors"]); $i++)
+                                if($i+1 == count($offre['api']['volumeInfo']["authors"])){
+                                    echo $offre['api']['volumeInfo']["authors"][$i]; 
                                 }else{
-                                    echo $detailLivre["authors"][$i] . ","; 
+                                    echo $offre['api']['volumeInfo']["authors"][$i] . ","; 
                                 }                  
                             ?>
                         </td>
-                        <td><?=$detailLivre['publisher']?></td>
+                        <td><?=$offre['api']['volumeInfo']['publisher']?></td>
                         <td><?=$offre["etat"]?></td>
                         <td><?=$offre["point_offers"]?></td>
                         <td><a href="<?=BASE_PATH.'modifDeal?deal='.$offre['id_deal']?>" class="btn btn-warning">Modifier</a></td>
