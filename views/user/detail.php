@@ -10,6 +10,8 @@ include VIEWS.'inc/header.php';
 
 
 
+
+
 ?>
 
 
@@ -36,7 +38,7 @@ include VIEWS.'inc/header.php';
 
     <a href="http://localhost/smart_reader/public/index.php/modifCompte" class="btn btn-success mx-5">Modifier mon profil</a>
 
-    <a href="?supprimer=ok" class="btn btn-danger mx-5">Supprimer mon compte</a>
+    <!-- <a href="?supprimer=ok" class="btn btn-danger mx-5">Supprimer mon compte</a> -->
 
 
 </div>

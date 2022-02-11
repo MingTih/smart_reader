@@ -122,6 +122,13 @@ class User extends Db
 
     }
 
+    public static function verifAdmin($admin){
+
+        if ($admin ==0){
+            return false;
+        }
+    }
+
 
 // Destruction SESSION pour déconnexion
     public static function destroySession($deconnexion){

@@ -13,14 +13,14 @@ const CONFIG = [
     ],
     'app' => [
         'name' => 'smart_reader',
-        'projectBaseUrl' => 'http://localhost/smart_reader'
+        'projectBaseUrl' => 'http://localhost:8888/smart_reader'
     ]
 ];
 
 /**
  * Constantes pour accéder rapidement aux dossiers importants du MVC
  */
-const BASE_DIR = __DIR__ . '\\..\\';
+const BASE_DIR = __DIR__ . '/../';
 const BASE_PATH = CONFIG['app']['projectBaseUrl'] . '/public/index.php/';
 const PUBLIC_FOLDER = BASE_DIR . 'public\\';
 const VIEWS = BASE_DIR . 'views/';
@@ -72,10 +72,11 @@ $routes = [
     '/historique'             => ['ExchangeController', 'myTradesList'], 
     '/historiqueDetail'       => ['ExchangeController', 'tradeSummury'], 
 
-    // Admin----------------------------------------------------------------
-    '/listUsers'            => ['AdminController', 'userslisting'], //OK
-    '/addUser'              => ['AdminController', 'adduser'],
-    // '/modifCompte'          => ['UserController', 'updateUser'],//OK
+    // Admin
+    '/listUsers'            => ['AdminController', 'usersListing'], //OK
+    '/deleteUser'           => ['AdminController', 'deleteUser'], //OK
+    '/adminUser'            => ['AdminController', 'adminUser'], 
+    // '/gestion'              => ['AdminController', 'gestionUser'], 
     // '/connexion'            => ['UserController', 'connexion'],//OK
     // '/inscription'          => ['UserController', 'replaceUser'],//OK
 

@@ -1,8 +1,276 @@
 *{
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/* --------------------------------HEADER -------------------------------------------*/
+/* -------------------------------Bannière ------------------------------------------*/
+
+.logo-banniere{ 
+    background:  linear-gradient(rgba(241, 191, 243, 0.5), rgba(148, 238, 230, 0.5));
+} 
+.banniere{
+   display: flex;
+   width: 100%;
+   height: 150px;
+   /* justify-content: center; */
+   margin-left: 145px;
 }
 
-/* formulaire page de connection fichier index.html */
+h1.titreSite{
+   position:absolute;
+   color: #1f455f; 
+   margin-top: 50px;
+   
+
+} 
+.mascotte4{
+   
+   position: absolute; 
+   z-index: 10;
+   top: 10px;
+   right: 10px; 
+   margin: 0px 20px 0px 10px;
+   float: right;
+}
+h3.quote{
+    position: absolute;
+       top: 0;
+       left: 0;
+       width:100%;
+       z-index:10;
+       color:#1f455f;
+       margin-top: 100px;
+       margin:100px 0px 8px; 
+       display: flex;
+       justify-content: center;
+       text-align: center;
+       font-family: lobster, sans-serif;
+}
+ h3.quotebis{
+    display:none;
+
+ } 
+ 
+/* --------------------------------NAVBAR--------------------- */
+.colornav{
+   background-color:  #D5E0D5 !important;
+}
+.btncolor{
+   background:  linear-gradient(rgba(176, 100, 179, 0.5), rgba(53, 128, 121, 0.5));
+   border: #E1D2DB solid 4px; 
+   box-shadow: cadetblue;
+   color:#fff;
+   border-radius: 25px; 
+   padding: 10px 10px;
+   font-weight: 800;
+}
+
+
+.a-btn{
+    margin-right: 30px;
+   margin-left: 30px; 
+   color:#1F455F ! important;
+   border-radius: 25px;
+   padding: 10px 10px;
+   font-weight: 800;
+
+}
+.mascotte4resp{
+   
+   display:none; 
+   
+}
+
+/*---------------------------------- Carrousel------------------------------------*/
+
+
+
+.slider{
+   position: relative;
+}
+.carousel-item img{
+   margin-top: 60px;
+
+}
+
+/* ----------------------------- COMMENT CA MARCHE ------------------------- */
+
+.resumeSite{
+   font-family: rowdies, sans-serif;
+   font-size:20px;
+   margin-top: 30px;
+   margin-left: 40px;
+   margin-right: 40px;
+   color: #1F455F;
+}
+
+
+#h2ccm{
+   display: flex;
+   justify-content: center;
+   margin-top: 30px;
+   color: #1F455F;
+   font-family: rowdies, sans-serif;
+
+}
+.boites{
+   
+   display:flex;
+   justify-content: space-evenly;
+   margin-top: 20px;
+   text-align: center;
+   padding-top: 40px;
+   color: #1F455F;
+   font-weight: 600;
+}
+
+.boite1{
+
+   background: #E8EDFF;
+   width: 200px;
+   height: 200px;
+   border-radius: 25% 10%;
+}
+
+.boite2{
+
+   background: #D5E0D5;
+   width: 200px;
+   height: 200px;
+   border-radius: 50% 20% / 10% 40%;
+}
+
+.boite3{
+   background: #E1D2DB;
+   width: 200px;
+   height: 200px;
+   border-radius: 50% 20% / 10% 40%;
+}
+.boites p{
+   padding-top: 35px;
+   font-family: Gloria Hallelujah;
+   font-size: large;
+
+}
+
+/* ---------------------------------FOOTER-------------------------------------------------- */
+
+
+
+
+/* ---------------------------------Copiright----------------------------------------------- */
+.copyright{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   background:  linear-gradient(rgba(241, 191, 243, 0.5), rgba(148, 238, 230, 0.5));
+   line-height: normal;
+   padding-top: 15px;
+   margin-top: 30px;
+}
+/* ---------------------------------@media------------------------------------------------- */
+/* --------------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------------- */
+
+
+@media (max-width:740px){
+
+   h1.titreSite{
+      margin-left: -150px;
+      font-size: 20px;
+      margin-top: 80px;
+   }
+
+
+   h3.quote{
+      display: none;
+   }
+
+   h3.quotebis{
+      display:block;
+      font-family: lobster, sans-serif;
+      text-align: center;
+      color: #1F455F;
+      margin-top: 20px;
+
+
+
+  
+   } 
+    .mascotte4resp img{
+   
+       display:none;
+       
+   }
+   .mascotte4 img{
+
+      width:130px; 
+      height:130px;  
+   }
+
+   .titreSlider {
+       position: absolute;
+       top: 0;
+       left: 0;
+       width:100%;
+       z-index:10;
+       color:#fff;
+       margin-top: 25px;
+       display: flex;
+       justify-content: center;
+       text-align: center;
+       background: rgba(217,203,160,0.4);
+       
+       
+   }
+
+.boites{
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+   margin-top: 15px;
+   
+   padding-top: 40px;
+} 
+
+.boite1{
+   background: #E8EDFF;
+   width: 100px;
+   height: 100px;
+   border-radius: 10px 100px / 120px;
+}
+
+.boite2{
+
+   background: #B8CBB8;
+   width: 100px;
+   height: 100px;
+   border-radius: 50% 20% / 10% 40%;
+   margin-top: 30px;
+}
+
+.boite3{
+   background: #E1D2DB;
+   width: 100px;
+   height: 100px;
+   border-radius: 50% 20% / 10% 40%;
+   margin-top: 35px;
+}
+.boites p{
+   padding-top: 10px;
+   font-family: Gloria Hallelujah;
+   font-size: 10px;
+   /* font-weight: 600; */
+} 
+
+
+   }
+
+
+
+/*____________ formulaire page de connection fichier index.html */
 
 body {
     background-color: #fff;
@@ -28,7 +296,7 @@ body {
 
 .input {
 width: 76%;
-color: #fff;
+color: #1f455f;
 font-weight: 700;
 font-size: 14px;
 letter-spacing: 1px;
@@ -109,4 +377,4 @@ a {
         border-radius: 0px;
     }
     
-    
+  }   
