@@ -2,18 +2,17 @@
 
 include VIEWS.'inc/header.php'; 
 
-// echo "<pre>";
+echo "<pre>";
 //     print_r($_GET);
-//     print_r($listeAllOffres);
-//     print_r($offre);
-// echo "</pre>";
+    print_r($listAllOffres);
+echo "</pre>";
 ?>
 
 <main class="container">
     <h1 class="text-center">Liste de toutes les offres</h1>
 
     <?php
-        if(empty($listeAllOffres)){
+        if(empty($listAllOffres)){
     ?>
         <div class="noRequest">
             <p><?=$msg1?></p>
@@ -38,28 +37,28 @@ include VIEWS.'inc/header.php';
 
         <tbody>
             <?php
-                foreach($listeAllOffres as $offre){
+                foreach($listAllOffres as $offre){
 
             ?>
                 <tr>
             
                         <th scope="row"><?=$offre['dealing_date']?></th>
-                        <td><?=$detailLivre['title']?></td>
+                        <td><?=$offre['api']['volumeInfo']['title']?></td>
                         <td>
                             <?php
-                            for($i=0; $i<count($detailLivre["authors"]); $i++)
-                                if($i+1 == count($detailLivre["authors"])){
-                                    echo $detailLivre["authors"][$i]; 
+                            for($i=0; $i<count($offre['api']['volumeInfo']["authors"]); $i++)
+                                if($i+1 == count($offre['api']['volumeInfo']["authors"])){
+                                    echo $offre['api']['volumeInfo']["authors"][$i]; 
                                 }else{
-                                    echo $detailLivre["authors"][$i] . ","; 
+                                    echo $offre['api']['volumeInfo']["authors"][$i] . ","; 
                                 }                  
                             ?>
                         </td>
-                        <td><?=$detailLivre['publisher']?></td>
+                        <td><?=$offre['api']['volumeInfo']['publisher']?></td>
                         <td><?=$offre["etat"]?></td>
                         <td><?=$offre["point_offers"]?></td>
-                        <td><?=$offre["owner"]?></td>
-                        <td><a href="<?=BASE_PATH."detailOffre"?>">Details</a></td>
+                        <td><?=$offre['user'][0]["pseudo"]?></td>
+                        <td><a href="<?=BASE_PATH."tradeDetail?idLivre=".$offre['id_book']."&&idDeal=".$offre['id_deal']?>" class="btn btn-success">Details</a></td>
                 </tr>
             <?php
                 }

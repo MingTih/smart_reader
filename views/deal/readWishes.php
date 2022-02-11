@@ -47,18 +47,18 @@ include VIEWS.'inc/header.php';
                 <tr>
             
                         <th scope="row"><?=$demande['dealing_date']?></th>
-                        <td><?=$detailLivre['title']?></td>
+                        <td><?=$demande['api']['volumeInfo']['title']?></td>
                         <td>
                             <?php
-                            for($i=0; $i<count($detailLivre["authors"]); $i++)
-                                if($i+1 == count($detailLivre["authors"])){
-                                    echo $detailLivre["authors"][$i]; 
+                            for($i=0; $i<count($demande['api']['volumeInfo']["authors"]); $i++)
+                                if($i+1 == count($demande['api']['volumeInfo']["authors"])){
+                                    echo $demande['api']['volumeInfo']["authors"][$i]; 
                                 }else{
-                                    echo $detailLivre["authors"][$i] . ","; 
+                                    echo $demande['api']['volumeInfo']["authors"][$i] . ","; 
                                 }                  
                             ?>
                         </td>
-                        <td><?=$detailLivre['publisher']?></td>
+                        <td><?=$demande['api']['volumeInfo']['publisher']?></td>
                         <td><?=$demande["etat"]?></td>
                         <td><?=$demande["point_offers"]?></td>
                         <td><a href="<?=BASE_PATH.'modifDeal?deal='.$demande['id_deal']?>" class="btn btn-warning">Modifier</a></td>

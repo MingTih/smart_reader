@@ -66,11 +66,11 @@ $routes = [
 
     // Table exchange, dealing et user--------------------------------------
 
-    'allOffres'              => ['ExchangeController', 'allOffersList'],
-    'allSouhaits'            => ['ExchangeController', 'allWishesList'],
-    'tradeDetail'            => ['ExchangeController', 'tradeDetail'],
-    'historique'             => ['ExchangeController', 'myTradesList'], 
-    'historiqueDetail'       => ['ExchangeController', 'tradeDetail'], 
+    '/allOffres'              => ['ExchangeController', 'allOffersList'], //OK
+    '/allSouhaits'            => ['ExchangeController', 'allWishesList'], //OK
+    '/tradeDetail'            => ['ExchangeController', 'tradeDetail'],
+    '/historique'             => ['ExchangeController', 'myTradesList'], 
+    '/historiqueDetail'       => ['ExchangeController', 'tradeSummury'], 
 
     // Admin
     '/listUsers'            => ['AdminController', 'usersListing'], //OK
