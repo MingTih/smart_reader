@@ -1,7 +1,6 @@
 <?php  
 
 include VIEWS.'inc/header.php';
-
 ?>
 
 
@@ -10,21 +9,21 @@ include VIEWS.'inc/header.php';
 
 
 <!-- <div class='container'> -->
-  <table class="table text-center">
+  <table class="table text-center container">
     <thead>
       <tr>
-        <th scope="col">id_user</th>
-        <th scope="col">Nom</th>
-        <th scope="col">Prenom</th>
-        <th scope="col">Pseudo</th>
-        <th scope="col">Email</th>
-        <th scope="col">Date d'anniversaire</th>
-        <th scope="col">Adresse</th>
-        <th scope="col">Date d'inscription</th>
-        <th scope="col">Points</th>
-        <th scope="col">Photo</th>
-        <th scope="col">Admin</th>
-        <th scope="col">Disabled</th>
+        <th scope="col-1">id_user</th>
+        <th scope="col-1">Nom</th>
+        <th scope="col-1">Prenom</th>
+        <th scope="col-1">Pseudo</th>
+        <th scope="col-1">Email</th>
+        <th scope="col-1">Date d'anniversaire</th>
+        <th scope="col-1">Adresse</th>
+        <th scope="col-1">Date d'inscription</th>
+        <th scope="col-1">Points</th>
+        <th scope="col-1">Photo</th>
+        <th scope="col-1">Admin</th>
+        <th scope="col-1">Disabled</th>
       </tr>
     </thead>
     <tbody>
@@ -42,13 +41,13 @@ include VIEWS.'inc/header.php';
         <td><?= $user['inscription_date']?></td>
         <td><?= $user['point']?></td>
         <td><?= $user['photo']?></td>
-        <td><?= $user['admin']?></td>
-        <td><?= $user['disabled']?></td>
+        <td><?= $user['admin'] ? "Admin" : ""?></td>
+        <td><?= $user['disabled'] ? "disable" : ""?></td>
         <td class="align-middle">
-              <a href="" class="btn btn-warning">Admin</a>
+              <a href="<?="?adminUser=ok&&id_user=" . $user['id_user']?>" class="btn btn-warning">Admin</a>
         </td>
         <td class="align-middle">
-              <a href="" class="btn btn-danger">Supprimer</a>
+              <a href="<?="?deleteUser=ok&&id_user=" . $user['id_user']?>" class="btn btn-danger">Supprimer</a>
         </td>
 
       </tr>

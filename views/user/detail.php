@@ -9,10 +9,6 @@ include VIEWS.'inc/header.php';
 // echo "</pre>";
 
 
-// Test déconnexion, à retirer et mettre dans le head (pareil pour l.50)
-if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
-    UserController::deconnexion($_GET["deconnexion"]);
-}
 
 
 
@@ -42,7 +38,7 @@ if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
 
     <a href="http://localhost/smart_reader/public/index.php/modifCompte" class="btn btn-success mx-5">Modifier mon profil</a>
 
-    <a href="?supprimer=ok" class="btn btn-danger mx-5">Supprimer mon compte</a>
+    <!-- <a href="?supprimer=ok" class="btn btn-danger mx-5">Supprimer mon compte</a> -->
 
     <!-- test pour la fonction déconnexion : à retirer et mettre dans le head -->
     <a href="?deconnexion=ok" class="btn btn-danger mx-5">Déconnexion</a>
