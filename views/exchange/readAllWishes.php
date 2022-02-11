@@ -2,26 +2,24 @@
 
 include VIEWS.'inc/header.php'; 
 
-echo "<pre>";
+// echo "<pre>";
     // print_r($_GET);
-    // print_r($listeDemandes);
+    // print_r($listeAllDemandes);
     // print_r($_SESSION);
     // print_r($_POST);
-echo "</pre>";
+// echo "</pre>";
 ?>
 
 <main class="container">
-    <h1 class="text-center">Liste de mes demandes</h1>
+    <h1 class="text-center">Liste de toutes les demandes</h1>
 
     <?php
-        // Si listeDEmandes est vide
-        if(empty($listeDemandes)){
+        if(empty($listeAllDemandes)){
     ?>
         <div class="noRequest">
-            <p>Vous n'avez pas de demande pour l'instant.</p>
+            <p><?=$msg1?></p>
         </div>
     <?php
-        //Sinon
         }else{
     ?>
 
@@ -34,14 +32,14 @@ echo "</pre>";
             <th scope="col">Editeur</th>
             <th scope="col">Etat</th>
             <th scope="col">Point(s)</th>
-            <th scope="col">Modifier</th>
-            <th scope="col">Supprimer</th>
+            <th scope="col">Demandeur</th>
+                <th scope="col">Modifier</th>
             </tr>
         </thead>
 
         <tbody>
             <?php
-                foreach($listeDemandes as $demande){
+                foreach($listeAllDemandes as $demande){
 
             ?>
                 <tr>
@@ -61,8 +59,8 @@ echo "</pre>";
                         <td><?=$detailLivre['publisher']?></td>
                         <td><?=$demande["etat"]?></td>
                         <td><?=$demande["point_offers"]?></td>
-                        <td><a href="<?=BASE_PATH.'modifDeal?deal='.$demande['id_deal']?>" class="btn btn-warning">Modifier</a></td>
-                        <td><a href="?deleteDeal=ok" class="btn btn-danger">Supprimer</a></td>
+                        <td><?=$offre["requester"]?></td>
+                        <td><a href="<?=BASE_PATH."detailOffre"?>">Details</a></td>
                 </tr>
             <?php
                 }
@@ -74,32 +72,3 @@ echo "</pre>";
     ?>
 
 </main>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<?php  include VIEWS.'inc/footer.php'; ?>
