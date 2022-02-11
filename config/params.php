@@ -67,8 +67,8 @@ $routes = [
     '/historiqueDetail'     => ['ProductController', 'dealDetail'], 
 
     // Admin
-    '/listUsers'            => ['AdminController', 'userslisting'], //OK
-    '/addUser'              => ['AdminController', 'adduser'],
+    '/listUsers'            => ['AdminController', 'usersListing'], //OK
+    '/addUser'              => ['AdminController', 'addUser'],
     // '/modifCompte'          => ['UserController', 'updateUser'],//OK
     // '/connexion'            => ['UserController', 'connexion'],//OK
     // '/inscription'          => ['UserController', 'replaceUser'],//OK
