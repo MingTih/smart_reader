@@ -68,8 +68,7 @@ $routes = [
 
     // Admin
     '/listUsers'            => ['AdminController', 'usersListing'], //OK
-    '/addUser'              => ['AdminController', 'addUser'],
-    // '/modifCompte'          => ['UserController', 'updateUser'],//OK
+    '/deleteUser'           => ['AdminController', 'deleteUser'], //OK
     // '/connexion'            => ['UserController', 'connexion'],//OK
     // '/inscription'          => ['UserController', 'replaceUser'],//OK
 

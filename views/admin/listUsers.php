@@ -9,8 +9,8 @@ include VIEWS.'inc/header.php';
 <h1 class="text-center my-5">Liste des Utilisateurs</h1>
 
 
-<div class='container'>
-  <table class="table">
+<!-- <div class='container'> -->
+  <table class="table text-center">
     <thead>
       <tr>
         <th scope="col">id_user</th>
@@ -24,7 +24,7 @@ include VIEWS.'inc/header.php';
         <th scope="col">Points</th>
         <th scope="col">Photo</th>
         <th scope="col">Admin</th>
-        <th scope="col">Desabled</th>
+        <th scope="col">Disabled</th>
       </tr>
     </thead>
     <tbody>
@@ -44,16 +44,20 @@ include VIEWS.'inc/header.php';
         <td><?= $user['photo']?></td>
         <td><?= $user['admin']?></td>
         <td><?= $user['disabled']?></td>
+        <td class="align-middle">
+              <a href="" class="btn btn-warning">Admin</a>
+        </td>
+        <td class="align-middle">
+              <a href="" class="btn btn-danger">Supprimer</a>
+        </td>
+
       </tr>
           <?php
       }
           ?>
     </tbody>
   </table>
-</div>
-<div>
-  <a href="<?= BASE_PATH . 'addUser' ?>" class="btn btn-success d-block">Ajouter</a>
-</div>
+<!-- </div> -->
 
 
 <?php  include VIEWS.'inc/footer.php'; ?>

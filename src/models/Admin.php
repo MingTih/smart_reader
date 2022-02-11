@@ -16,17 +16,34 @@ class Admin extends Db
 
     }
 
-    public static function ajouterUnUser($data){
+            // suppression de l'utilisateur grace à l'dentifiant
+            public function deleteUserDb($id_user){
 
-    /**Ajouter et modifier dans la base de données */
-    {
-        $request="REPLACE INTO user VALUES (:id_user,:name, :firstname, :pseudo, :pw, :email, :birthdate, :address, :inscription_date, :point,:photo, :admin, :disabled)";
-        $response=self::getDb()->prepare($request);
-        return $response->execute($data);
-    }
+                $req = ("DELETE FROM user WHERE id_user = ?");
+                $reqPrepare = self::getDb()->prepare($req);
+                $reqPrepare->execute();
+        
+                if($resultat > 0){
+                    $id_user = $this->getGameById($game_id);
+                    unset($game);
+                }
+        
 
 
-    }
+        
+            }
+    
+    // public static function ajouterUnUser($data){
+
+    // /**Ajouter et modifier dans la base de données */
+    // {
+    //     $request="REPLACE INTO user VALUES (:id_user,:name, :firstname, :pseudo, :pw, :email, :birthdate, :address, :inscription_date, :point,:photo, :admin, :disabled)";
+    //     $response=self::getDb()->prepare($request);
+    //     return $response->execute($data);
+    // }
+
+
+    
 
     
 
