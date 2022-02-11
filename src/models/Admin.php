@@ -16,6 +16,18 @@ class Admin extends Db
 
     }
 
+    public static function ajouterUnUser($data){
+
+    /**Ajouter et modifier dans la base de données */
+    {
+        $request="REPLACE INTO user VALUES (:id_user,:name, :firstname, :pseudo, :pw, :email, :birthdate, :address, :inscription_date, :point,:photo, :admin, :disabled)";
+        $response=self::getDb()->prepare($request);
+        return $response->execute($data);
+    }
+
+
+    }
+
     
 
 

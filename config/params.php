@@ -72,9 +72,9 @@ $routes = [
     'historique'             => ['ExchangeController', 'myTradesList'], 
     'historiqueDetail'       => ['ExchangeController', 'tradeDetail'], 
 
-    // Admin----------------------------------------------------------------
-    '/listUsers'            => ['AdminController', 'userslisting'], //OK
-    '/addUser'              => ['AdminController', 'adduser'],
+    // Admin
+    '/listUsers'            => ['AdminController', 'usersListing'], //OK
+    '/addUser'              => ['AdminController', 'addUser'],
     // '/modifCompte'          => ['UserController', 'updateUser'],//OK
     // '/connexion'            => ['UserController', 'connexion'],//OK
     // '/inscription'          => ['UserController', 'replaceUser'],//OK

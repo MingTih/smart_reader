@@ -2,7 +2,7 @@
 include VIEWS.'inc/header.php'; 
 
 ?>
-<h1 class= "text-center">Ajouter un User</h1>
+<h1 class= "text-center">Ajouter un utilisateur</h1>
 
 <form  method="post" enctype="multipart/form-data" class="mx-auto w-50">
   <fieldset>
@@ -23,6 +23,11 @@ include VIEWS.'inc/header.php';
     </div>
 
     <div class="form-group">
+      <label for="pw" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;">Mot de passe</font></label>
+      <input type="password" class="form-control form-control-lg" id="pw" placeholder="Mot de passe" name="pw">
+    </div>
+
+    <div class="form-group">
       <label for="email" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;">Adresse e-mail</font></label>
       <input type="email" class="form-control form-control-lg" id="email" aria-describedby="emailHelp" placeholder="Adresse email" name="email">
     </div>
@@ -37,9 +42,24 @@ include VIEWS.'inc/header.php';
       <input type="text" class="form-control form-control-lg" id="address" placeholder="Adresse" name="address">
     </div>
 
-    <div class="form-group" >
-      <label for="photo" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;">Photo</font></label>
-      <input type="file" class="form-control form-control-lg" id="photo" name="photo">
+    <div class="form-group">
+      <label for="date" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;">Date d'inscription</font></label>
+      <input type="date" class="form-control form-control-lg" id="inscription_date" placeholder="Date d'inscription" name="inscription_date">
+    </div>
+
+    <div class="form-group">
+      <label for="point" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;">Point</font></label>
+      <input type="num" class="form-control form-control-lg" id="point" placeholder="points" name="point">
+    </div>
+
+    <div class="form-group">
+      <label for="admin" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;">Admin</font></label>
+      <input type="num" class="form-control form-control-lg" id="admin" placeholder="Admin" name="admin">
+    </div>
+
+    <div class="form-group">
+      <label for="disabled" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;">Disabled</font></label>
+      <input type="num" class="form-control form-control-lg" id="disabled" placeholder="Admin" name="disabled">
     </div>
 
 
