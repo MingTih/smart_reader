@@ -215,7 +215,12 @@ class ExchangeController
             exit;
         }
 
-        // !!!!!!!!!!!!!!!!! que pour les admin, rajouter ici une condition pour les admins
+        if(User::verifAdmin($_SESSION['admin'])){
+            header("location:".BASE_PATH."connexion");
+            exit;
+        }
+        
+        
         $echangeListe=Exchange::allExchanges();
 
         foreach($echangeListe as $cle=>$echange){
