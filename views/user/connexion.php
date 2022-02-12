@@ -2,15 +2,21 @@
 
 include VIEWS.'inc/header.php'; 
 
-// echo "<pre>";
-//     print_r($_POST);
-// echo "</pre>";
+// echo"<pre>";   
+//     print_r($infoUser);
+    // print_r($disabledList);
+// echo"</pre>";
 
-// echo "<pre>";
-// print_r($infoUser);
-// echo "</pre>";
 ?>
 <?=(isset($msg))?$msg:""?>
+<?php
+    if(isset($_COOKIE["disabledAccount"])){
+?>
+    <div class="alert alert-danger" role="alert"><?=$_COOKIE["disabledAccount"]?></div>
+
+<?php
+    }
+?>
 
 <div class="main">
     <h1 class="sign text-center">Se connecter</h1>

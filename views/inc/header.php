@@ -30,7 +30,12 @@
 
     <link rel="stylesheet" href="../../asset/css/style.css">
 </head>
+<<<<<<< HEAD
 <body>                
+=======
+
+<body>
+>>>>>>> caroline
 <!-- HEADER -->
 
 <!----------------------------------LOG0--------------------------------------------- -->

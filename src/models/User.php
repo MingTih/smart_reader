@@ -48,34 +48,44 @@ class User extends Db
         return false;
     }
 
+// Vérification si champ existe ou pas vide
+    public static function verifPresence($champ){
+
+        // false si champ n'existe pas
+        if(!isset($champ)){
+            return false;
+        }
+        
+        // false si champ est vide
+        if(empty($champ)){
+            return false;
+        }
+        return true;
+    }
+
 // Vérification pseudo
     public static function verifPseudo($pseudo){
-
-        // true si pseudo n'existe pas
-        if(!isset($pseudo)){
-            return true;
+        if(strlen($pseudo)<=3 OR strlen($pseudo)>255){
+            return false;
         }
-
-        // true si pseudo est vide
-        if(empty($pseudo)){
-            return true;
-        }
-
+        return true;
     }
 
-// Vérification mot de passe
-    public static function verifMdp($mdp){
+// Vérification mail
+    public static function verifMail($mail){
+        if(strlen($mail)<4 OR strlen($mail)>255){
+            return false;
+        }
+        return true;
 
-        // true si mdp n'existe pas
-        if(!isset($mdp)){
-            return true;
+        //Vérif si le format est bien un email
+        if(!filter_var($mail,FILTER_VALIDATE_EMAIL)){
+            return false;
         }
 
-        // Si mdp est vide
-        if(empty($mdp)){
-            return true;
-        }
+        return true;
     }
+
 
 //Verif si admin ou pas 
     public static function verifAdmin($admin){
@@ -85,29 +95,20 @@ class User extends Db
         }
     }
 
-/**Controles sur la photo */
+/**Verif format photo */
 public static function verifPhoto($photo){
 
-
-    if (isset($photo)){ // Je ne veux faire le controle que si la photo existe
-        return true;
-    }
-    
-    if (!empty($photo)){
+    if($photo['type'] == "image/png"){
         return true;
     }
 
-    // if($photo["type"] == "image/png"){
-    //     return true;
-    // }
+    if($photo['type'] == "image/jpeg"){
+        return true;
+    }
 
-    // if($photo["type"] == "image/jpeg"){
-    //     return true;
-    // }
-
-    // if($photo["type"] == "image/jpg"){
-    //     return true;
-    // }
+    if($photo['type'] == "image/jpg"){
+        return true;
+    }
 
     return false;
 }
@@ -120,18 +121,31 @@ public static function verifPhoto($photo){
 /***************************************** CONNEXION ********************************************* */
 
 // récupération des infos de l'utilisateur pour vérifier correspondance entre pseudo et mdp pour la connexion
-public static function connexionVerif($pseudo,$mdp)
+public static function connexionVerif($data)
 {       
 
-    // Si pseudo pas vide et est valide
-    if(!empty($pseudo) && !self::verifPseudo($pseudo)){
+    // Récup info user grace au pseudo
+    $resquest = "SELECT * FROM user WHERE pseudo=:pseudo";
+    $preparedRequest = self::getDb()->prepare($resquest);
+    $preparedRequest->execute($data);
+    return $preparedRequest->fetch(PDO::FETCH_ASSOC);
+    
+}
 
-        // Connexion avec la base de données
-        $resquest = "SELECT * FROM user WHERE pseudo=?";
-        $preparedRequest = self::getDb()->prepare($resquest);
-        $preparedRequest->execute([$pseudo]);
-        return $preparedRequest->fetch(PDO::FETCH_ASSOC);
-    }
+//Récup user grâce à pseudo 
+public static function pseudoExist($data){
+    $resquest = "SELECT * FROM user WHERE pseudo=:pseudo";
+    $preparedRequest = self::getDb()->prepare($resquest);
+    $preparedRequest->execute($data);
+    return $preparedRequest->fetch(PDO::FETCH_ASSOC);
+}
+
+//Récup user grâce à mail 
+public static function mailExist($data){
+    $resquest = "SELECT * FROM user WHERE email=:email";
+    $preparedRequest = self::getDb()->prepare($resquest);
+    $preparedRequest->execute($data);
+    return $preparedRequest->fetch(PDO::FETCH_ASSOC);
 }
 
 // Création SESSION si connexionVerif Ok:
@@ -151,9 +165,6 @@ public static function connexionVerif($pseudo,$mdp)
         $_SESSION["admin"] = $infoUser["admin"];
         $_SESSION["disabled"] = $infoUser["disabled"];
         $_SESSION["readPhoto"] = self::explodePhoto($infoUser["photo"]);
-
-        header("location:".BASE_PATH."monCompte");
-        exit;
 
     }
 
@@ -181,30 +192,25 @@ public static function connexionVerif($pseudo,$mdp)
     
     }
 
-//     // Desactivation de compte
-//     public static function disabledSession($disabled){
-//         // Si SESSION existe :
-//         if(isset($_SESSION["id_user"])){
-            
-//             //Desactivation du compte
-//             $requete = ("UPDATE user SET disabled=:disabled WHERE id_user=:id_user");
-//             $requetePrepare = self::getDb()->prepare($requete);
-//             $requetePrepare->execute($disabled);
-//         }
-//     }
-// // Selection de tous les users en disabled
-//     public static function getAllDisabled($data)
-//     {
-//     // Requête SQL pour selectionner tous les users disabled
-//         $request = "SELECT * FROM user WHERE disabled=:disabled";
-//     // Préparation de la requête avec connexion à la BDD
-//         $preparedRequest = self::getDb()->prepare($request);
-//     // Execution de la requête
-//         $preparedRequest->execute($data);
-//     // Retour des infos de tous les utilisateurs sous forme de liste 
-//         return $preparedRequest->fetchAll(PDO::FETCH_ASSOC);
-
-//     }
+// Desactivation de compte
+    public static function disabledSession($disabled){
+        $requete = ("UPDATE user SET disabled=:disabled WHERE id_user=:id_user");
+        $requetePrepare = self::getDb()->prepare($requete);
+        $requetePrepare->execute($disabled);
+    }
+    
+// Selection de tous les users en disabled
+    public static function getAllDisabled($data)
+    {
+    // Requête SQL pour selectionner tous les users disabled
+        $request = "SELECT * FROM user WHERE disabled=:disabled";
+    // Préparation de la requête avec connexion à la BDD
+        $preparedRequest = self::getDb()->prepare($request);
+    // Execution de la requête
+        $preparedRequest->execute($data);
+    // Retour des infos de tous les utilisateurs sous forme de liste 
+        return $preparedRequest->fetchAll(PDO::FETCH_ASSOC);
+    }
 
 
 }

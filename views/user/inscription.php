@@ -1,9 +1,11 @@
 <?php
 include VIEWS.'inc/header.php'; 
-echo '<pre>';
-  print_r($_POST);
-  print_r($_FILES);
-echo '</pre>';
+// echo '<pre>';
+//   print_r($_POST);
+//   print_r($_FILES);
+//   print_r($mailExist);
+//   print_r($pseudoExist);
+// echo '</pre>';
 ?>
 
 <?=isset($msg)?$msg:""?>
