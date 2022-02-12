@@ -15,7 +15,7 @@
                         <img src="../asset/images/ccmimg.jpg" class="d-block w-100" alt="image livre ouvert histoire">
                     </div>
                     <div class="carousel-item">
-                        <img src="../asset/images/livre3slider.jpeg" class="d-block w-100" alt="image livre ouvert imagination">
+                        <img src="../asset/images/slider-quote.jpg" class="d-block w-100" alt="image livre ouvert imagination">
                     </div>
                     <div class="carousel-item">
                         <img src="../asset/images/sliderpourquoi.jpg" class="d-block w-100" salt="image livre ouvert histoire">
@@ -30,7 +30,7 @@
 
 
 
-                                <p class="resumeSite">Facile et économique et écologigue, l'échange de livres d'occasion vous permet de lire de nouveaux ouvrages toute l'année. Inscrivez-vous gratuitement et ajoutez vos livres à notre catalogue composé de milliers d'ouvrages</p>
+                                <p class="resumeSite">Facile, économique et écologigue, l'échange de livres d'occasion vous permet de lire de nouveaux ouvrages toute l'année. Inscrivez-vous gratuitement et ajoutez vos livres à notre catalogue composé de milliers d'ouvrages</p>
          <container class="boites d-flex" >
 
              <div>

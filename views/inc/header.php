@@ -44,12 +44,9 @@
             <img src="../asset/images/mascotte4.png" width="150px" height="150px" alt="image_mascotte_hibou">
         </div>
         
-<<<<<<< Updated upstream
-    </header>
-=======
 
          <!---------------------------------------Navbar------------------------------------------------  -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light colornav">
+         <nav class="navbar navbar-expand-lg navbar-light bg-light colornav">
             <div class="container-fluid">
             <a class="navbar-brand" href="#"></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,4 +75,5 @@
             
           </nav>
     </header>
->>>>>>> Stashed changes
+
+  
