@@ -70,3 +70,5 @@ echo "</pre>";
         }
     ?>
 </main>
+
+<?php  include VIEWS.'inc/footer.php'; ?>

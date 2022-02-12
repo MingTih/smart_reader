@@ -59,7 +59,7 @@ class DealController
                         'id_book' => $_GET["id"],
                         'dealing_position' => "offer",
                         'point_offers' => $point,
-                        'point_deal' =>null,
+                        'done' =>'0',
                         'dealing_date' =>null
                     ]);
                     header ("location:".BASE_PATH."mesOffres");
@@ -128,7 +128,7 @@ class DealController
                         'id_book' => $_GET["id"],
                         'dealing_position' => "request",
                         'point_offers' => $point,
-                        'point_deal' =>null,
+                        'done' =>'0',
                         'dealing_date' =>null
                     ]);
                     header ("location:".BASE_PATH."mesSouhaits");

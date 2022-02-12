@@ -21,7 +21,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../asset/css/style.css">
+    <link rel="stylesheet" href="../../asset/css/style.css">
 </head>
 <!-- HEADER -->
 
@@ -29,7 +29,7 @@
         <header id="header">        
         <div class="logo-banniere d-flex">
                 <div class="logo">
-                        <img src="../asset/Images/logoFinalPlus3Px.png" width="150px" height="150 px" alt="logo_de_la_marque">
+                        <img src="../../asset/Images/logoFinalPlus3Px.png" width="150px" height="150 px" alt="logo_de_la_marque">
                 </div>
 
                  <!--------------------------------- BANNIERE------------------------------------------------- -->   
@@ -41,7 +41,7 @@
                 
         </div>
         <div class="mascotte4 d-flex">
-            <img src="../asset/images/mascotte4.png" width="150px" height="150px" alt="image_mascotte_hibou">
+            <img src="../../asset/images/mascotte4.png" width="150px" height="150px" alt="image_mascotte_hibou">
         </div>
         
     </header>

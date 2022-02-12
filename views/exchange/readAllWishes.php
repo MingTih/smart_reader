@@ -69,3 +69,4 @@ include VIEWS.'inc/header.php';
         }
     ?>
 </main>
+<?php  include VIEWS.'inc/footer.php'; ?>

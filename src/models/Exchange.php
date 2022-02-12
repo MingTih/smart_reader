@@ -2,6 +2,9 @@
 
 class Exchange extends Db
 {
+
+/*******************READ************************************/
+
     // Requête imbriquée pour récupérer les infos des user avec requête imbriquée
     public static function getUserInfo($data){
         $request = 
@@ -13,7 +16,67 @@ class Exchange extends Db
         return $preparedRequest->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    // Afficher tous les échanges (admin)
+    public static function allExchanges(){
+        $request = "SELECT * FROM exchange ORDER BY id_exchange DESC";
+        $preparedRequest = self::getDb()->prepare($request);
+        $preparedRequest->execute();
+        return $preparedRequest->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Afficher toutes les acquisitions d'un utilisateur
+    public static function allIGet($data){
+        $request = "SELECT * FROM exchange WHERE id_owner=:id_purchaser ORDER BY id_exchange DESC";
+        $preparedRequest = self::getDb()->prepare($request);
+        $preparedRequest->execute($data);
+        return $preparedRequest->fetchAll(PDO::FETCH_ASSOC);
+    }
     
+    // Afficher toutes les ventes d'un utilisateur
+    public static function allIGive($data){
+        $request = "SELECT * FROM exchange WHERE id_owner=:id_owner ORDER BY id_exchange DESC";
+        $preparedRequest = self::getDb()->prepare($request);
+        $preparedRequest->execute($data);
+        return $preparedRequest->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+
+
+/*******************INSERT************************************/
+
+    // Ajout ligne table exchange grâce à id
+    public static function insertExchange($data){
+        $request = "INSERT INTO exchange (id_exchange,id_deal, id_purchaser,id_book, id_owner, dealing_point, purchase_date) VALUES (:id_exchange,:id_deal, :id_purchaser, :id_book, :id_owner, :dealing_point, :purchase_date)";
+        $preparedRequest=self::getDb()->prepare($request);
+        $preparedRequest->execute($data);
+    }
+
+/*******************INSERT************************************/
+    //Mise à jour des points chez les utilisateurs
+    public static function updatePoint($data){
+        $request = "UPDATE user SET point = :point WHERE id_user=:id_user";
+        $preparedRequest = self::getDb()->prepare($request);
+        return $preparedRequest->execute($data);
+
+    }
+
+/**********************CONTROLES********************************/
+    //Controle get général
+    public static function getControl($get){
+        if(isset($get) && !empty($get)){
+            return true;
+        }
+    }
+
+    //Controle points 
+    public static function pointControl($purchaserPoint,$pointOffers){
+        if($purchaserPoint>=$pointOffers){
+            return true;
+        }
+
+    }
+
 
 
 

@@ -3,9 +3,11 @@
 include VIEWS.'inc/header.php'; 
 
 echo "<pre>";
-    print_r($infoDeal);
-    print_r($infoUser);
-    // print_r($offre);
+    // print_r($_GET);
+    // print_r($infoDeal);
+    // print_r($livreInfo);
+    // print_r($proposer);
+    // print_r($actor);
 echo "</pre>";
 ?>
 
@@ -35,7 +37,7 @@ echo "</pre>";
                 <li>Etat : </li>
                 <li>Genre : </li>
                 <li>Pages : <?=$detailLivre["pageCount"]?></li>
-                <li><?=$userPosition?> : <?=$infoUser[0]['pseudo'] ?></li>
+                <li><?=$userPosition?> : <?=$proposer[0]['pseudo'] ?></li>
             </ul>
             <div class="photo col-5">
                 <?php
@@ -54,7 +56,8 @@ echo "</pre>";
     </div>
 
     <a href="<?=BASE_PATH.$chemin;?>"class="btn btn-danger">Retour</a>
-    <a href="<?=BASE_PATH."?id_deal=".$_GET['idDeal'];?>" class="btn btn-success">Accepter l'offre</a>
+    <a href="<?="?idDeal=".$_GET['idDeal']."&&echange=ok&&idLivre=".$livreInfo['id'];?>" class="btn btn-success">Accepter l'offre</a>
 
 
 </main>
+<?php  include VIEWS.'inc/footer.php'; ?>

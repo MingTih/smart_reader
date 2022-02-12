@@ -13,7 +13,7 @@ const CONFIG = [
     ],
     'app' => [
         'name' => 'smart_reader',
-        'projectBaseUrl' => 'http://localhost:8888/smart_reader'
+        'projectBaseUrl' => 'http://localhost/smart_reader'
     ]
 ];
 
@@ -29,7 +29,7 @@ const CONTROLLERS = BASE_DIR . 'src/controllers/';
 const PHOTO = BASE_DIR.'public\\uploads\\';
 const COVER = '../../public/uploads/';
 
-const API_KEY = "AIzaSyDAIV0lnh92aDhhOTZEkrgMcymuQR2V5q4";
+const API_KEY = "AIzaSyAzFkhp4TZ1_TvOfKk3f7O7r3pgk2lMxFQ";
 
 /**
  * Liste des actions/méthodes possibles (les routes du routeur)
@@ -69,8 +69,8 @@ $routes = [
     '/allOffres'              => ['ExchangeController', 'allOffersList'], //OK
     '/allSouhaits'            => ['ExchangeController', 'allWishesList'], //OK
     '/tradeDetail'            => ['ExchangeController', 'tradeDetail'],
-    '/historique'             => ['ExchangeController', 'myTradesList'], 
-    '/historiqueDetail'       => ['ExchangeController', 'tradeSummury'], 
+    '/monHistorique'          => ['ExchangeController', 'myTradesList'], 
+    '/allHistorique'          => ['ExchangeController', 'allTrades'], 
 
     // Admin
     '/listUsers'            => ['AdminController', 'usersListing'], //OK

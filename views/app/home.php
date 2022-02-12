@@ -17,7 +17,7 @@
                         <img src="../../asset/images/livre3slider.jpeg" class="d-block w-100" alt="image livre ouvert imagination">
                     </div>
                     <div class="carousel-item">
-                        <img src="../../asset/images/livre8slider.jpeg" class="d-block w-100" height=""alt="image livre ouvert histoire">
+                        <img src="../../asset/images/livre4slider.jpeg" class="d-block w-100" height=""alt="image livre ouvert histoire">
                     </div>
                 </div>
             </div>

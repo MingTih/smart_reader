@@ -4,7 +4,7 @@ include VIEWS.'inc/header.php';
 
 echo "<pre>";
 //     print_r($_GET);
-    print_r($listAllOffres);
+    // print_r($listAllOffres);
 echo "</pre>";
 ?>
 
@@ -69,3 +69,5 @@ echo "</pre>";
         }
     ?>
 </main>
+
+<?php  include VIEWS.'inc/footer.php'; ?>
