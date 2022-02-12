@@ -33,10 +33,10 @@ class UserController
 /*******************************************INSCRIPTION ***********************************************/    
     public static function replaceUser()
     {
-           // Vérifier la connexion de l'utilisateur, si ok redirection vers modifCompte
+        // Vérifier la connexion de l'utilisateur, si ok redirection vers modifCompte
 
-           if(User::isConnected()){
-            header("location:".BASE_PATH."monCompte");
+        if(User::isConnected()){
+        header("location:".BASE_PATH."monCompte");
         }
  
         if (!empty($_FILES)){
@@ -44,9 +44,9 @@ class UserController
             $photo = $_FILES['photo'];
             $msg = '';
 
-                        // Controle du format de la photo
+            // Controle du format de la photo
 
-            if (!User::verifPhoto($photo)){
+            if (User::verifPhoto($photo)){
                 $msg .= "<div class=\"alert alert-danger\" role=\"alert\">
                 Votre photo n'est pas valide. Seul les jpg, jpeg et png sont acceptés
                 </div>";
@@ -73,7 +73,7 @@ class UserController
         if (empty($msg)){
 
             $resultat = User::insertUser([
-                'id_user' => 0,
+                'id_user' => NULL,
                 'name' => $_POST['name'],
                 'firstname' => $_POST['firstname'],
                 'pseudo' => $_POST['pseudo'],

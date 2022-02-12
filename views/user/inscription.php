@@ -1,7 +1,12 @@
 <?php
 include VIEWS.'inc/header.php'; 
-
+echo '<pre>';
+  print_r($_POST);
+  print_r($_FILES);
+echo '</pre>';
 ?>
+
+<?=isset($msg)?$msg:""?>
 <h1 class= "text-center">Inscription</h1>
 
 <form  method="post" enctype="multipart/form-data" class="mx-auto w-50">
@@ -9,17 +14,17 @@ include VIEWS.'inc/header.php';
     
     <div class="form-group" >
       <label for="name" class="col-form-label col-form-label-lg mt-4"><font style="vertical-align: inherit;">Nom</font></label>
-      <input type="text" class="form-control form-control-lg" id="name" placeholder="Nom" name="name">
+      <input type="text" class="form-control form-control-lg" id="name" placeholder="Nom" name="name" value="<?=!empty($_POST)?$_POST['name']:""?>">
     </div>
 
     <div class="form-group" >
       <label for="firstname" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;">Prénom</font></label>
-      <input type="text" class="form-control form-control-lg" id="firstname" placeholder="prenom" name="firstname">
+      <input type="text" class="form-control form-control-lg" id="firstname" placeholder="prenom" name="firstname" value="<?=!empty($_POST)?$_POST['firstname']:""?>">
     </div>
 
     <div class="form-group" >
       <label for="pseudo" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pseudo</font></font></label>
-      <input type="text" class="form-control form-control-lg" id="pseudo" placeholder="pseudo" name="pseudo">
+      <input type="text" class="form-control form-control-lg" id="pseudo" placeholder="pseudo" name="pseudo" value="<?=!empty($_POST)?$_POST['pseudo']:""?>">
     </div>
 
     <div class="form-group">
@@ -34,17 +39,17 @@ include VIEWS.'inc/header.php';
 
     <div class="form-group">
       <label for="email" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Adresse e-mail</font></font></label>
-      <input type="email" class="form-control form-control-lg" id="email" aria-describedby="emailHelp" placeholder="Adresse email" name="email">
+      <input type="email" class="form-control form-control-lg" id="email" aria-describedby="emailHelp" placeholder="Adresse email" name="email" value="<?=!empty($_POST)?$_POST['email']:""?>">
     </div>
 
     <div class="form-group" >
       <label for="birthdate" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Date d'anniversaire</font></font></label>
-      <input type="date" class="form-control form-control-lg" id="birthdate" placeholder="Date d'anniversaire" name="birthdate">
+      <input type="date" class="form-control form-control-lg" id="birthdate" placeholder="Date d'anniversaire" name="birthdate" value="<?=!empty($_POST)?$_POST['birthdate']:""?>">
     </div>
 
     <div class="form-group" >
       <label for="address" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Adresse</font></font></label>
-      <input type="text" class="form-control form-control-lg" id="address" placeholder="Adresse" name="address">
+      <input type="text" class="form-control form-control-lg" id="address" placeholder="Adresse" name="address" value="<?=!empty($_POST)?$_POST['address']:""?>">
     </div>
 
     <div class="form-group" >

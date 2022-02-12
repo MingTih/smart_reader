@@ -1,4 +1,9 @@
+<?php
+    if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
+        UserController::deconnexion($_GET["deconnexion"]);
+    }
 
+?>
 
 
 <!DOCTYPE html>

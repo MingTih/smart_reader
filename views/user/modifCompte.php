@@ -59,6 +59,7 @@ include VIEWS.'inc/header.php';
   </fieldset>
 </form>
 
+<?=$msg?>
 
 <?php  include VIEWS.'inc/footer.php'; ?>
 

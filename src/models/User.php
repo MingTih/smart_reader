@@ -45,6 +45,7 @@ class User extends Db
         if(isset($_SESSION["pseudo"])){
             return true;
         }
+        return false;
     }
 
 // Vérification pseudo
@@ -76,30 +77,64 @@ class User extends Db
         }
     }
 
-// Vérification des infos de l'utilisateur pour la connexion
-    public static function connexionVerif($pseudo,$mdp)
-        {       
+//Verif si admin ou pas 
+    public static function verifAdmin($admin){
 
-        // Si pseudo pas vide et est valide
-        if(!empty($pseudo) && !self::verifPseudo($pseudo)){
-
-            // Connexion avec la base de données
-            $resquest = "SELECT * FROM user WHERE pseudo=?";
-            $preparedRequest = self::getDb()->prepare($resquest);
-            $preparedRequest->execute([$pseudo]);
-            return $preparedRequest->fetch(PDO::FETCH_ASSOC);
+        if ($admin ==0){
+            return true;
         }
     }
 
-/************************************* Eclater chemin photo****************************************************/
+/**Controles sur la photo */
+public static function verifPhoto($photo){
+
+
+    if (isset($photo)){ // Je ne veux faire le controle que si la photo existe
+        return true;
+    }
+    
+    if (!empty($photo)){
+        return true;
+    }
+
+    // if($photo["type"] == "image/png"){
+    //     return true;
+    // }
+
+    // if($photo["type"] == "image/jpeg"){
+    //     return true;
+    // }
+
+    // if($photo["type"] == "image/jpg"){
+    //     return true;
+    // }
+
+    return false;
+}
+
+/******************************** Eclater chemin photo*********************************************/
     public static function explodePhoto($photoRoad){
         return explode("photo_profil\\",$photoRoad);
     }
 
-/********************************************** CONNEXION ***************************************************** */
+/***************************************** CONNEXION ********************************************* */
+
+// récupération des infos de l'utilisateur pour vérifier correspondance entre pseudo et mdp pour la connexion
+public static function connexionVerif($pseudo,$mdp)
+{       
+
+    // Si pseudo pas vide et est valide
+    if(!empty($pseudo) && !self::verifPseudo($pseudo)){
+
+        // Connexion avec la base de données
+        $resquest = "SELECT * FROM user WHERE pseudo=?";
+        $preparedRequest = self::getDb()->prepare($resquest);
+        $preparedRequest->execute([$pseudo]);
+        return $preparedRequest->fetch(PDO::FETCH_ASSOC);
+    }
+}
+
 // Création SESSION si connexionVerif Ok:
-
-
     public static function connexionValid($infoUser){
         
         $_SESSION["id_user"] = $infoUser["id_user"];
@@ -122,14 +157,6 @@ class User extends Db
 
     }
 
-    public static function verifAdmin($admin){
-
-        if ($admin ==0){
-            return false;
-        }
-    }
-
-
 // Destruction SESSION pour déconnexion
     public static function destroySession($deconnexion){
         // Si SESSION existe et que "deconnexion" dans GET :
@@ -139,24 +166,9 @@ class User extends Db
         }
     }
 
-/**Controles sur la photo */
-    public static function verifPhoto($photo){
 
-
-        if (isset($photo)){ // Je ne veux faire le controle que si la photo existe
-            return true;
-        }
-        
-        if (!empty($photo)){
-            return true;
-        }
-
-    }
-
-    // Enregistrement de la photo, puis a l'enregistrement en bdd
+// Enregistrement de la photo, puis a l'enregistrement en bdd
     public static function savePhoto($pseudo,$photo){
-
-        
 
         if (empty($msg)){
             // On ne procede a l'enregistrement que s'il n'y a pas de message d'erreurs
