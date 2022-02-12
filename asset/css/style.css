@@ -159,7 +159,7 @@ h3.quote{
 
 
 
-/* ---------------------------------Copiright----------------------------------------------- */
+/* ---------------------------------Copyright----------------------------------------------- */
 .copyright{
    display: flex;
    flex-direction: column;
@@ -378,3 +378,204 @@ a {
     }
     
   }   
+
+
+  /*************************page contactez-nous*****************/
+  @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap"); 
+
+#section {
+	margin:  0;
+}
+#page {
+	width: 100%;
+	margin:  0 auto;
+	background: #fff;
+	display: flex;
+	display: -webkit-flex;
+	justify-content: center;
+	-o-justify-content: center;
+	-ms-justify-content: center;
+	-moz-justify-content: center;
+	-webkit-justify-content: center;
+	align-items: center;
+	-o-align-items: center;
+	-ms-align-items: center;
+	-moz-align-items: center;
+	-webkit-align-items: center;
+}
+#contenu  {
+	background:  linear-gradient(rgba(241, 191, 243, 0.5), rgba(148, 238, 230, 0.5));
+	;
+	padding: -100px;
+	width: 600px;
+	border-radius: 8px;
+	-o-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	margin: 100px ;
+	font-family: 'Roboto', sans-serif;
+	color: #B88F49
+	;
+	font-weight: 400;
+	position: relative;
+	font-size: 18px;
+	box-shadow:0 0 15px #000;
+}
+#contenu #formulaire {
+	padding: 30px 45px 30px 45px;
+	position: relative;
+}
+#contact {
+
+	font-weight: 700;
+	font-size: 25px;
+	text-align: center;
+	position: relative;
+	padding: 3px 0 20px; /********************/
+   margin-top: 50px;
+	margin-bottom: 40px;
+   color: #1F455F;
+
+}
+#contact::after {
+	background: #B88F49;
+	width: 50px;
+	height: 2px;
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+    transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+}
+#formulaire #divInput {
+	position: relative;
+}
+#formulaire #divSubmit {
+	text-align: center;
+}
+#formulaire label {
+	display: block;
+	font-size: 18px;
+	padding-bottom: 10px;
+}
+  /*------------Message contactez-nous---------------------*/
+input, textarea {
+	
+	font: 1em sans-serif;
+  
+	/* Pour que tous les champs texte aient la même dimension */
+	width:490px;
+	box-sizing: border-box;
+  
+	/* Pour harmoniser le look & feel des bordures des champs texte */
+	border: 1px solid #e5e5e5;
+  }
+  
+  input:focus, textarea:focus {
+	/* Pour souligner légèrement les éléments actifs */
+	border-color: #000;
+  }
+  
+  textarea {
+	/* Pour aligner les champs texte multi‑ligne avec leur étiquette */
+	vertical-align: top;
+  
+	/* Pour donner assez de place pour écrire du texte */
+	height: 8em;
+  }
+/*---------------------------------------------------------------*/
+
+
+#formulaire .input-text {
+	margin-bottom: 26px;
+}
+#formulaire input {
+	width: 94.5%;
+    padding: 10.5px 15px;
+    border: 1px solid #e5e5e5;
+     appearance: unset;
+    -moz-appearance: unset;
+    -webkit-appearance: unset;
+    -o-appearance: unset;
+    -ms-appearance: unset;
+    outline: none; 
+     -moz-outline: none;
+    -webkit-outline: none;
+    -o-outline: none; 
+    -ms-outline: none;
+    border-radius: 4px;
+	-o-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px; 
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 15px; 
+}
+/* #formulaire input:focus {
+	border: 1px solid #b3b3b3;
+} */
+#formulaire .register {
+	font-size: 18px;
+	color: #fff;
+	background: #B88F49;
+	;
+	border-radius: 5px;
+	-o-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	width: 180px;
+	box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.2);
+	-o-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.2);
+	-ms-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.2);
+	border: none;
+	margin: 19px 0 40px;
+	cursor: pointer;
+}
+#formulaire .register:hover {
+	
+	background: #2f73a3;
+}
+#formulaire #divSubmit input {
+	
+	padding: 14px;
+}
+#divSubmit{
+	white-space:nowrap;
+	margin: 10px; 
+}
+#formulaire #enveloppe {
+	font-size: 14px;
+	color: #999;
+	right: 15px;
+	top: 50%;
+	transform: translateX(-50%); 
+	position: absolute;
+}
+.image { 
+	    
+   display: flex;
+   justify-content: center;
+   align-content: center;
+ } 
+.image {
+   margin: -60px ;
+   text-align: center;
+   height: 250px;
+   position: relative;
+}
+/* #contact{ */
+	/* text-transform : uppercase; */
+	/* font-size: 20px; */
+	
+/* } */
+
+ 
