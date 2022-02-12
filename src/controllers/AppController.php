@@ -8,9 +8,7 @@ class AppController
         include VIEWS . "app/home.php";
     }
 
-    //public static function contact(){
-     //   include VIEWS . "app/contact.php";
-    //}
+    
 
     public static function contact(){
 

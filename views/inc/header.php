@@ -44,4 +44,36 @@
             <img src="../../asset/images/mascotte4.png" width="150px" height="150px" alt="image_mascotte_hibou">
         </div>
         
+
+         <!---------------------------------------Navbar------------------------------------------------  -->
+         <nav class="navbar navbar-expand-lg navbar-light bg-light colornav">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="#"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active a-btn" aria-current="page" href="#">S'inscrire</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link a-btn" href="#">Se connecter</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link a-btn" href="#">Nous contacter</a>
+                  </li>
+                  
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Livre, Auteur,ISBN" aria-label="Rechercher">
+                  <button class="btn btn-outline-success btncolor" type="submit">Rechercher</button>
+                </form>
+              </div>
+            </div>
+            
+            
+          </nav>
     </header>
+
+  
