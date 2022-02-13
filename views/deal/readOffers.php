@@ -2,15 +2,34 @@
 
 include VIEWS.'inc/header.php'; 
 
-echo "<pre>";
+// echo "<pre>";
     // print_r($livreInfo);
-    print_r($listeOffres);
-    print_r($offre);
-echo "</pre>";
+//     print_r($listeOffres);
+//     print_r($offre);
+// echo "</pre>";
 ?>
 
 <main class="container">
     <h1 class="text-center">Liste de mes offres</h1>
+
+    <?php
+        if(isset($_COOKIE["modifDeal"])){
+    ?>
+        <div class="alert alert-success" role="alert"><?=$_COOKIE["modifDeal"]?></div>
+
+    <?php
+        }
+    ?>
+
+    <?php
+        if(isset($_COOKIE["stockTitreLivre"])){
+    ?>
+        <div class="alert alert-success" role="alert">Le livre - <?=$_COOKIE["stockTitreLivre"]?> - a bien été ajouté à votre liste</div>
+
+    <?php
+        }
+    ?>
+
 
     <?php
         if(empty($listeOffres)){
@@ -43,7 +62,7 @@ echo "</pre>";
             ?>
                 <tr>
             
-                        <th scope="row"><?=$offre['dealing_date']?></th>
+                        <th scope="row"><?=substr($offre['dealing_date'],0,10)?></th>
                         <td><?=$offre['api']['volumeInfo']['title']?></td>
                         <td>
                             <?php

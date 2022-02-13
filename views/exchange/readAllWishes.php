@@ -42,7 +42,7 @@ include VIEWS.'inc/header.php';
             ?>
                 <tr>
             
-                        <th scope="row"><?=$wish['dealing_date']?></th>
+                        <th scope="row"><?=substr($wish['dealing_date'],0,10)?></th>
                         <td><?=$wish['api']['volumeInfo']['title']?></td>
                         <td>
                             <?php

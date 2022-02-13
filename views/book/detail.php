@@ -22,13 +22,13 @@ include VIEWS.'inc/header.php';
                         if($i+1 == count($detailLivre["authors"])){
                             echo $detailLivre["authors"][$i]; 
                         }else{
-                            echo $detailLivre["authors"][$i] . ","; 
+                            echo $detailLivre["authors"][$i] . ", "; 
                         }           
                     }       
                     ?>
                 </li>
                 <li>Editeur: <?=$detailLivre["publisher"]?></li>
-                <li>Date de parution : <?=$detailLivre["publishedDate"]?></li>
+                <li>Date de parution : <?=substr($detailLivre["publishedDate"],0,10)?></li>
                 <li>Résumé : <?=(isset($detailLivre["description"]))?$detailLivre["description"]:"Description non disponible";?></li>
                 <li>ISBN : <?=$detailLivre["industryIdentifiers"][1]["identifier"]?></li>
                 <li>Genre : 
@@ -38,7 +38,7 @@ include VIEWS.'inc/header.php';
                                 if($i+1 == count($detailLivre["categories"])){
                                     echo $detailLivre["categories"][$i]; 
                                 }else{
-                                    echo $detailLivre["categories"][$i] . ","; 
+                                    echo $detailLivre["categories"][$i] . ", "; 
                                 }  
                             }                    
                         }else{

@@ -6,7 +6,7 @@ class BookController
     public static function booksListing()
     {
     // Récupération de la liste info 
-        $listeLivres = Book::allBooks();
+        // $listeLivres = Book::allBooks();
     
     // Si pas de POST, renvoie à la liste des offres
         if(empty($_POST)){
@@ -14,7 +14,6 @@ class BookController
             exit;
         }
 
-    // TEST recherche => à relier avec la view header à la fin? ----------------
         if(!empty($_POST)){
             $recherche=str_replace(' ', '+', $_POST["search"]);
             $booksFound = Book::searchBooks($recherche);

@@ -9,13 +9,15 @@ include VIEWS.'inc/header.php';
 
 ?>
 
-<!-- Affichage livres -->
-<?php
-if(!empty($_POST)){
-    foreach($booksItem as $book){
-?>
-
     <h1>Résultats de votre recherche</h1>
+    
+    <!-- Affichage livres -->
+    <?php
+    if(!empty($_POST)){
+        foreach($booksItem as $book){
+    ?>
+
+
     <div class="card" style="width: 18rem;">
         <?php
             if(!isset($book["volumeInfo"]["imageLinks"])){
@@ -48,6 +50,7 @@ if(!empty($_POST)){
                     }      
                 ?>
             </p>
+            <p><?=substr($book["volumeInfo"]["publishedDate"],0,4)?></p>
             <a href="<?=BASE_PATH.'detailLivre?id='.$book['id']?>" class="btn btn-primary">Détails</a>
         </div>
     </div>
