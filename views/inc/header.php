@@ -1,7 +1,10 @@
-<?php
-    if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
-        UserController::deconnexion($_GET["deconnexion"]);
-    }
+<?php // Test déconnexion, à retirer et mettre dans le head (pareil pour l.50)
+if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
+    UserController::deconnexion($_GET["deconnexion"]);
+}
+// if(isset($_SESSION["admin"])
+//     Admin::verifAdmin($admin));
+// ?>
 
 ?>
 
@@ -102,6 +105,13 @@
                   </ul>
                 </li>
               <?php } ?>
+
+              <!-- <?php //if(Admin::verifAdmin($admin)){?>
+                <li class="nav-item"> 
+                  <a class="nav-link a-btn" href="?admin=ok" ?>">Admin</a>
+                </li>
+              <?php //} ?>
+
 
               <?php if(User::isConnected()){?>
                 <li class="nav-item"> 

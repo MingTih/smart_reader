@@ -392,11 +392,13 @@ public static function updateUser()
             
                 }
             }
+
         }
 
         include VIEWS . "user/connexion.php";
     }
 
+    
     public static function deconnexion($deconnexion){
         
         if(!User::isConnected()){
