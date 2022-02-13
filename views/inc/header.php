@@ -121,11 +121,6 @@ if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
                 <a class="nav-link a-btn" href="<?= BASE_PATH . "contact" ?>">Nous contacter</a>
               </li>
 
-              <!-- Déconnexion -->
-              <?php if(User::isConnected()){?>
-              <?php } ?>
-
-
             </ul>
 
             <form action="<?=BASE_PATH . "listeLivres"?>" method="post" class="d-flex">

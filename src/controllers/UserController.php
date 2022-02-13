@@ -164,6 +164,7 @@ class UserController
 
             ]);
             if ($resultat){
+                setcookie("success", "Inscription réussie!", time()+5);
                 header("location:".BASE_PATH. "connexion");
                 exit;
             }else{
@@ -362,8 +363,6 @@ public static function updateUser()
                 }
             }
 
-
-            // Contrôles (Les $msg ne s'affichent pas si je les définis dans User.php):
             if(!User::verifPresence($pseudo)){
                 $msg .= "<div class=\"alert alert-danger\" role=\"alert\">Veuillez saisir votre pseudo</div>";
             }
@@ -386,7 +385,7 @@ public static function updateUser()
                     $msg .= "<div class=\"alert alert-danger\" role=\"alert\">Le pseudo ou le mot de passe est incorrect. Veuillez réessayer.</div>";
                 }else{
                     User::connexionValid($infoUser);
-                    setcookie("connexionSuccess", "Bienvenue ".$_POST['pseudo']." ! Nous te souhaitons une très bonne visite!", time()+5);
+                    setcookie("success", "Bienvenue ".$_POST['pseudo']." ! Nous te souhaitons une très bonne visite!", time()+5);
                     header("location:".BASE_PATH);
                     exit;
             

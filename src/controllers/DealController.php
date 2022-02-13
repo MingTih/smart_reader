@@ -292,22 +292,23 @@ class DealController
             ]);   
 
             // Création variables pour le titre de la page et redirections
-            foreach($oneDealArray as $cle=>$deal){
-                if($deal['dealing_position']=="offer"){
-                    $title = "mon offre";
-                    $cancelModifRoad = "mesOffres";
-                }else{
-                    $title = "ma demande";
-                    $cancelModifRoad = "mesSouhaits";
-                }
-
-                // Récupération des données du livre
-                $livreInfo = Book::oneBook($deal["id_book"]);
-                $detailLivre = $livreInfo["volumeInfo"]; 
-                
-                // Récupération de $etat pour le menu select.
-                $point = $deal["point_offers"];
+            if($oneDealArray[0]=="offer"){
+                $title = "mon offre";
+                $cancelModifRoad = "mesOffres";
+            }else{
+                $title = "ma demande";
+                $cancelModifRoad = "mesSouhaits";
             }
+
+            // Récupération des données du livre
+            $livreInfo = Book::oneBook($oneDealArray[0]["id_book"]);
+            $detailLivre = $livreInfo["volumeInfo"]; 
+            
+            // Récupération de $etat pour le menu select.
+            $point = $oneDealArray[0]["point_offers"];
+
+            // Conversion point en état pour affichage
+            $etat = Deal::pointToCondition($point);
 
             //Si POST n'est pas vide
             if(!empty($_POST)){
@@ -317,7 +318,7 @@ class DealController
                 //Modification du nombre de point dans la BDD
                 Deal::updateDeal([
                     'point_offers'=>$newPoint,
-                    'id_deal'=>$deal["id_deal"]
+                    'id_deal'=>$oneDealArray[0]["id_deal"]
                 ]);
 
                 //Création cookie

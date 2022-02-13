@@ -68,8 +68,8 @@ $routes = [
 
     '/allOffres'              => ['ExchangeController', 'allOffersList'], //OK
     '/allSouhaits'            => ['ExchangeController', 'allWishesList'], //OK
-    '/tradeDetail'            => ['ExchangeController', 'tradeDetail'],
-    '/monHistorique'          => ['ExchangeController', 'myTradesList'], 
+    '/tradeDetail'            => ['ExchangeController', 'tradeDetail'], //OK
+    '/monHistorique'          => ['ExchangeController', 'myTradesList'], //OK
     '/allHistorique'          => ['ExchangeController', 'allTrades'], 
 
     // Admin

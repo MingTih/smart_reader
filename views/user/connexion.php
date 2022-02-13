@@ -18,6 +18,16 @@ include VIEWS.'inc/header.php';
     }
 ?>
 
+<?php
+    if(isset($_COOKIE["success"])){
+?>
+    <div class="alert alert-success" role="alert"><?=$_COOKIE["success"]?></div>
+
+<?php
+    }
+?>
+
+
 <div class="main">
     <h1 class="sign text-center">Se connecter</h1>
     

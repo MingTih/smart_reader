@@ -4,9 +4,9 @@
 
 </div> 
 <?php
-    if(isset($_COOKIE["connexionSuccess"])){
+    if(isset($_COOKIE["success"])){
 ?>
-    <div class="alert alert-success" role="alert"><?=$_COOKIE["connexionSuccess"]?></div>
+    <div class="alert alert-success" role="alert"><?=$_COOKIE["success"]?></div>
 
 <?php
     }

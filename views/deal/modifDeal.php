@@ -4,7 +4,7 @@ include VIEWS.'inc/header.php';
 
 // echo "<pre>";
     // print_r($_GET);
-    // print_r($oneDealArray);
+    print_r($oneDealArray);
     // print_r($deal);
     // print_r($_SESSION);
     // print_r($_POST);
@@ -33,8 +33,21 @@ include VIEWS.'inc/header.php';
                     <li>Editeur: <?=$detailLivre["publisher"]?></li>
                     <li>Date de parution : <?=$detailLivre["publishedDate"]?></li>
                     <li>ISBN : <?=$detailLivre["industryIdentifiers"][1]["identifier"]?></li>
-                    <li>Etat : </li>
+                    <li>Etat : <?=$etat?></li>
                     <li>Genre : 
+                    <?php
+                        if(isset($detailLivre["categories"])){
+                            for($i=0; $i<count($detailLivre["categories"]); $i++){
+                                if($i+1 == count($detailLivre["categories"])){
+                                    echo $detailLivre["categories"][$i]; 
+                                }else{
+                                    echo $detailLivre["categories"][$i] . ","; 
+                                }  
+                            }                    
+                        }else{
+                            echo "Non spécifié";
+                        }
+                    ?>
                     <?php
                         if(isset($detailLivre["categories"])){
                             for($i=0; $i<count($detailLivre["categories"]); $i++){
