@@ -5,7 +5,7 @@ class Exchange extends Db
 
 /*******************READ************************************/
 
-    // Requête imbriquée pour récupérer les infos des user avec requête imbriquée
+    // Requête imbriquée pour récupérer les infos des users
     public static function getUserInfo($data){
         $request = 
             "SELECT * FROM user WHERE id_user IN(
@@ -39,7 +39,14 @@ class Exchange extends Db
         $preparedRequest->execute($data);
         return $preparedRequest->fetchAll(PDO::FETCH_ASSOC);
     }
-
+    
+    // Affichage liste de toutes les offres ou de toutes les demandes (listes) de tous les utilisateurs EN COURS -------------------------------------------------------------------
+    public static function allAvailableDeals($data){
+        $request = "SELECT * FROM dealing WHERE dealing_position = :dealing_position AND done = :done";
+        $preparedRequest = self::getDb()->prepare($request);
+        $preparedRequest->execute($data);
+        return $preparedRequest->fetchAll(PDO::FETCH_ASSOC);
+}
 
 
 
@@ -75,6 +82,14 @@ class Exchange extends Db
             return true;
         }
 
+    }
+
+    //Controle même utilisateur
+    public static function sameUser($idUser){
+        if($_SESSION['id_user']==$idUser){
+            return true;
+        }
+        return false;
     }
 
 

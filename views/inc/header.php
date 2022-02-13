@@ -2,9 +2,7 @@
 if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
     UserController::deconnexion($_GET["deconnexion"]);
 }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -136,11 +134,6 @@ if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
               <li class="nav-item">
                 <a class="nav-link a-btn" href="<?= BASE_PATH . "contact" ?>">Nous contacter</a>
               </li>
-
-              <!-- Déconnexion -->
-              <?php if(User::isConnected()){?>
-              <?php } ?>
-
 
             </ul>
 

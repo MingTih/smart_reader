@@ -4,13 +4,23 @@
 
 </div> 
 <?php
-    if(isset($_COOKIE["connexionSuccess"])){
+    if(isset($_COOKIE["success"])){
 ?>
-    <div class="alert alert-success" role="alert"><?=$_COOKIE["connexionSuccess"]?></div>
+    <div class="alert alert-success" role="alert"><?=$_COOKIE["success"]?></div>
 
 <?php
     }
 ?>
+
+<?php
+    if(isset($_COOKIE["disconnect"])){
+?>
+    <div class="alert alert-success" role="alert"><?=$_COOKIE["disconnect"]?></div>
+
+<?php
+    }
+?>
+
 
 <!----------------------------- slider carroussel bootstrap ---------------------------->
         <container class="slider">
@@ -22,7 +32,7 @@
                         <img src="../../asset/images/livre1slider.jpeg" class="d-block w-100" alt="image livre ouvert histoire">
                     </div>
                     <div class="carousel-item">
-                        <img src="../asset/images/slider-quote.jpg" class="d-block w-100" alt="image livre ouvert imagination">
+                        <img src="../../asset/images/slider-quote.jpg" class="d-block w-100" alt="image livre ouvert imagination">
                     </div>
                     <div class="carousel-item">
                         <img src="../../asset/images/livre4slider.jpeg" class="d-block w-100" height=""alt="image livre ouvert histoire">

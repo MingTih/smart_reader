@@ -2,13 +2,13 @@
 
 include VIEWS.'inc/header.php'; 
 
-echo "<pre>";
+// echo "<pre>";
     // print_r($_GET);
     print_r($oneDealArray);
-    print_r($deal);
+    // print_r($deal);
     // print_r($_SESSION);
     // print_r($_POST);
-echo "</pre>";
+// echo "</pre>";
 ?>
 <main>
     <div class="main">
@@ -33,8 +33,34 @@ echo "</pre>";
                     <li>Editeur: <?=$detailLivre["publisher"]?></li>
                     <li>Date de parution : <?=$detailLivre["publishedDate"]?></li>
                     <li>ISBN : <?=$detailLivre["industryIdentifiers"][1]["identifier"]?></li>
-                    <li>Etat : </li>
-                    <li>Genre : </li>
+                    <li>Etat : <?=$etat?></li>
+                    <li>Genre : 
+                    <?php
+                        if(isset($detailLivre["categories"])){
+                            for($i=0; $i<count($detailLivre["categories"]); $i++){
+                                if($i+1 == count($detailLivre["categories"])){
+                                    echo $detailLivre["categories"][$i]; 
+                                }else{
+                                    echo $detailLivre["categories"][$i] . ","; 
+                                }  
+                            }                    
+                        }else{
+                            echo "Non spécifié";
+                        }
+                    ?>
+                    <?php
+                        if(isset($detailLivre["categories"])){
+                            for($i=0; $i<count($detailLivre["categories"]); $i++){
+                                if($i+1 == count($detailLivre["categories"])){
+                                    echo $detailLivre["categories"][$i]; 
+                                }else{
+                                    echo $detailLivre["categories"][$i] . ","; 
+                                }  
+                            }                    
+                        }else{
+                            echo "Non spécifié";
+                        }
+                    ?>
                     <li>Pages : <?=$detailLivre["pageCount"]?></li>
                 </ul>
                 <div class="photo col-5">
@@ -71,9 +97,6 @@ echo "</pre>";
 
 
     </div>
-
-    <?=(isset($msg))?$msg:""?>
-
 
 </main>
 

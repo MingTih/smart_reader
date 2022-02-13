@@ -11,8 +11,9 @@ class ExchangeController
 
         $msg1 = "";
 
-        $listAllOffres = Deal::readAllDeals([
-            'dealing_position'=>'offer'
+        $listAllOffres = Exchange::allAvailableDeals([
+            'dealing_position'=>'offer',
+            'done'=>'0'
         ]);
 
         if(empty($listAllOffres)){
@@ -44,8 +45,9 @@ class ExchangeController
 
         $msg1 = "";
 
-        $listAllWishes = Deal::readAllDeals([
-            'dealing_position'=>'request'
+        $listAllWishes = Exchange::allAvailableDeals([
+            'dealing_position'=>'request',
+            'done'=>'0'
         ]);
 
         if(empty($listAllWishes)){
@@ -80,8 +82,9 @@ class ExchangeController
         }
 
         $msg="";
+        $msgDisable="";
 
-        //Récupération données dealing pour pseudo
+        //Récupération données dealing pour pseudo et dynamisme page--------------------------------
         $infoDeal = Deal::readOneDeal([
             'id_deal'=>$_GET['idDeal']
         ]);
@@ -90,20 +93,20 @@ class ExchangeController
         //Définition du $title en fonction du deal
         if($infoDeal[0]["dealing_position"]=="offer"){
             $title = "l'offre";
-            $userPosition = "Offreur";
+            $userPosition = "Détenu par ";
             $chemin = "allOffres";
         }else{
             $title = "la demande";
-            $userPosition = "Demandeur";
+            $userPosition = "Demandé par ";
             $chemin = "allSouhaits";
         }
 
-        //Récupération données de celui qui fait la proposition grace à dealing  
+        //Récupération données de celui qui fait la proposition grace à infoDeal
         $proposer = Exchange::getUserInfo([
             "id_user"=>$infoDeal[0]['id_user']
         ]);
 
-        //Récupération données de celui qui va accepter la proposition grace à dealing  
+        //Récupération données de celui qui va accepter la proposition grace à Session  
         $actor = Exchange::getUserInfo([
             "id_user"=>$_SESSION['id_user']
         ]);
@@ -112,18 +115,42 @@ class ExchangeController
         $livreInfo = Book::oneBook($_GET['idLivre']);
         $detailLivre = $livreInfo["volumeInfo"];
 
-        //Si done =1, le livre a déjà été échagé
+        // Récupération état livre
+        $etat = Deal::pointToCondition($infoDeal[0]['point_offers']);
+
+        // CONTROLES---------------------------------------------------------
+        //Si done =1, le livre a déjà été échangé (au cas où quelqu'un tombe sur la page par accident)
         if(Deal::done($infoDeal[0]["done"])){
-            $msg1.="Le livre a déjà été échangé";
+            $msgDisable .="Désolée, ce livre a déjà été échangé.<br>";
         }
 
+        // Ne peut pas échanger avec soi-même
+        if(Exchange::sameUser($infoDeal[0]['id_user'])){
+            $msgDisable .="Attention! Vous ne pouvez pas échanger avec vous-même.<br>";
+        }
+
+        //Si acheteur pas assez de point, pour une offre :
+        if(Deal::isOffer($infoDeal[0]["dealing_position"])
+            && !Exchange::pointControl($actor[0]['point'],$infoDeal[0]["point_offers"])
+        ){
+            $msgDisable = "Vous n'avez pas assez de point pour effectuer cet échange.";
+        }
+        //Si acheteur pas assez de point, pour une demande :
+        if(!Deal::isOffer($infoDeal[0]["dealing_position"])
+            && !Exchange::pointControl($proposer[0]['point'],$infoDeal[0]["point_offers"])
+        ){
+            $msg = $proposer[0]['pseudo']." n'a pas assez de point pour effectuer cet échange.";
+        }
+
+        // Si tout est OK -----------------------------------------------: 
         if(!Deal::done($infoDeal[0]["done"])
             &&isset($_GET['echange']) && $_GET['echange']=='ok'
+            &&!Exchange::sameUser($infoDeal[0]['id_user'])
             &&Exchange::getControl($_GET['idDeal'])
             &&Exchange::getControl($_GET['idLivre']))
         {
 
-            //Si on accepte une offre, 
+            //quand on accepte une offre, insert BDD
             if(Deal::isOffer($infoDeal[0]["dealing_position"])){
                 //Insertion données échange dans exchange
                 Exchange::insertExchange([
@@ -137,10 +164,6 @@ class ExchangeController
                 ]);
 
                 //Gestion points------------
-                if(!Exchange::pointControl($actor[0]['point'],$infoDeal[0]["point_offers"])){
-                    $msg = "Vous n'avez pas assez de point pour effectuer cet échange.";
-                }
-
                 if(Exchange::pointControl($actor[0]['point'],$infoDeal[0]["point_offers"])){
                     //Retrait point pour purchaser------------
                     Exchange::updatePoint([
@@ -171,10 +194,6 @@ class ExchangeController
                 ]);
 
                 //Gestion points------------
-                if(!Exchange::pointControl($proposer[0]['point'],$infoDeal[0]["point_offers"])){
-                    $msg = $proposer[0]['pseudo']." n'a pas assez de point pour effectuer cet échange.";
-                }
-
                 if(Exchange::pointControl($proposer[0]['point'],$infoDeal[0]["point_offers"])){
                     //Retrait point pour purchaser
                     Exchange::updatePoint([
@@ -215,8 +234,8 @@ class ExchangeController
             exit;
         }
 
-        if(User::verifAdmin($_SESSION['admin'])){
-            header("location:".BASE_PATH."connexion");
+        if(!User::verifAdmin($_SESSION['admin'])){
+            header("location:".BASE_PATH);
             exit;
         }
         

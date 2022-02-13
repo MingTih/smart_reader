@@ -24,7 +24,7 @@ include VIEWS.'inc/header.php';
                 <li>Email : <?=$_SESSION['email'];?></li>
                 <li>Date de naissance : <?=$_SESSION['birthdate'];?></li>
                 <li>Adresse : <?=$_SESSION['address'];?></li>
-                <li>Date d'inscription : <?=$_SESSION['inscription_date'];?></li>
+                <li>Date d'inscription : <?=substr($_SESSION['inscription_date'],0,10);?></li>
                 <li>Points : <?=$_SESSION['point'];?></li>
             </ul>
             <div class="photo col-5">

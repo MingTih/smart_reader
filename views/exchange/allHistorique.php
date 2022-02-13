@@ -8,7 +8,7 @@ include VIEWS.'inc/header.php';
 ?>
 
 <main class="container">
-    <h1 class="text-center">Liste de toutes les échanges</h1>
+    <h1 class="text-center">Liste de tous les échanges</h1>
 
     <table class="table" id="tftable">
         <thead>

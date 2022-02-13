@@ -32,7 +32,6 @@ public static function readAllDeals($data){
     $preparedRequest->execute($data);
     return $preparedRequest->fetchAll(PDO::FETCH_ASSOC);
 }
-  
 
 
 // Affichage liste offres ou demandes (listes) d'un utilisateur en particulier-------------------------------------------------------------------
