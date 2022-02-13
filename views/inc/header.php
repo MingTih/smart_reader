@@ -6,8 +6,6 @@ if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
 //     Admin::verifAdmin($admin));
 // ?>
 
-?>
-
 
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -105,13 +103,6 @@ if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
                   </ul>
                 </li>
               <?php } ?>
-
-              <!-- <?php //if(Admin::verifAdmin($admin)){?>
-                <li class="nav-item"> 
-                  <a class="nav-link a-btn" href="?admin=ok" ?>">Admin</a>
-                </li>
-              <?php //} ?>
-
 
               <?php if(User::isConnected()){?>
                 <li class="nav-item"> 
