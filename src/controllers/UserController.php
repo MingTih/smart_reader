@@ -386,7 +386,8 @@ public static function updateUser()
                     $msg .= "<div class=\"alert alert-danger\" role=\"alert\">Le pseudo ou le mot de passe est incorrect. Veuillez réessayer.</div>";
                 }else{
                     User::connexionValid($infoUser);
-                    header("location:".BASE_PATH."monCompte");
+                    setcookie("connexionSuccess", "Bienvenue ".$_POST['pseudo']." !", time()+60);
+                    header("location:".BASE_PATH);
                     exit;
             
                 }

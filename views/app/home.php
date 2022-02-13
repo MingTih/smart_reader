@@ -3,6 +3,14 @@
 <!-- --------------------------------------code de la page --------------------------------------------------->
 
 </div> 
+<?php
+    if(isset($_COOKIE["connexionSuccess"])){
+?>
+    <div class="alert alert-success" role="alert"><?=$_COOKIE["connexionSuccess"]?></div>
+
+<?php
+    }
+?>
 
 <!----------------------------- slider carroussel bootstrap ---------------------------->
         <container class="slider">

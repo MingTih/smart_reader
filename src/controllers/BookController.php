@@ -7,6 +7,12 @@ class BookController
     {
     // Récupération de la liste info 
         $listeLivres = Book::allBooks();
+    
+    // Si pas de POST, renvoie à la liste des offres
+        if(empty($_POST)){
+            header("location:".BASE_PATH."allOffres");
+            exit;
+        }
 
     // TEST recherche => à relier avec la view header à la fin? ----------------
         if(!empty($_POST)){

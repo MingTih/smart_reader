@@ -30,12 +30,7 @@
 
     <link rel="stylesheet" href="../../asset/css/style.css">
 </head>
-<<<<<<< HEAD
 <body>                
-=======
-
-<body>
->>>>>>> caroline
 <!-- HEADER -->
 
 <!----------------------------------LOG0--------------------------------------------- -->
@@ -75,27 +70,65 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active a-btn" aria-current="page" href="<?= BASE_PATH . "inscription" ?>">S'inscrire</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link a-btn" href="<?= BASE_PATH . "connexion" ?>">Se connecter</a>
-              </li>
-                  
-              <li class="nav-item">
-                <a class="nav-link a-btn" href="<?= BASE_PATH . "contact" ?>">Nous contacter</a>
-              </li>
-                  
-              <?php if(User::isConnected()){?>
-                <li class="nav-item"> 
-                  <a class="nav-link a-btn" href="?deconnexion=ok" ?>Deconnexion</a>
+              <!-- Pas connecté -->
+              <?php if(!User::isConnected()){?>
+                <li class="nav-item">
+                  <a class="nav-link active a-btn" aria-current="page" href="<?= BASE_PATH . "inscription" ?>">S'inscrire</a>
                 </li>
               <?php } ?>
 
+              <?php if(!User::isConnected()){?>
+                <li class="nav-item">
+                  <a class="nav-link a-btn" href="<?= BASE_PATH . "connexion" ?>">Se connecter</a>
+                </li>
+              <?php } ?>
+
+              <!-- Connecté -->
+              <?php if(User::isConnected()){?>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle a-btn" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Mon compte
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="<?= BASE_PATH . "monCompte" ?>">Mon profil</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="<?= BASE_PATH . "mesSouhaits" ?>">Mes demandes</a></li>
+                    <li><a class="dropdown-item" href="<?= BASE_PATH . "mesOffres" ?>">Mes offres</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="<?= BASE_PATH . "monHistorique" ?>">Echanges conclus</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item fw-bold" href="?deconnexion=ok" ?>Deconnexion</a></li>
+
+                  </ul>
+                </li>
+              <?php } ?>
+
+              <?php if(User::isConnected()){?>
+                <li class="nav-item"> 
+                  <a class="nav-link a-btn" href="<?=BASE_PATH . "allOffres"?>" ?>Livres disponibles</a>
+                </li>
+              <?php } ?>
+
+              <?php if(User::isConnected()){?>
+                <li class="nav-item"> 
+                  <a class="nav-link a-btn" href="<?=BASE_PATH . "allSouhaits"?>" ?>Livres demandés</a>
+                </li>
+              <?php } ?>
+
+              <!-- Tout le monde -->
+              <li class="nav-item">
+                <a class="nav-link a-btn" href="<?= BASE_PATH . "contact" ?>">Nous contacter</a>
+              </li>
+
+              <!-- Déconnexion -->
+              <?php if(User::isConnected()){?>
+              <?php } ?>
+
+
             </ul>
 
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Livre, Auteur,ISBN" aria-label="Rechercher">
+            <form action="<?=BASE_PATH . "listeLivres"?>" method="post" class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Livre, Auteur,ISBN" aria-label="Rechercher" name="search">
               <button class="btn btn-outline-success btncolor" type="submit">Rechercher</button>
             </form>
 
