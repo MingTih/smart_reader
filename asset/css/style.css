@@ -273,7 +273,7 @@ body {
 
 .input {
 width: 76%;
-color: #fff;
+color: rgba(0, 0, 0, 0.787);
 font-weight: 700;
 font-size: 14px;
 letter-spacing: 1px;
@@ -297,7 +297,7 @@ form.form1 {
 
 .pass {
  width: 76%;
-color: #fff;
+color: rgba(0, 0, 0, 0.787);
 font-weight: 700;
 font-size: 14px;
 letter-spacing: 1px;
@@ -328,13 +328,15 @@ font-family: 'Ubuntu', sans-serif;
     background: linear-gradient(to right, #b8934a, #785218);
     border: 0;
     padding-left: 40px;
-    padding-right: 40px;
+    padding-right: 50px;
     padding-bottom: 10px;
     padding-top: 10px;
     font-family: 'Ubuntu', sans-serif;
-    margin-left: 35%;
+    margin-left: 30%;
     font-size: 13px;
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    width: 150px;
+
 }
 
 .forgot {

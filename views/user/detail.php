@@ -41,7 +41,7 @@ include VIEWS.'inc/header.php';
     <!-- <a href="?supprimer=ok" class="btn btn-danger mx-5">Supprimer mon compte</a> -->
 
     <!-- test pour la fonction déconnexion : à retirer et mettre dans le head -->
-    <a href="?deconnexion=ok" class="btn btn-danger mx-5">Déconnexion</a>
+    <!-- <a href="?deconnexion=ok" class="btn btn-danger mx-5">Déconnexion</a> -->
 
 
 </div>

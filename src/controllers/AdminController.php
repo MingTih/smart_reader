@@ -3,6 +3,18 @@
 class AdminController
 {
 
+    public static function isAdmin($admin){
+
+        if($admin == "ok"){
+
+            Admin::verifAdmin($admin);
+            // Redirection accueil
+            header("location:".BASE_PATH);
+
+        }
+    }
+
+
 //afficher les utilisateurs
     public static function usersListing(){
         $users = Admin::allUsers();

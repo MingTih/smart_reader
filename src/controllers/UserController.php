@@ -222,11 +222,13 @@ public static function updateUser()
                     User::connexionValid($infoUser);
                 }
             }
+
         }
 
         include VIEWS . "user/connexion.php";
     }
 
+    
     public static function deconnexion($deconnexion){
         
         if($deconnexion == "ok"){
@@ -237,6 +239,7 @@ public static function updateUser()
         }
 
     }
+
 
 //     public static function disabled(){
         

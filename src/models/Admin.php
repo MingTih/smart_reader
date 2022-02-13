@@ -33,6 +33,20 @@ class Admin extends Db
     
     }
     
+    /********************************************** ADMIN ***************************************************** */
+
+
+    public static function verifAdmin($admin){
+
+
+        if (isset($_SESSION["admin"])&& $admin=='ok'){
+
+            return true;
+            exit;
+        }
+    
+        }
+
     
 
 

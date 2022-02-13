@@ -2,7 +2,9 @@
 if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
     UserController::deconnexion($_GET["deconnexion"]);
 }
-?>
+// if(isset($_SESSION["admin"])
+//     Admin::verifAdmin($admin));
+// ?>
 
 
 
@@ -65,17 +67,19 @@ if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active a-btn" aria-current="page" href="<?= BASE_PATH . "inscription" ?>">S'inscrire</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link a-btn" href="<?= BASE_PATH . "connexion" ?>">Se connecter</a>
-              </li>
-                  
-              <li class="nav-item">
-                <a class="nav-link a-btn" href="<?= BASE_PATH . "contact" ?>">Nous contacter</a>
-              </li>
+              <?php if(!User::isConnected()){?>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active a-btn" aria-current="page" href="<?= BASE_PATH . "inscription" ?>">S'inscrire</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link a-btn" href="<?= BASE_PATH . "connexion" ?>">Se connecter</a>
+                  </li>
+              <?php } ?>
+
+                  <li class="nav-item">
+                    <a class="nav-link a-btn" href="<?= BASE_PATH . "contact" ?>">Nous contacter</a>
+                  </li>
                   
               <?php if(User::isConnected()){?>
                 <li class="nav-item"> 
@@ -83,6 +87,12 @@ if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
                 </li>
               <?php } ?>
 
+              <!-- <?php //if(Admin::verifAdmin($admin)){?>
+                <li class="nav-item"> 
+                  <a class="nav-link a-btn" href="?admin=ok" ?>">Admin</a>
+                </li>
+              <?php //} ?>
+ -->
             </ul>
 
             <form class="d-flex">
