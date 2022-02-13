@@ -2,14 +2,17 @@
 
 include VIEWS.'inc/header.php'; 
 
-echo "<pre>";
+// echo "<pre>";
 //     print_r($_GET);
+    // print_r($infoUser);
     // print_r($listAllOffres);
-echo "</pre>";
+// echo "</pre>";
 ?>
 
 <main class="container">
     <h1 class="text-center">Liste de toutes les offres</h1>
+
+    <div class="point">Vous avez : <?= $point?> point(s). </div>
 
     <?php
         if(empty($listAllOffres)){

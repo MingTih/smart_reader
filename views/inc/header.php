@@ -46,9 +46,9 @@ if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
         <h1 class="titreSite">Le site d'échange de livres d'occasion</h1>
       </div>
       <h3 class="quote">"Lire c'est toucher du doigt les limites de son imagination..."</h3>
+    </div>
 
 <!------------------------------------ Mascotte img----------------------- -->
-    </div>
 
       <div class="mascotte4 d-flex">
         <img src="../../asset/images/mascotte4.png" width="150px" height="150px" alt="image_mascotte_hibou">
