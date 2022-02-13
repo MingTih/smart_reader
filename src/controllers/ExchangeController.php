@@ -11,6 +11,13 @@ class ExchangeController
 
         $msg1 = "";
 
+        //Afficher points utilisateur:
+        $infoUser = User::getInfoUser([
+            'id_user'=>$_SESSION['id_user']
+        ]);
+
+        $point = $infoUser['point'];
+
         $listAllOffres = Exchange::allAvailableDeals([
             'dealing_position'=>'offer',
             'done'=>'0'
@@ -45,6 +52,14 @@ class ExchangeController
 
         $msg1 = "";
 
+        //Afficher points utilisateur:
+        $infoUser = User::getInfoUser([
+            'id_user'=>$_SESSION['id_user']
+        ]);
+
+        $point = $infoUser['point'];
+        
+        
         $listAllWishes = Exchange::allAvailableDeals([
             'dealing_position'=>'request',
             'done'=>'0'

@@ -154,6 +154,69 @@ h3.quote{
 
 }
 
+
+
+
+/* ---------------------------------BODY-------------------------------------------------- */
+/* Mon Compte */
+#monCompteCadre{
+   margin: 35px auto;
+}
+
+#monCompteCadre #titre{
+   padding: 10px 0;
+   margin-bottom: 35px;
+}
+
+#monCompteCadre .informations ul{
+   margin: 0 50px;
+   font-size: 20px;
+   margin-bottom: 30px;
+}
+
+#monCompteCadre .photo{
+   margin-bottom: 60px;
+}
+
+#monCompteCadre .photo img{
+   display: block;
+   height: 200px;
+   margin: 0 auto ;
+}
+
+#monCompteCadre .intitule{
+   font-weight: bold;
+}
+
+#monCompteCadre #lien{
+   margin: 0;
+   padding: 0;
+}
+
+#monCompteCadre a.btn{
+   width: 200px;
+   margin: 20px;
+   padding: 10px 0;
+   border-radius: 5%;
+   font-size: 20px;
+
+}
+
+#monCompteCadre button.btn{
+   width: 250px;
+   margin: 20px;
+   padding: 10px 0;
+   font-size: 20px;
+
+}
+/* Mes offres */
+
+
+
+
+
+
+
 /* ---------------------------------FOOTER-------------------------------------------------- */
 
 
