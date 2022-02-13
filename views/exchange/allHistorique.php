@@ -10,7 +10,7 @@ include VIEWS.'inc/header.php';
 <main class="container">
     <h1 class="text-center">Liste de toutes les échanges</h1>
 
-    <table class="table">
+    <table class="table" id="tftable">
         <thead>
             <tr>
                 <th scope="col">Identifiant</th>

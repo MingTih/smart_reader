@@ -2,10 +2,10 @@
 
 include VIEWS.'inc/header.php';
 
-// echo "<pre>";
-//     print_r($listeLivres);
-//     print_r($_POST);
-// echo "</pre>";
+echo "<pre>";
+    print_r($listeLivres);
+    print_r($_POST);
+echo "</pre>";
 
 ?>
 

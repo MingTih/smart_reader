@@ -2,9 +2,6 @@
 if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
     UserController::deconnexion($_GET["deconnexion"]);
 }
-// if(isset($_SESSION["admin"])
-//     Admin::verifAdmin($admin));
-// ?>
 
 ?>
 
@@ -106,11 +103,21 @@ if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
                 </li>
               <?php } ?>
 
-              <!-- <?php //if(Admin::verifAdmin($admin)){?>
-                <li class="nav-item"> 
-                  <a class="nav-link a-btn" href="?admin=ok" ?>">Admin</a>
+              <?php if(AdminController::isAdmin()){?>
+                <li class="nav-item dropdown"> 
+                  <a class="nav-link dropdown-toggle a-btn" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Admin
+                  </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="<?= BASE_PATH . "listUsers" ?>">Liste des utilisateurs</a></li>
+                      <li><a class="dropdown-item" href="<?= BASE_PATH . "allOffres" ?>">Liste des offres</a></li>
+                      <li><a class="dropdown-item" href="<?= BASE_PATH . "allSouhaits" ?>">Liste des demandes</a></li>
+                      <li><a class="dropdown-item" href="<?= BASE_PATH . "allHistorique" ?>">Historique des Echanges</a></li>
+                    </ul>
+
                 </li>
-              <?php //} ?>
+              <?php } ?>
 
 
               <?php if(User::isConnected()){?>

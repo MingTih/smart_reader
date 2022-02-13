@@ -9,7 +9,7 @@ include VIEWS.'inc/header.php';
 
 
 <!-- <div class='container'> -->
-  <table class="table text-center container">
+  <table class="table text-center container" id="tftable">
     <thead>
       <tr>
         <th scope="col-1">id_user</th>
@@ -24,6 +24,8 @@ include VIEWS.'inc/header.php';
         <th scope="col-1">Photo</th>
         <th scope="col-1">Admin</th>
         <th scope="col-1">Disabled</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>

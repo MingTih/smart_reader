@@ -21,7 +21,7 @@ include VIEWS.'inc/header.php';
         }else{
     ?>
     
-    <table class="table">
+    <table class="table" id="tftable">
         <thead>
             <tr>
                 <th scope="col">Date de la demande</th>

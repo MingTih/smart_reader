@@ -3,16 +3,22 @@
 class AdminController
 {
 
-    public static function isAdmin($admin){
+//Connection d'un admin
+    public static function isAdmin(){
 
-        if($admin == "ok"){
+        if(!User::isConnected()){
 
-            Admin::verifAdmin($admin);
-            // Redirection accueil
-            header("location:".BASE_PATH);
-
+            return false;
+            
         }
+        if($_SESSION['admin']==0){
+
+            return false;
+        }
+        
+        return true;
     }
+
 
 
 //afficher les utilisateurs
@@ -61,6 +67,14 @@ class AdminController
 
     }
 
+
+    //afficher les livres
+    public static function booksListing(){
+        $books = Admin::allBooks();
+
+        //recuperation de la vue
+        require VIEWS . "admin/listBooks.php";
+    }
 
 
 

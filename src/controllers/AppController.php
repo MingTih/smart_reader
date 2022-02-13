@@ -8,7 +8,16 @@ class AppController
         include VIEWS . "app/home.php";
     }
 
-    
+    public static function legal()
+    {
+        include VIEWS . "app/mentions_legales.php";
+    }
+
+    public static function who()
+    {
+        include VIEWS . "app/qui_sommes_nous.php";
+    }
+
 
     public static function contact(){
 

@@ -466,27 +466,27 @@ a {
 	padding-bottom: 10px;
 }
   /*------------Message contactez-nous---------------------*/
-input, textarea {
+input, #msg {
 	
-	font: 1em sans-serif;
-  
+	font: 0.8em sans-serif;
+   color: rgba(0, 0, 0, 0.794);
 	/* Pour que tous les champs texte aient la même dimension */
-	width:490px;
+	width:482px;
 	box-sizing: border-box;
   
 	/* Pour harmoniser le look & feel des bordures des champs texte */
 	border: 1px solid #e5e5e5;
   }
   
-  input:focus, textarea:focus {
+  input:focus, #msg:focus {
 	/* Pour souligner légèrement les éléments actifs */
-	border-color: #000;
+	border-color: rgb(243, 241, 241);
   }
   
-  textarea {
+  #msg {
 	/* Pour aligner les champs texte multi‑ligne avec leur étiquette */
 	vertical-align: top;
-  
+   padding-top: 10px;
 	/* Pour donner assez de place pour écrire du texte */
 	height: 8em;
   }
@@ -557,7 +557,7 @@ input, textarea {
 #formulaire #enveloppe {
 	font-size: 14px;
 	color: #999;
-	right: 15px;
+   padding-right: 3.5em;
 	top: 50%;
 	transform: translateX(-50%); 
 	position: absolute;
@@ -569,15 +569,177 @@ input, textarea {
    align-content: center;
  } 
 .image {
-   margin: -60px ;
    text-align: center;
    height: 250px;
    position: relative;
 }
-/* #contact{ */
-	/* text-transform : uppercase; */
-	/* font-size: 20px; */
-	
-/* } */
 
+/* mise en forme de la page inscription */
+
+#cadre {
+   margin-top: 100px;
+   margin-bottom: 100px;
+   border-color: #000;
+   background:  linear-gradient(rgba(241, 191, 243, 0.5), rgba(148, 238, 230, 0.5));
+	;
+	/* padding: -100px; */
+   padding-bottom: 55px;
+	width: 75%;
+	border-radius: 8px;
+	-o-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	/* margin: 100px ; */
+	font-family: 'Roboto', sans-serif;
+	color: #B88F49
+	;
+	font-weight: 400;
+	position: relative;
+	font-size: 18px;
+	box-shadow:0 0 15px #000;
+}
+#cadre #formInscription {
+	position: relative;
+}
+#btnInscription{
+   font-size: 18px;
+	color: #fff;
+	background: #B88F49;
+	border: none;
+	margin: 19px 0 40px;
+	cursor: pointer;
+   width: 180px;
+   padding: 14px;
+}
+
+#btnInscription:hover {
+	
+	background: #2f73a3;
+}
+#btn{
+   white-space:nowrap;
+	margin: 10px; 
+
+}
+
+
+.flex {
+   display: flex;
+   height: 100%;
+   width: 100%;
+   justify-content: center;
+   align-content: center;
+ }
  
+.container-mention-legal {
+   display: flex;
+   margin: 40px auto;
+   flex-direction: column;
+   width: 950px;
+   padding: 50px;
+   background:  linear-gradient(rgba(241, 191, 243, 0.5), rgba(148, 238, 230, 0.5));
+   -webkit-box-shadow: 0 0 15px #000;
+   box-shadow: 0 0 15px #000;
+   text-align: justify;
+ }
+ 
+ .mascotte2{
+   position: relative;
+   height:250px;  
+   position: absolute; 
+   z-index: 10;
+   top: 10px;
+   right: 10px; 
+   margin: 866px 0px 0px 0px;
+   float: right;
+
+}
+
+.container-qui-nous-sommes{
+   display: flex;
+   margin: 40px auto;
+   flex-direction: column;
+   width: 950px;
+   padding: 50px;
+   background:  linear-gradient(rgba(241, 191, 243, 0.5), rgba(148, 238, 230, 0.5));
+   -webkit-box-shadow: 0 0 15px #000;
+   box-shadow: 0 0 15px #000;
+   text-align: justify;
+}
+.mascotte3 img{
+   position: relative;
+   height:250px;  
+   position: absolute; 
+   z-index: 10;
+   top: 10px;
+   right: 10px; 
+   margin: 610px 0px 0px 0px;
+   float: right;
+
+}
+#conteneur_qsn {
+   width: 60%;
+   
+   border:2 solid;
+   display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1F455F;
+    margin: 20px;
+    padding: 20px;
+    font-size: 30px;
+
+   
+}
+p{
+    font-size: 20px;
+}
+#conteneur_qsn p {
+   margin: 50px;
+   background-color: #fff;
+   font-size: 22px;
+}
+#h1-qsn{
+   font-size: 30px;
+   text-align: center;
+   margin-top: 30px;
+   margin-bottom: 30px;
+ 
+}
+#h1-qsn:before, #h1-qsn:after {
+   content:'\00a0\00a0\00a0\00a0';
+   text-decoration:line-through ;
+   margin: auto 0.5em;
+ }
+ 
+ #tftable {
+    font-size:14px;
+    color:#333333;
+    width:100%;
+    border-width: 1px;
+    border-color: #729ea5;
+    border-collapse: collapse;
+}
+ #tftable th {
+    font-size:12px;
+    background-color:#d5e0d5 ;
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #729ea5;
+    text-align:left;
+}
+ #tftable tr {
+    background-color:#fff;
+}
+ #tftable td {
+    font-size:14px;
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #729ea5;
+}
+ #tftable tr:hover {
+    background-color:#ffffff;
+}

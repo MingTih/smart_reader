@@ -6,8 +6,8 @@
 
     <div class="copyright d-flex">
         <p>© Copyright © 2022</p>
-        <p>Contact</p>
-        <p>Mentions légales</p>
+        <p><a class="dropdown-item" href="<?= BASE_PATH . "qui_sommes_nous" ?>">Qui sommes-nous ?</p>
+        <p><a class="dropdown-item" href="<?= BASE_PATH . "mentions_legales" ?>">Mentions légales</p>
         <p>Plan du site</p>
     </div>
 </footer>

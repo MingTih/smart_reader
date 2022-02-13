@@ -36,11 +36,16 @@
 				    <input type="text" name="objet" class="input-text" required>
 			    </div>	
 				
-			    <div class="form-row" id="divInput">
+			    <!-- <div class="form-row" id="divInput">
 				    <label for="msg">Message :</label>
-				    <textarea id="msg" name="message"></textarea>
-			    </div>				
-				
+				    <textarea type="text" id="msg" name="message" class="input-text"></textarea>
+			    </div>				 -->
+				<label for="msg">Message</label>
+				<div class="form-floating">
+					<textarea class="form-control"  id="msg" name="message" ></textarea>
+				</div>
+
+
 			    <div class="form-row-last" id="divSubmit">
 				    <input type="submit" name="register" class="register" value="Envoyer">
 			    </div>

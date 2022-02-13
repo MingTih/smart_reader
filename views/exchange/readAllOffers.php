@@ -21,7 +21,7 @@ echo "</pre>";
         }else{
     ?>
     
-    <table class="table">
+    <table class="table" id="tftable">
         <thead>
             <tr>
                 <th scope="col">Date de l'offre</th>
