@@ -42,7 +42,7 @@ echo "</pre>";
             ?>
                 <tr>
             
-                        <th scope="row"><?=$offre['dealing_date']?></th>
+                        <th scope="row"><?=substr($offre['dealing_date'],0,10)?></th>
                         <td><?=$offre['api']['volumeInfo']['title']?></td>
                         <td>
                             <?php

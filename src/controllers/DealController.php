@@ -8,6 +8,7 @@ class DealController
         //Si pas connecté, renvoie à la page connexion
         if(!User::isConnected()){
             header("location:".BASE_PATH."connexion");
+            exit;
         }
 
         //Si pas de GET, renvoie à la liste d'offres
@@ -62,6 +63,10 @@ class DealController
                         'done' =>'0',
                         'dealing_date' =>null
                     ]);
+
+                    //Création cookie
+                    setcookie("stockTitreLivre", $detailLivre['title'], time()+5);
+
                     header ("location:".BASE_PATH."mesOffres");
                     exit;
                 }
@@ -131,6 +136,9 @@ class DealController
                         'done' =>'0',
                         'dealing_date' =>null
                     ]);
+
+                    setcookie("stockTitreLivre", $detailLivre['title'], time()+5);
+
                     header ("location:".BASE_PATH."mesSouhaits");
                     exit;
 
@@ -210,6 +218,9 @@ class DealController
                 'id_deal'=>$_GET['id']
             ]);
 
+            //Création cookie
+            setcookie("modifDeal", "Le livre a bien été supprimé de la liste", time()+5);
+
             // Redirection accueil
             header("location:".BASE_PATH."mesOffres");
             exit;
@@ -251,6 +262,9 @@ class DealController
                 'id_deal'=>$_GET['id']
             ]);
 
+            //Création cookie
+            setcookie("modifDeal", "Le livre a bien été supprimé de la liste", time()+5);
+
             header("location:".BASE_PATH."mesSouhaits");
             exit;
         }
@@ -272,7 +286,7 @@ class DealController
                 exit;
             }
             
-            //
+            //récup infoDeal
             $oneDealArray = Deal::readOneDeal([
                 'id_deal'=>$_GET['deal']
             ]);   
@@ -305,6 +319,10 @@ class DealController
                     'point_offers'=>$newPoint,
                     'id_deal'=>$deal["id_deal"]
                 ]);
+
+                //Création cookie
+                setcookie("modifDeal", "L'état du livre - ".$detailLivre["title"]." - a bien été modifié", time()+5);
+
                 header("location:".BASE_PATH.$cancelModifRoad);
                 exit;
             }

@@ -355,7 +355,7 @@ public static function updateUser()
             //Contrôle si compte désactivé
             foreach($disabledList as $cle=>$disabled){
                 if($_POST['pseudo']==$disabledList[$cle]['pseudo']){
-                    setcookie("disabledAccount", "Le compte n'est plus actif, veuillez contacter le service client pour le réactiver ou bien créer un nouveau compte.", time()+60);
+                    setcookie("disabledAccount", "Le compte n'est plus actif, veuillez contacter le service client pour le réactiver ou bien créer un nouveau compte.", time()+5);
 
                     header("location:".BASE_PATH."connexion");
                     exit;    
@@ -386,7 +386,7 @@ public static function updateUser()
                     $msg .= "<div class=\"alert alert-danger\" role=\"alert\">Le pseudo ou le mot de passe est incorrect. Veuillez réessayer.</div>";
                 }else{
                     User::connexionValid($infoUser);
-                    setcookie("connexionSuccess", "Bienvenue ".$_POST['pseudo']." !", time()+60);
+                    setcookie("connexionSuccess", "Bienvenue ".$_POST['pseudo']." ! Nous te souhaitons une très bonne visite!", time()+5);
                     header("location:".BASE_PATH);
                     exit;
             
@@ -406,6 +406,7 @@ public static function updateUser()
 
         if($deconnexion == "ok"){
             User::destroySession($deconnexion);
+            setcookie("disconnect", "Merci de ta visite et à la prochaine!", time()+5);
 
             // Redirection accueil
             header("location:".BASE_PATH);
