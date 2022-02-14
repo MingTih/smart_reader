@@ -262,7 +262,7 @@ public static function updateUser()
         //Vérif photo---------------------------------------------------
         if (empty($_FILES['photo']["tmp_name"])){
             $cheminModifPhoto = $_SESSION["readPhoto"][0]."photo_profil\\".$_SESSION['readPhoto'][1];
-        } else{
+        }else{
             $cheminModifPhoto = User::savePhoto($pseudo, $_FILES['photo']);
 
             $size = $_FILES["photo"]["size"];
@@ -304,7 +304,7 @@ public static function updateUser()
                 'point' => $_SESSION["point"],
                 'photo' => $cheminModifPhoto,
                 'admin' => $_SESSION["admin"],
-                'disabled' => "NULL",
+                'disabled' => "0",
                 
 
             ]);

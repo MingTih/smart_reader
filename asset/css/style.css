@@ -171,9 +171,13 @@ h3.quote{
 }
 
 #monCompteCadre .informations ul{
-   margin: 0 50px;
    font-size: 20px;
    margin-bottom: 30px;
+   list-style: none;
+}
+
+#monCompteCadre .informations ul li{
+   margin: 0;
 }
 
 #monCompteCadre .photo{
@@ -797,8 +801,8 @@ main.page-404{
    .mascotte4resp img{
    
       display:none;
+   }
 }
-
 @media (max-width:740px){
 
    h1.titreSite{
@@ -850,44 +854,48 @@ main.page-404{
        
    }
 
-.boites{
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-   margin-top: 15px;
-   
-   padding-top: 40px;
-} 
+   .boites{
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 15px;
+      
+      padding-top: 40px;
+   } 
 
-.boite1{
-   background: #E8EDFF;
-   width: 100px;
-   height: 100px;
-   border-radius: 10px 100px / 120px;
-}
-
-.boite2{
-
-   background: #B8CBB8;
-   width: 100px;
-   height: 100px;
-   border-radius: 50% 20% / 10% 40%;
-   margin-top: 30px;
-}
-
-.boite3{
-   background: #E1D2DB;
-   width: 100px;
-   height: 100px;
-   border-radius: 50% 20% / 10% 40%;
-   margin-top: 35px;
-}
-.boites p{
-   padding-top: 10px;
-   font-family: Gloria Hallelujah;
-   font-size: 10px;
-   /* font-weight: 600; */
-} 
-
-
+   .boite1{
+      background: #E8EDFF;
+      width: 100px;
+      height: 100px;
+      border-radius: 10px 100px / 120px;
    }
+
+   .boite2{
+
+      background: #B8CBB8;
+      width: 100px;
+      height: 100px;
+      border-radius: 50% 20% / 10% 40%;
+      margin-top: 30px;
+   }
+
+   .boite3{
+      background: #E1D2DB;
+      width: 100px;
+      height: 100px;
+      border-radius: 50% 20% / 10% 40%;
+      margin-top: 35px;
+   }
+   .boites p{
+      padding-top: 10px;
+      font-family: Gloria Hallelujah;
+      font-size: 10px;
+      /* font-weight: 600; */
+   } 
+
+   #monCompteCadre .informations ul{
+      margin: 0 50px;
+   }
+   
+
+}

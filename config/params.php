@@ -7,7 +7,7 @@ const CONFIG = [
     'db' => [
         'DB_HOST' => 'localhost',
         'DB_PORT' => '3306',
-        'DB_NAME' => 'smart-reader',
+        'DB_NAME' => 'smart_reader',
         'DB_USER' => 'root',
         'DB_PSWD' => '',
     ],
