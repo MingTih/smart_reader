@@ -5,15 +5,15 @@
  */
 const CONFIG = [
     'db' => [
-        'DB_HOST' => 'localhost',
+        'DB_HOST' => 'localhost:8889',
         'DB_PORT' => '3306',
-        'DB_NAME' => 'smart_reader',
+        'DB_NAME' => 'smart-reader',
         'DB_USER' => 'root',
-        'DB_PSWD' => '',
+        'DB_PSWD' => 'root',
     ],
     'app' => [
         'name' => 'smart_reader',
-        'projectBaseUrl' => 'http://localhost/smart_reader'
+        'projectBaseUrl' => 'http://localhost:8888/smart_reader'
     ]
 ];
 
@@ -22,13 +22,13 @@ const CONFIG = [
  */
 const BASE_DIR = __DIR__ . '/../';
 const BASE_PATH = CONFIG['app']['projectBaseUrl'] . '/public/index.php/';
-const PUBLIC_FOLDER = BASE_DIR . 'public\\';
+const PUBLIC_FOLDER = BASE_DIR . 'public/';
 const VIEWS = BASE_DIR . 'views/';
 const MODELS = BASE_DIR . 'src/models/';
 const CONTROLLERS = BASE_DIR . 'src/controllers/';
 const PHOTO = BASE_DIR.'public\\uploads\\';
 const COVER = '../../public/uploads/';
-
+const ASSET =  CONFIG['app']['projectBaseUrl'] . '/asset/';
 const API_KEY = "AIzaSyAzFkhp4TZ1_TvOfKk3f7O7r3pgk2lMxFQ";
 
 /**

@@ -29,13 +29,13 @@
                    
                         <div class="carousel-inner">
                         <div class="carousel-item active">
-                        <img src="../../asset/images/livre1slider.jpeg" class="d-block w-100" alt="image livre ouvert histoire">
+                        <img src="<?=ASSET?>images/ccmimg.jpg" class="d-block w-100" alt="visuel commentCaMarche">
                     </div>
                     <div class="carousel-item">
-                        <img src="../../asset/images/slider-quote.jpg" class="d-block w-100" alt="image livre ouvert imagination">
+                        <img src="<?=ASSET?>images/sliderpourquoi.jpg" class="d-block w-100" alt="visuel pourquoiSmartReader">
                     </div>
                     <div class="carousel-item">
-                        <img src="../../asset/images/livre4slider.jpeg" class="d-block w-100" height=""alt="image livre ouvert histoire">
+                        <img src="<?=ASSET?>images/slider-quote.jpg" class="d-block w-100" height=""alt="livreOuvertHistoireFar">
                     </div>
                 </div>
             </div>
@@ -51,21 +51,21 @@
          <container class="boites d-flex" >
 
              <div>
-                 <img src="../../asset/images/mascotte6.png" width="150px" height="150px"alt=" image-mascotte-hibou">
+                 <img src="<?=ASSET?>images/mascotte6.png" width="150px" height="150px"alt=" image-mascotte-hibou">
              </div>
              <div class="boite1 d-flex">
                  <p class="p1">"Bonjour, je te propose un bon plan pour lire toute l'année sans rien débourser</p>
              </div>
 
              <div>
-                <img src="../../asset/images/mascotte4.png" width="150px" height="150px"alt="image-mascotte-hibou">
+                <img src="<?=ASSET?>images/mascotte4.png" width="150px" height="150px"alt="image-mascotte-hibou">
             </div>
              <div class="boite2 d-flex">
                  <p class="p2">Echange tes livres contre des points et choisis d'autres livres</p>
              </div>
              <div>
            
-             <img src="../../asset/images/mascotte8.png" width="150px" height="150px"alt=" image-mascotte-hibou">
+             <img src="<?=ASSET?>images/mascotte8.png" width="150px" height="150px"alt=" image-mascotte-hibou">
             </div>
              <div class="boite3 d-flex">
                 <p>Pour cela tu peux simplement proposer tes livres en écrivant le code ISBN qui se trouve derrière ton livre"</p>

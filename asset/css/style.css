@@ -5,7 +5,9 @@
 }
 /* --------------------------------HEADER -------------------------------------------*/
 /* -------------------------------Bannière ------------------------------------------*/
-
+.body{
+   font-family: 'bebas-neue', sans-serif;
+}
 .logo-banniere{ 
     background:  linear-gradient(rgba(241, 191, 243, 0.5), rgba(148, 238, 230, 0.5));
 } 
@@ -45,7 +47,7 @@ h3.quote{
        display: flex;
        justify-content: center;
        text-align: center;
-       font-family: lobster, sans-serif;
+       font-family: 'lobster', sans-serif;
 }
  h3.quotebis{
     display:none;
@@ -111,7 +113,7 @@ h3.quote{
    justify-content: center;
    margin-top: 30px;
    color: #1F455F;
-   font-family: rowdies, sans-serif;
+   font-family: 'rowdies', sans-serif;
 
 }
 .boites{
@@ -149,7 +151,7 @@ h3.quote{
 }
 .boites p{
    padding-top: 35px;
-   font-family: Gloria Hallelujah;
+   font-family: 'gloria Hallelujah',sans-serif;
    font-size: large;
 
 }
@@ -233,111 +235,13 @@ h3.quote{
    padding-top: 15px;
    margin-top: 30px;
 }
-/* ---------------------------------@media------------------------------------------------- */
-/* --------------------------------------------------------------------------------------- */
-/* --------------------------------------------------------------------------------------- */
-
-
-@media (max-width:740px){
-
-   h1.titreSite{
-      margin-left: -150px;
-      font-size: 20px;
-      margin-top: 80px;
-   }
-
-
-   h3.quote{
-      display: none;
-   }
-
-   h3.quotebis{
-      display:block;
-      font-family: lobster, sans-serif;
-      text-align: center;
-      color: #1F455F;
-      margin-top: 20px;
-
-
-
-  
-   } 
-    .mascotte4resp img{
-   
-       display:none;
-       
-   }
-   .mascotte4 img{
-
-      width:130px; 
-      height:130px;  
-   }
-
-   .titreSlider {
-       position: absolute;
-       top: 0;
-       left: 0;
-       width:100%;
-       z-index:10;
-       color:#fff;
-       margin-top: 25px;
-       display: flex;
-       justify-content: center;
-       text-align: center;
-       background: rgba(217,203,160,0.4);
-       
-       
-   }
-
-.boites{
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-   margin-top: 15px;
-   
-   padding-top: 40px;
-} 
-
-.boite1{
-   background: #E8EDFF;
-   width: 100px;
-   height: 100px;
-   border-radius: 10px 100px / 120px;
-}
-
-.boite2{
-
-   background: #B8CBB8;
-   width: 100px;
-   height: 100px;
-   border-radius: 50% 20% / 10% 40%;
-   margin-top: 30px;
-}
-
-.boite3{
-   background: #E1D2DB;
-   width: 100px;
-   height: 100px;
-   border-radius: 50% 20% / 10% 40%;
-   margin-top: 35px;
-}
-.boites p{
-   padding-top: 10px;
-   font-family: Gloria Hallelujah;
-   font-size: 10px;
-   /* font-weight: 600; */
-} 
-
-
-   }
-
 
 
 /*____________ formulaire page de connection fichier index.html */
 
 body {
     background-color: #fff;
-    font-family: 'Ubuntu', sans-serif;
+     font-family: 'bebas-neue', sans-serif; 
 }
 
 .main {
@@ -374,7 +278,7 @@ margin-bottom: 50px;
 margin-left: 46px;
 text-align: center;
 margin-bottom: 27px;
-font-family: 'Ubuntu', sans-serif;
+font-family: 'lobster', sans-serif;
 }
 
 form.form1 {
@@ -398,7 +302,7 @@ margin-bottom: 50px;
 margin-left: 46px;
 text-align: center;
 margin-bottom: 27px;
-font-family: 'Ubuntu', sans-serif;
+font-family: 'lobster', sans-serif;
 }
 
 
@@ -417,7 +321,7 @@ font-family: 'Ubuntu', sans-serif;
     padding-right: 50px;
     padding-bottom: 10px;
     padding-top: 10px;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'lobster', sans-serif;
     margin-left: 30%;
     font-size: 13px;
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
@@ -433,7 +337,7 @@ font-family: 'Ubuntu', sans-serif;
 
 a {
     text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
-    color: #5690bb;
+    /* color: #5690bb; */
     text-decoration: none
 }
 
@@ -606,7 +510,7 @@ input, #msg {
 	cursor: pointer;
 }
 #formulaire .register:hover {
-	
+ 	
 	background: #2f73a3;
 }
 #formulaire #divSubmit input {
@@ -776,14 +680,14 @@ p{
    margin: auto 0.5em;
  }
  
- #tftable {
+  #tftable {
     font-size:14px;
     color:#333333;
     width:100%;
     border-width: 1px;
     border-color: #729ea5;
     border-collapse: collapse;
-}
+} 
  #tftable th {
     font-size:12px;
     background-color:#d5e0d5 ;
@@ -806,3 +710,104 @@ p{
  #tftable tr:hover {
     background-color:#ffffff;
 }
+/* ---------------------------------@media------------------------------------------------- */
+/* --------------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------------- */
+@media (max-width:1100px){
+   .mascotte4resp img{
+   
+      display:none;
+}
+
+@media (max-width:740px){
+
+   h1.titreSite{
+      margin-left: -150px;
+      font-size: 20px;
+      margin-top: 80px;
+   }
+
+
+   h3.quote{
+      display: none;
+   }
+
+   h3.quotebis{
+      display:block;
+      font-family: lobster, sans-serif;
+      text-align: center;
+      color: #1F455F;
+      margin-top: 20px;
+
+
+
+  
+   } 
+    .mascotte4resp img{
+   
+       display:none;
+       
+   }
+   .mascotte4 img{
+
+      width:130px; 
+      height:130px;  
+   }
+
+   .titreSlider {
+       position: absolute;
+       top: 0;
+       left: 0;
+       width:100%;
+       z-index:10;
+       color:#fff;
+       margin-top: 25px;
+       display: flex;
+       justify-content: center;
+       text-align: center;
+       background: rgba(217,203,160,0.4);
+       
+       
+   }
+
+.boites{
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+   margin-top: 15px;
+   
+   padding-top: 40px;
+} 
+
+.boite1{
+   background: #E8EDFF;
+   width: 100px;
+   height: 100px;
+   border-radius: 10px 100px / 120px;
+}
+
+.boite2{
+
+   background: #B8CBB8;
+   width: 100px;
+   height: 100px;
+   border-radius: 50% 20% / 10% 40%;
+   margin-top: 30px;
+}
+
+.boite3{
+   background: #E1D2DB;
+   width: 100px;
+   height: 100px;
+   border-radius: 50% 20% / 10% 40%;
+   margin-top: 35px;
+}
+.boites p{
+   padding-top: 10px;
+   font-family: Gloria Hallelujah;
+   font-size: 10px;
+   /* font-weight: 600; */
+} 
+
+
+   }

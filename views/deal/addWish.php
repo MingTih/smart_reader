@@ -10,7 +10,7 @@ include VIEWS.'inc/header.php';
 // echo "</pre>";
 ?>
 <main>
-    <div class="main">
+    <div class="main d-flex">
         <h1 class='text-center'>Ajouter une demande</h1>
 
         <h2><?=$detailLivre["title"]?></h2>
