@@ -45,7 +45,7 @@ h3.quote{
        display: flex;
        justify-content: center;
        text-align: center;
-       font-family: lobster, sans-serif;
+       font-family: 'lobster', sans-serif;
 }
  h3.quotebis{
     display:none;
@@ -111,7 +111,7 @@ h3.quote{
    justify-content: center;
    margin-top: 30px;
    color: #1F455F;
-   font-family: rowdies, sans-serif;
+   font-family: 'rowdies', sans-serif;
 
 }
 .boites{
@@ -149,7 +149,7 @@ h3.quote{
 }
 .boites p{
    padding-top: 35px;
-   font-family: Gloria Hallelujah;
+   font-family: 'gloria Hallelujah',sans-serif;
    font-size: large;
 
 }
@@ -337,7 +337,7 @@ h3.quote{
 
 body {
     background-color: #fff;
-    font-family: 'Ubuntu', sans-serif;
+     font-family: 'bebas-neue', sans-serif; */
 }
 
 .main {
