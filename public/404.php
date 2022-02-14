@@ -30,10 +30,6 @@ include VIEWS . "inc/header.php";
 
 </main>
 
-<img src="<?= ASSET ?>images/mascotte1.png" alt="" class="src">
-</div>
 
-</main>
-<?php
 
 include VIEWS . "inc/footer.php";
