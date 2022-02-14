@@ -11,58 +11,62 @@ include VIEWS.'inc/header.php';
 ?>
 <main>
     <div class="main d-flex">
-        <h1 class='text-center'>Ajouter une demande</h1>
 
-        <h2><?=$detailLivre["title"]?></h2>
+    <?=(isset($msg))?$msg:""?>
 
-        <div class="container-fluid">
-        <div class="row">
-            <ul class="col-7 text-decoration-none">
-                <li>Titre : <?=$detailLivre["title"]?></li>
-                <li>Auteur : 
+        <div class="main">
+            <h1 class='text-center'>Ajouter une demande</h1>
+
+            <h2><?=$detailLivre["title"]?></h2>
+
+            <div class="container-fluid">
+            <div class="row">
+                <ul class="col-7 text-decoration-none">
+                    <li>Titre : <?=$detailLivre["title"]?></li>
+                    <li>Auteur : 
+                        <?php
+                        for($i=0; $i<count($detailLivre["authors"]); $i++)
+                            if($i+1 == count($detailLivre["authors"])){
+                                echo $detailLivre["authors"][$i]; 
+                            }else{
+                                echo $detailLivre["authors"][$i] . ","; 
+                            }                  
+                        ?>
+                    </li>
+                    <li>Editeur: <?=$detailLivre["publisher"]?></li>
+                    <li>Date de parution : <?=$detailLivre["publishedDate"]?></li>
+                    <li>ISBN : <?=$detailLivre["industryIdentifiers"][1]["identifier"]?></li>
+                    <li>Genre : 
+                        <?php
+                            if(isset($detailLivre["categories"])){
+                                for($i=0; $i<count($detailLivre["categories"]); $i++){
+                                    if($i+1 == count($detailLivre["categories"])){
+                                        echo $detailLivre["categories"][$i]; 
+                                    }else{
+                                        echo $detailLivre["categories"][$i] . ","; 
+                                    }  
+                                }                    
+                            }else{
+                                echo "Non spécifié";
+                            }
+                        ?>
+                    <li>Pages : <?=$detailLivre["pageCount"]?></li>
+                </ul>
+                <div class="photo col-5">
                     <?php
-                    for($i=0; $i<count($detailLivre["authors"]); $i++)
-                        if($i+1 == count($detailLivre["authors"])){
-                            echo $detailLivre["authors"][$i]; 
-                        }else{
-                            echo $detailLivre["authors"][$i] . ","; 
-                        }                  
+                        if(!isset($detailLivre["imageLinks"])){
                     ?>
-                </li>
-                <li>Editeur: <?=$detailLivre["publisher"]?></li>
-                <li>Date de parution : <?=$detailLivre["publishedDate"]?></li>
-                <li>ISBN : <?=$detailLivre["industryIdentifiers"][1]["identifier"]?></li>
-                <li>Genre : 
+                        <img class="w-100" src="<?=COVER?>couverture/couverture_non_dispo.png" alt="couverture non disponible">
                     <?php
-                        if(isset($detailLivre["categories"])){
-                            for($i=0; $i<count($detailLivre["categories"]); $i++){
-                                if($i+1 == count($detailLivre["categories"])){
-                                    echo $detailLivre["categories"][$i]; 
-                                }else{
-                                    echo $detailLivre["categories"][$i] . ","; 
-                                }  
-                            }                    
                         }else{
-                            echo "Non spécifié";
+                    ?>
+                        <img src="<?=$detailLivre["imageLinks"]["thumbnail"];?>" alt="couverture de <?=$detailLivre["title"];?>">
+                    <?php
                         }
                     ?>
-                <li>Pages : <?=$detailLivre["pageCount"]?></li>
-            </ul>
-            <div class="photo col-5">
-                <?php
-                    if(!isset($detailLivre["imageLinks"])){
-                ?>
-                    <img class="w-100" src="<?=COVER?>couverture/couverture_non_dispo.png" alt="couverture non disponible">
-                <?php
-                    }else{
-                ?>
-                    <img src="<?=$detailLivre["imageLinks"]["thumbnail"];?>" alt="couverture de <?=$detailLivre["title"];?>">
-                <?php
-                    }
-                ?>
+                </div>
             </div>
         </div>
-    </div>
 
 
         <form action="" method="post">
@@ -79,11 +83,8 @@ include VIEWS.'inc/header.php';
 
         </form>
 
-
-<!-- "<\?=//BASE_PATH?>mesOffres" -->
     </div>
 
-    <?=(isset($msg))?$msg:""?>
 
 
 </main>

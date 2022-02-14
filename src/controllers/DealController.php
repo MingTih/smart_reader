@@ -29,29 +29,26 @@ class DealController
                 $msg="";
                 // Attribue des points en fonction de l'état du livre
                 if($_POST['etat']==""){
-                    $msg.="Veuillez renseigner l'état du livre";
-                    echo $msg;
+                    $msg.="<div class=\"alert alert-danger\" role=\"alert\">
+                    Veuillez renseigner l'état du livre.
+                    </div>";
                 }
 
                 if($_POST["etat"]!=""){
                     if($_POST['etat']=="mauvais"){
                         $point = 1;
-                        echo $point;
                     }
                     
                     if($_POST['etat']=="bon"){
                         $point = 2;
-                        echo $point;
                     }
                     
                     if($_POST['etat']=="neuf"){
                         $point = 3;
-                        echo $point;
                     }
                                 
                     if($_POST['etat']=="rare"){
                         $point = 4;
-                        echo $point;
                     }
 
                     Deal::addDeal([
@@ -102,29 +99,27 @@ class DealController
                 $msg="";
                 // Attribue des points en fonction de l'état du livre
                 if($_POST['etat']==""){
-                    $msg.="Veuillez indiquer l'état du livre à partir duquel vous êtes prêt à effetuer un échange";
-                    echo $msg;
+                    $msg.="<div class=\"alert alert-danger\" role=\"alert\">
+                    Veuillez renseigner l'état du livre.
+                    </div>";
+        
                 }
 
                 if($_POST["etat"]!=""){
                     if($_POST['etat']=="mauvais"){
                         $point = 1;
-                        echo $point;
                     }
                     
                     if($_POST['etat']=="bon"){
                         $point = 2;
-                        echo $point;
                     }
                     
                     if($_POST['etat']=="neuf"){
                         $point = 3;
-                        echo $point;
                     }
                                 
                     if($_POST['etat']=="rare"){
                         $point = 4;
-                        echo $point;
                     }
 
                     Deal::addDeal([

@@ -173,9 +173,13 @@ h3.quote{
 }
 
 #monCompteCadre .informations ul{
-   margin: 0 50px;
    font-size: 20px;
    margin-bottom: 30px;
+   list-style: none;
+}
+
+#monCompteCadre .informations ul li{
+   margin: 0;
 }
 
 #monCompteCadre .photo{
@@ -695,7 +699,87 @@ p{
 }
  #tftable tr:hover {
     background-color:#ffffff;
+
 }
+
+
+
+
+
+/* -----------------css 404--------- */
+main.page-404{
+   margin:0;
+   padding:0;
+   font-family: 'beba-neue', sans-serif;
+   height:100vh;
+ background-image: linear-gradient(to top, #2e1753, #1f1746, #131537, #0d1028, #050819);
+   display:flex;
+   justify-content:center;
+   align-items:center;
+   overflow:hidden;
+ }
+ .page-404 .text{
+     font-size: 70px;
+   position:absolute;
+   top:10%;
+   color:#fff;
+   text-align:center;
+ }
+ .page-404 h1{
+   font-size:50px;
+ }
+ .page-404 .star{
+   position:absolute;
+   width:2px;
+   height:2px;
+   background:#fff;
+   right:0;
+   animation:starTwinkle 3s infinite linear;
+ }
+ .page-404 .mascotte404 img{
+   width:300px;
+   position:absolute;
+   top:50%;
+   animation:astronautFly 6s infinite linear;
+ }
+ @keyframes astronautFly{
+   0%{
+     left:-100px;
+   }
+   25%{
+     top:50%;
+     transform:rotate(30deg);
+   }
+   50%{
+     transform:rotate(45deg);
+     top:55%;
+   }
+   75%{
+     top:60%;
+     transform:rotate(30deg);
+   }
+   100%{
+     left:110%;
+     transform:rotate(45deg);
+   }
+ }
+ @keyframes starTwinkle{
+   0%{
+      background:rgba(255,255,255,0.4);
+   }
+   25%{
+     background:rgba(255,255,255,0.8);
+   }
+   50%{
+    background:rgba(255,255,255,1);
+   }
+   75%{
+     background:rgba(255,255,255,0.8);
+   }
+   100%{
+     background:rgba(255,255,255,0.4);
+   }
+ }
 /* ---------------------------------@media------------------------------------------------- */
 /* --------------------------------------------------------------------------------------- */
 /* --------------------------------------------------------------------------------------- */
@@ -706,8 +790,8 @@ p{
    .mascotte4 img{
    
       display:none;
+   }
 }
-
 @media (max-width:740px){
 
    h1.titreSite{
@@ -757,30 +841,30 @@ p{
        
    }
 
-.boites{
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-   margin-top: 15px;
-   
-   padding-top: 40px;
-} 
+   .boites{
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 15px;
+      
+      padding-top: 40px;
+   } 
 
-.boite1{
-   background: #E8EDFF;
-   width: 100px;
-   height: 100px;
-   border-radius: 10px 100px / 120px;
-}
+   .boite1{
+      background: #E8EDFF;
+      width: 100px;
+      height: 100px;
+      border-radius: 10px 100px / 120px;
+   }
 
-.boite2{
+   .boite2{
 
-   background: #B8CBB8;
-   width: 100px;
-   height: 100px;
-   border-radius: 50% 20% / 10% 40%;
-   margin-top: 30px;
-}
+      background: #B8CBB8;
+      width: 100px;
+      height: 100px;
+      border-radius: 50% 20% / 10% 40%;
+      margin-top: 30px;
+   }
 
 .boite3{
    background: #E1D2DB;
