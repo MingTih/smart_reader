@@ -1,16 +1,29 @@
 <?php
 
 include VIEWS.'inc/header.php'; 
+// echo '<pre>';
+//   print_r($_SESSION);
+//   print_r($_FILES); 
+//   print_r($_FILES['photo']['size']);
+// echo '</pre>';
 
 ?>
+<div class="container-fluid" id='cadre'>
+  <div class="image">
+    <img src="../../asset/images/mascotte5.png">
+  </div>
+
 <h1 class= "text-center">Modifier mon Compte</h1>
 
-<form  method="post" class="mx-auto w-50" enctype="multipart/form-data">
+
+<?=isset($msg)?$msg:""?>
+
+<form  method="post" class="mx-auto w-50" enctype="multipart/form-data" id="formInscription">
   <fieldset>
     
     <div class="form-group" >
       <label for="name" class="col-form-label col-form-label-lg mt-4"><font style="vertical-align: inherit;">Nom</font></label>
-      <input type="text" required  class="form-control form-control-lg" id="name" name="name" value='<?=$_SESSION["nom"];?>'>
+      <input type="text"  class="form-control form-control-lg" id="name" name="name" value='<?=$_SESSION["nom"];?>'>
     </div>
 
     <div class="form-group" >
@@ -22,11 +35,6 @@ include VIEWS.'inc/header.php';
       <label for="pseudo" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pseudo</font></font></label>
       <input type="text" class="form-control form-control-lg" id="pseudo" name="pseudo" value='<?=$_SESSION["pseudo"];?>'>
     </div>
-
-    <!-- <div class="form-group">
-      <label for="pw" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mot de passe</font></font></label>
-      <input type="password" class="form-control form-control-lg" id="pw" placeholder="Mot de passe" name="pw">
-    </div> -->
 
     <div class="form-group">
       <label for="email" class="col-form-label col-form-label-lg mt-1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Adresse e-mail</font></font></label>
@@ -51,12 +59,11 @@ include VIEWS.'inc/header.php';
         </div>
     </div>
 
-
-    </fieldset>
     <button type="submit" class="btn btn-primary"><font style="vertical-align: inherit;">Modifier</font></button>
     <a href="<?=BASE_PATH?>"; class="btn btn-danger">Annuler</a>
 
   </fieldset>
+
 </form>
 
 

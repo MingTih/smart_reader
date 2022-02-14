@@ -11,6 +11,8 @@ include VIEWS.'inc/header.php';
 <main class="container">
     <h1 class="text-center">Liste de toutes les demandes</h1>
 
+    <div class="point">Vous avez : <?= $point?> point(s). </div>
+
     <?php
         if(empty($listAllWishes)){
     ?>
@@ -21,7 +23,7 @@ include VIEWS.'inc/header.php';
         }else{
     ?>
     
-    <table class="table">
+    <table class="table" id="tftable">
         <thead>
             <tr>
                 <th scope="col">Date de la demande</th>
@@ -42,7 +44,7 @@ include VIEWS.'inc/header.php';
             ?>
                 <tr>
             
-                        <th scope="row"><?=$wish['dealing_date']?></th>
+                        <th scope="row"><?=substr($wish['dealing_date'],0,10)?></th>
                         <td><?=$wish['api']['volumeInfo']['title']?></td>
                         <td>
                             <?php
@@ -69,3 +71,4 @@ include VIEWS.'inc/header.php';
         }
     ?>
 </main>
+<?php  include VIEWS.'inc/footer.php'; ?>

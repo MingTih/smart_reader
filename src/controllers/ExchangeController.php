@@ -4,10 +4,23 @@ class ExchangeController
 {
 // Afficher toutes les offres --------------------------------
     public static function allOffersList(){
+        if(!User::isConnected()){
+            header("location:".BASE_PATH."connexion");
+            exit;
+        }
+
         $msg1 = "";
 
-        $listAllOffres = Deal::readAllDeals([
-            'dealing_position'=>'offer'
+        //Afficher points utilisateur:
+        $infoUser = User::getInfoUser([
+            'id_user'=>$_SESSION['id_user']
+        ]);
+
+        $point = $infoUser['point'];
+
+        $listAllOffres = Exchange::allAvailableDeals([
+            'dealing_position'=>'offer',
+            'done'=>'0'
         ]);
 
         if(empty($listAllOffres)){
@@ -32,11 +45,24 @@ class ExchangeController
 
     // Afficher toutes les demandes --------------------------------
     public static function allWishesList(){
+        if(!User::isConnected()){
+            header("location:".BASE_PATH."connexion");
+            exit;
+        }
 
         $msg1 = "";
 
-        $listAllWishes = Deal::readAllDeals([
-            'dealing_position'=>'request'
+        //Afficher points utilisateur:
+        $infoUser = User::getInfoUser([
+            'id_user'=>$_SESSION['id_user']
+        ]);
+
+        $point = $infoUser['point'];
+        
+        
+        $listAllWishes = Exchange::allAvailableDeals([
+            'dealing_position'=>'request',
+            'done'=>'0'
         ]);
 
         if(empty($listAllWishes)){
@@ -59,10 +85,21 @@ class ExchangeController
         include VIEWS . "exchange/readAllWishes.php";
     }
 
+
+
+//---------------------------------------------------------------
     // Afficher les détails de l'échange, avec nom du pseudo et bouton pour accepter l'échange (delete l'offre au moment de l'acceptation dans dealing, ajout ligne dans exchange, calcul des points)
     public static function tradeDetail(){
 
-        //Récupération données dealing pour pseudo
+        if(!User::isConnected()){
+            header("location:".BASE_PATH."connexion");
+            exit;
+        }
+
+        $msg="";
+        $msgDisable="";
+
+        //Récupération données dealing pour pseudo et dynamisme page--------------------------------
         $infoDeal = Deal::readOneDeal([
             'id_deal'=>$_GET['idDeal']
         ]);
@@ -71,52 +108,217 @@ class ExchangeController
         //Définition du $title en fonction du deal
         if($infoDeal[0]["dealing_position"]=="offer"){
             $title = "l'offre";
-            $userPosition = "Offreur";
+            $userPosition = "Détenu par ";
             $chemin = "allOffres";
         }else{
             $title = "la demande";
-            $userPosition = "Demandeur";
+            $userPosition = "Demandé par ";
             $chemin = "allSouhaits";
         }
 
-        //Récupération données User grace à dealing  
-        $infoUser = Exchange::getUserInfo([
+        //Récupération données de celui qui fait la proposition grace à infoDeal
+        $proposer = Exchange::getUserInfo([
             "id_user"=>$infoDeal[0]['id_user']
+        ]);
+
+        //Récupération données de celui qui va accepter la proposition grace à Session  
+        $actor = Exchange::getUserInfo([
+            "id_user"=>$_SESSION['id_user']
         ]);
 
         //Récupération données livre API
         $livreInfo = Book::oneBook($_GET['idLivre']);
         $detailLivre = $livreInfo["volumeInfo"];
 
-        //Insertion données échange dans exchange
+        // Récupération état livre
+        $etat = Deal::pointToCondition($infoDeal[0]['point_offers']);
 
-        //Delete ligne dans dealing 
+        // CONTROLES---------------------------------------------------------
+        //Si done =1, le livre a déjà été échangé (au cas où quelqu'un tombe sur la page par accident)
+        if(Deal::done($infoDeal[0]["done"])){
+            $msgDisable .="Désolée, ce livre a déjà été échangé.<br>";
+        }
 
+        // Ne peut pas échanger avec soi-même
+        if(Exchange::sameUser($infoDeal[0]['id_user'])){
+            $msgDisable .="Attention! Vous ne pouvez pas échanger avec vous-même.<br>";
+        }
 
+        //Si acheteur pas assez de point, pour une offre :
+        if(Deal::isOffer($infoDeal[0]["dealing_position"])
+            && !Exchange::pointControl($actor[0]['point'],$infoDeal[0]["point_offers"])
+        ){
+            $msgDisable = "Vous n'avez pas assez de point pour effectuer cet échange.";
+        }
+        //Si acheteur pas assez de point, pour une demande :
+        if(!Deal::isOffer($infoDeal[0]["dealing_position"])
+            && !Exchange::pointControl($proposer[0]['point'],$infoDeal[0]["point_offers"])
+        ){
+            $msg = $proposer[0]['pseudo']." n'a pas assez de point pour effectuer cet échange.";
+        }
 
+        // Si tout est OK -----------------------------------------------: 
+        if(!Deal::done($infoDeal[0]["done"])
+            &&isset($_GET['echange']) && $_GET['echange']=='ok'
+            &&!Exchange::sameUser($infoDeal[0]['id_user'])
+            &&Exchange::getControl($_GET['idDeal'])
+            &&Exchange::getControl($_GET['idLivre']))
+        {
+
+            //quand on accepte une offre, insert BDD
+            if(Deal::isOffer($infoDeal[0]["dealing_position"])){
+                //Insertion données échange dans exchange
+                Exchange::insertExchange([
+                    'id_exchange'=>NULL,
+                    'id_deal'=>$infoDeal[0]['id_deal'],
+                    'id_purchaser'=>$_SESSION['id_user'],
+                    'id_book'=> $_GET['idLivre'],
+                    'id_owner'=>$infoDeal[0]["id_user"],
+                    'dealing_point'=>$infoDeal[0]["point_offers"],
+                    'purchase_date'=>NULL,
+                ]);
+
+                //Gestion points------------
+                if(Exchange::pointControl($actor[0]['point'],$infoDeal[0]["point_offers"])){
+                    //Retrait point pour purchaser------------
+                    Exchange::updatePoint([
+                        'point'=>$actor[0]['point']-$infoDeal[0]["point_offers"],
+                        'id_user'=>$_SESSION['id_user']
+                    ]);
+
+                    //Ajout points pour owner----------------
+                    Exchange::updatePoint([
+                        'point'=>$proposer[0]['point']+$infoDeal[0]["point_offers"],
+                        'id_user'=>$proposer[0]['id_user']
+                    ]);
+                }
+
+            }
+
+            //Si on accepte une demande
+            if(!Deal::isOffer($infoDeal[0]["dealing_position"])){
+                //Insertion données échange dans exchange
+                Exchange::insertExchange([
+                    'id_exchange'=>NULL,
+                    'id_deal'=>$infoDeal[0]['id_deal'],
+                    'id_purchaser'=>$infoDeal[0]["id_user"],
+                    'id_book'=> $_GET['idLivre'],
+                    'id_owner'=>$_SESSION['id_user'],
+                    'dealing_point'=>$infoDeal[0]["point_offers"],
+                    'purchase_date'=>NULL,
+                ]);
+
+                //Gestion points------------
+                if(Exchange::pointControl($proposer[0]['point'],$infoDeal[0]["point_offers"])){
+                    //Retrait point pour purchaser
+                    Exchange::updatePoint([
+                        'point'=>$proposer[0]['point']-$infoDeal[0]["point_offers"],
+                        'id_user'=>$proposer[0]['id_user']
+                    ]);
+                    
+                    //Ajout points pour owner----------------
+                    Exchange::updatePoint([
+                    'point'=>$actor[0]['point']+$infoDeal[0]["point_offers"],
+                        'id_user'=>$_SESSION['id_user']
+                    ]);
+
+                }
+            }
+                
+            // Mise à jour dealing done=1 
+            Deal::dealDone([
+                'done'=>'1',
+                'id_deal'=>$infoDeal[0]['id_deal']
+            ]);
+
+            
+            header("location:" . BASE_PATH . $chemin);
+            exit;
+            
+        }
 
         include VIEWS . "exchange/exchangePlace.php";
     }
 
-    // public static function myTradesList(){
+    //-------------------------------------------------------------------
+    //Affichage de tous les échanges conclus pour l'admin, du plus récent au plus ancien
+    public static function allTrades(){
+
+        if(!User::isConnected()){
+            header("location:".BASE_PATH."connexion");
+            exit;
+        }
+
+        if(!User::verifAdmin($_SESSION['admin'])){
+            header("location:".BASE_PATH);
+            exit;
+        }
+        
+        
+        $echangeListe=Exchange::allExchanges();
+
+        foreach($echangeListe as $cle=>$echange){
+            $echangeListe[$cle]['api'] = Book::oneBook($echangeListe[$cle]["id_book"]);
+
+            $echangeListe[$cle]['purchaser'] = Exchange::getUserInfo([
+                'id_user' => $echangeListe[$cle]['id_purchaser']
+            ]);
+
+            $echangeListe[$cle]['owner'] = Exchange::getUserInfo([
+                'id_user' => $echangeListe[$cle]['id_owner']
+            ]);
+
+
+        }
+
+
+        include VIEWS . "exchange/allHistorique.php";
+    }
+
+    //-------------------------------------------------------------------
+    //Affichage de tous les échanges conclus par un utilisateur, du plus récent au plus ancien
+
+    public static function myTradesList(){
+
+        if(!User::isConnected()){
+            header("location:".BASE_PATH."connexion");
+            exit;
+        }
+
+        $acquisitionList=Exchange::allIGet([
+            'id_purchaser'=>$_SESSION['id_user']
+        ]);
+        $cessionList=Exchange::allIGive([
+            'id_owner'=>$_SESSION['id_user']
+        ]);
+
+        foreach($acquisitionList as $cle=>$acquisition){
+            $acquisitionList[$cle]['api'] = Book::oneBook($acquisitionList[$cle]["id_book"]);
+
+            $acquisitionList[$cle]['owner'] = Exchange::getUserInfo([
+                'id_user' => $acquisitionList[$cle]['id_owner']
+            ]);
+
+        }
+
+        foreach($cessionList as $cle=>$cession){
+            $cessionList[$cle]['api'] = Book::oneBook($cessionList[$cle]["id_book"]);
+
+            $cessionList[$cle]['owner'] = Exchange::getUserInfo([
+                'id_user' => $cessionList[$cle]['id_owner']
+            ]);
+
+        }
 
 
 
 
 
-    //     include VIEWS . "exchange/historique.php";
-    // }
+        include VIEWS . "exchange/historique.php";
+    }
 
 
-    // public static function tradeSummury(){
-
-
-
-
-
-    //     include VIEWS . "exchange/historiqueDetail.php";
-    // }
-
+  
 
 
 

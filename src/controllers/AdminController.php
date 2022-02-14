@@ -3,6 +3,24 @@
 class AdminController
 {
 
+//Connection d'un admin
+    public static function isAdmin(){
+
+        if(!User::isConnected()){
+
+            return false;
+            
+        }
+        if($_SESSION['admin']==0){
+
+            return false;
+        }
+        
+        return true;
+    }
+
+
+
 //afficher les utilisateurs
     public static function usersListing(){
         $users = Admin::allUsers();
@@ -49,6 +67,14 @@ class AdminController
 
     }
 
+
+    //afficher les livres
+    public static function booksListing(){
+        $books = Admin::allBooks();
+
+        //recuperation de la vue
+        require VIEWS . "admin/listBooks.php";
+    }
 
 
 

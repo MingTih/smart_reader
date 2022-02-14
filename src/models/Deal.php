@@ -5,7 +5,7 @@ class Deal extends Db
 //Ajouter, à la table deal, un livre (add)----------------------------------------------------------
     public static function addDeal($data){
 
-        $resquest = "INSERT INTO dealing (id_deal,id_user, id_book, dealing_position, point_offers, point_deal, dealing_date) VALUES (:id_deal,:id_user,:id_book,:dealing_position,:point_offers,:point_deal,:dealing_date)";
+        $resquest = "INSERT INTO dealing (id_deal,id_user, id_book, dealing_position, point_offers, done, dealing_date) VALUES (:id_deal,:id_user,:id_book,:dealing_position,:point_offers,:done,:dealing_date)";
         $preparedRequest = self::getDb()->prepare($resquest);
         return $preparedRequest->execute($data);
         
@@ -18,6 +18,13 @@ class Deal extends Db
         return $preparedRequest->execute($data);
     }
     
+//Modifier statut du deal en done---------------------------------------------
+    public static function dealDone($data){
+        $request = 'UPDATE dealing SET done = :done WHERE id_deal=:id_deal';
+        $preparedRequest = self::getDb()->prepare($request);
+        return $preparedRequest->execute($data);
+    }
+
 // Affichage liste de toutes les offres ou de toutes les demandes (listes) de tous les utilisateurs-------------------------------------------------------------------
 public static function readAllDeals($data){
     $request = "SELECT * FROM dealing WHERE dealing_position = :dealing_position";
@@ -25,7 +32,6 @@ public static function readAllDeals($data){
     $preparedRequest->execute($data);
     return $preparedRequest->fetchAll(PDO::FETCH_ASSOC);
 }
-  
 
 
 // Affichage liste offres ou demandes (listes) d'un utilisateur en particulier-------------------------------------------------------------------
@@ -100,7 +106,20 @@ public static function getControl($get){
     }
 }
 
+//échange fait
+public static function done($done){
+    if($done=='1'){
+        return true;
+    }
+}
 
+// Offre ou demande?
+public static function isOffer($deal){
+    if($deal=='offer'){
+        return true;
+    }
+
+}
 
     
 }

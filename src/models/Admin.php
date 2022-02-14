@@ -33,7 +33,38 @@ class Admin extends Db
     
     }
     
+    /********************************************** ADMIN ***************************************************** */
+
+
     
+// Selection de tous les users admin
+    public static function getAdmin($admin)
+    {
+    // Requête SQL pour selectionner tous les users admin
+        $request = "SELECT * FROM user WHERE admin=:admin";
+    // Préparation de la requête avec connexion à la BDD
+        $preparedRequest = self::getDb()->prepare($request);
+    // Execution de la requête
+        $preparedRequest->execute($admin);
+    // Retour des infos de tous les utilisateurs sous forme de liste 
+        return $preparedRequest->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+
+    // Fonction pour afficher tous les livres 
+    public static function allBooks()
+    {
+        // Lecture de tout un fichier dans une chaîne : file_get_content
+        // Récupération de tous les livres
+        $googleBooksJson = file_get_contents('https://www.googleapis.com/books/v1/volumes?q=nausicaa&key='.API_KEY);
+        
+        // Traduction d'une chaîne JSON en PHP : json_decode
+        $googleBooksPhp = json_decode($googleBooksJson, true);
+        
+        
+            return $googleBooksPhp;
+    }
 
 
     

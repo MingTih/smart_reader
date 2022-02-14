@@ -14,6 +14,26 @@ include VIEWS.'inc/header.php';
     <h1 class="text-center">Liste de mes demandes</h1>
 
     <?php
+        if(isset($_COOKIE["modifDeal"])){
+    ?>
+        <div class="alert alert-success" role="alert"><?=$_COOKIE["modifDeal"]?></div>
+
+    <?php
+        }
+    ?>
+    
+    <?php
+        if(isset($_COOKIE["stockTitreLivre"])){
+    ?>
+        <div class="alert alert-success" role="alert">Le livre - <?=$_COOKIE["stockTitreLivre"]?> - a bien été ajouté à votre liste</div>
+
+    <?php
+        }
+    ?>
+
+
+
+    <?php
         // Si listeDemandes est vide affiche message
         if(empty($listeDemandes)){
     ?>
@@ -25,7 +45,7 @@ include VIEWS.'inc/header.php';
         }else{
     ?>
 
-    <table class="table">
+    <table class="table" id="tftable">
         <thead>
             <tr>
             <th scope="col">Date de la demande</th>
@@ -46,7 +66,7 @@ include VIEWS.'inc/header.php';
             ?>
                 <tr>
             
-                        <th scope="row"><?=$demande['dealing_date']?></th>
+                        <th scope="row"><?=substr($demande['dealing_date'],0,10);?></th>
                         <td><?=$demande['api']['volumeInfo']['title']?></td>
                         <td>
                             <?php
@@ -62,7 +82,33 @@ include VIEWS.'inc/header.php';
                         <td><?=$demande["etat"]?></td>
                         <td><?=$demande["point_offers"]?></td>
                         <td><a href="<?=BASE_PATH.'modifDeal?deal='.$demande['id_deal']?>" class="btn btn-warning">Modifier</a></td>
-                        <td><a href="?id=<?=$demande['id_deal']?>&&deleteDeal=ok" class="btn btn-danger">Supprimer</a></td>
+
+                        <td>
+                        <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#supprCompte">
+                                Supprimer
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="supprCompte" tabindex="-1" aria-labelledby="supprCompteLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="supprCompteLabel">Attention:</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Vous allez suppimer <?=$demande['api']['volumeInfo']['title']?> de votre liste de souhaits. Voulez-vous continuer?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                            <a href="?id=<?=$demande['id_deal']?>&&deleteDeal=ok" class="btn btn-danger">Continuer</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
                 </tr>
             <?php
                 }
@@ -74,32 +120,6 @@ include VIEWS.'inc/header.php';
     ?>
 
 </main>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <?php  include VIEWS.'inc/footer.php'; ?>

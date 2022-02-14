@@ -2,35 +2,21 @@
 
 include VIEWS.'inc/header.php';
 
-// echo "<pre>";
-//     print_r($listeLivres);
-// echo "</pre>";
-
 echo "<pre>";
+    print_r($listeLivres);
     print_r($_POST);
 echo "</pre>";
 
-// if(!empty($_POST)){
-//     echo "<pre>";
-//         print_r($booksItem);
-//     echo "</pre>";
-// }
 ?>
 
-<!-- test recherche = A enlever et mettre dans la barre de navigation à la fin-->
-<form action="" method="post">
-    <label for="recherche_livre">Chercher un livre</label>
-    <input type="search" id="recherche_livre" name="search" aria-label="Chercher un livre dans le site">
+    <h1>Résultats de votre recherche</h1>
+    
+    <!-- Affichage livres -->
+    <?php
+    if(!empty($_POST)){
+        foreach($booksItem as $book){
+    ?>
 
-    <input type="submit" class="btn btn-success">
-</form>
-
-<!-- Affichage livres -->
-
-<?php
-if(!empty($_POST)){
-    foreach($booksItem as $book){
-?>
 
     <div class="card" style="width: 18rem;">
         <?php
@@ -64,6 +50,7 @@ if(!empty($_POST)){
                     }      
                 ?>
             </p>
+            <p><?=substr($book["volumeInfo"]["publishedDate"],0,4)?></p>
             <a href="<?=BASE_PATH.'detailLivre?id='.$book['id']?>" class="btn btn-primary">Détails</a>
         </div>
     </div>

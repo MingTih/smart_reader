@@ -20,7 +20,7 @@ const CONFIG = [
 /**
  * Constantes pour accéder rapidement aux dossiers importants du MVC
  */
-const BASE_DIR = __DIR__ . '\\..\\';
+const BASE_DIR = __DIR__ . '/../';
 const BASE_PATH = CONFIG['app']['projectBaseUrl'] . '/public/index.php/';
 const PUBLIC_FOLDER = BASE_DIR . 'public\\';
 const VIEWS = BASE_DIR . 'views/';
@@ -29,7 +29,7 @@ const CONTROLLERS = BASE_DIR . 'src/controllers/';
 const PHOTO = BASE_DIR.'public\\uploads\\';
 const COVER = '../../public/uploads/';
 
-const API_KEY = "AIzaSyDAIV0lnh92aDhhOTZEkrgMcymuQR2V5q4";
+const API_KEY = "AIzaSyAzFkhp4TZ1_TvOfKk3f7O7r3pgk2lMxFQ";
 
 /**
  * Liste des actions/méthodes possibles (les routes du routeur)
@@ -49,7 +49,7 @@ $routes = [
     // Table user : Utilisateurs--------------------------------------------------------
     '/monCompte'            => ['UserController', 'compteDetail'], //OK
     '/modifCompte'          => ['UserController', 'updateUser'],//OK
-    '/connexion'            => ['UserController', 'connexion'],//OK
+    '/connexion'            => ['UserController', 'connexion'],//git pulOK
     '/inscription'          => ['UserController', 'replaceUser'],//OK
     // '/suppression'          => ['UserController', 'disabled'],
     //Déconnexion OK
@@ -68,16 +68,16 @@ $routes = [
 
     '/allOffres'              => ['ExchangeController', 'allOffersList'], //OK
     '/allSouhaits'            => ['ExchangeController', 'allWishesList'], //OK
-    '/tradeDetail'            => ['ExchangeController', 'tradeDetail'],
-    '/historique'             => ['ExchangeController', 'myTradesList'], 
-    '/historiqueDetail'       => ['ExchangeController', 'tradeSummury'], 
+    '/tradeDetail'            => ['ExchangeController', 'tradeDetail'], //OK
+    '/monHistorique'          => ['ExchangeController', 'myTradesList'], //OK
+    '/allHistorique'          => ['ExchangeController', 'allTrades'], 
 
     // Admin
     '/listUsers'            => ['AdminController', 'usersListing'], //OK
     '/deleteUser'           => ['AdminController', 'deleteUser'], //OK
-    '/adminUser'            => ['AdminController', 'adminUser'], 
-    // '/gestion'              => ['AdminController', 'gestionUser'], 
-    // '/connexion'            => ['UserController', 'connexion'],//OK
+    '/adminUser'            => ['AdminController', 'adminUser'], //OK
+    '/listBooks'            => ['AdminController', 'booksListing'], 
+
     // '/inscription'          => ['UserController', 'replaceUser'],//OK
 
 

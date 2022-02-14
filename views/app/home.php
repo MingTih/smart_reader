@@ -1,24 +1,41 @@
 <?php  include VIEWS.'inc/header.php'; ?>
 
-<!-- code de la page -->
+<!-- --------------------------------------code de la page --------------------------------------------------->
 
 </div> 
+<?php
+    if(isset($_COOKIE["success"])){
+?>
+    <div class="alert alert-success" role="alert"><?=$_COOKIE["success"]?></div>
+
+<?php
+    }
+?>
+
+<?php
+    if(isset($_COOKIE["disconnect"])){
+?>
+    <div class="alert alert-success" role="alert"><?=$_COOKIE["disconnect"]?></div>
+
+<?php
+    }
+?>
+
 
 <!----------------------------- slider carroussel bootstrap ---------------------------->
         <container class="slider">
 
-                
                 <div id="carouselExampleSlidesOnly" class="carousel slide mx-auto col-8 " data-bs-ride="carousel">
-                    <div class="titreSlider"><h1 >"Lire c'est toucher du doigt les limites de son imagination..."</h1></div>
+                   
                         <div class="carousel-inner">
                         <div class="carousel-item active">
                         <img src="../../asset/images/livre1slider.jpeg" class="d-block w-100" alt="image livre ouvert histoire">
                     </div>
                     <div class="carousel-item">
-                        <img src="../../asset/images/livre3slider.jpeg" class="d-block w-100" alt="image livre ouvert imagination">
+                        <img src="../../asset/images/slider-quote.jpg" class="d-block w-100" alt="image livre ouvert imagination">
                     </div>
                     <div class="carousel-item">
-                        <img src="../../asset/images/livre8slider.jpeg" class="d-block w-100" height=""alt="image livre ouvert histoire">
+                        <img src="../../asset/images/livre4slider.jpeg" class="d-block w-100" height=""alt="image livre ouvert histoire">
                     </div>
                 </div>
             </div>
@@ -26,8 +43,11 @@
         </container>
 
                                 <!---------------------------- COMMENT CA MARCHE H2------------------------->
-                                <p class="resumeSite">Facile et économique et écologigue, l'échange de livres d'occasion vous permet de lire de nouveaux ouvrages toute l'année. Inscrivez-vous gratuitement et ajoutez vos livres à notre catalogue composé de milliers d'ouvrages</p>
-                                <H2 id="h2ccm">COMMENT ÇA FONCTIONNE?</H2>
+
+
+
+
+                                <p class="resumeSite">Facile, économique et écologigue, l'échange de livres d'occasion vous permet de lire de nouveaux ouvrages toute l'année. Inscrivez-vous gratuitement et ajoutez vos livres à notre catalogue composé de milliers d'ouvrages</p>
          <container class="boites d-flex" >
 
              <div>

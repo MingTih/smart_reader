@@ -2,14 +2,17 @@
 
 include VIEWS.'inc/header.php'; 
 
-echo "<pre>";
+// echo "<pre>";
 //     print_r($_GET);
-    print_r($listAllOffres);
-echo "</pre>";
+    // print_r($infoUser);
+    // print_r($listAllOffres);
+// echo "</pre>";
 ?>
 
 <main class="container">
     <h1 class="text-center">Liste de toutes les offres</h1>
+
+    <div class="point">Vous avez : <?= $point?> point(s). </div>
 
     <?php
         if(empty($listAllOffres)){
@@ -21,7 +24,7 @@ echo "</pre>";
         }else{
     ?>
     
-    <table class="table">
+    <table class="table" id="tftable">
         <thead>
             <tr>
                 <th scope="col">Date de l'offre</th>
@@ -42,7 +45,7 @@ echo "</pre>";
             ?>
                 <tr>
             
-                        <th scope="row"><?=$offre['dealing_date']?></th>
+                        <th scope="row"><?=substr($offre['dealing_date'],0,10)?></th>
                         <td><?=$offre['api']['volumeInfo']['title']?></td>
                         <td>
                             <?php
@@ -69,3 +72,5 @@ echo "</pre>";
         }
     ?>
 </main>
+
+<?php  include VIEWS.'inc/footer.php'; ?>
