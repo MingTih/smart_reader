@@ -10,7 +10,8 @@ if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>smartReader</title>
+    <meta name="description" content="site d'echange de livres d'occasion avec systeme de points">
+    <title>smartReader le site de vente de livres d'occasion</title>
 
     <!------------------------------ GOOGLE FONT LOBSTER/BEBAS NEUE/ROWDIES/GLORIA HALLELULLAH ------------------------------>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +32,7 @@ if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
 <body>                
 <!-- HEADER -->
 
-<!----------------------------------LOG0--------------------------------------------- -->
+<!-------------------------------------------------LOG0-------------------------------------------- -->
   <header id="header">
 
     <div class="logo-banniere d-flex">
@@ -41,14 +42,14 @@ if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
           <img src="<?=ASSET?>images/logoFinalPlus3Px.png" width="150px" height="150 px" alt="logo_de_la_marque"></a>
       </div>
 
-<!--------------------------------- BANNIERE--------------------------------------- -->   
+<!--------------------------------- BANNIERE-------------------------------------------------- -->   
       <div class="banniere d-flex">    
         <h1 class="titreSite">Le site d'échange de livres d'occasion</h1>
       </div>
-      <h3 class="quote">"Lire c'est toucher du doigt les limites de son imagination..."</h3>
+      <h3 class="quote">La connaissance ne sera jamais une question de prix</h3>
     </div>
 
-<!------------------------------------ Mascotte img----------------------- -->
+<!------------------------------------ Mascotte img-------------------------------------------- -->
 
       <div class="mascotte4 d-flex">
         <img src="<?=ASSET?>images/mascotte4.png" width="150px" height="150px" alt="image_mascotte_hibou">

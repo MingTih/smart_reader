@@ -5,10 +5,10 @@
     <!----------------------------------- Copyright--------------------------------- -->
     <footer>
         <div class="copyright d-flex">
-            <p>© Copyright © 2022</p>
+            <p>©Copyright 2022</p>
             <p>Contact</p>
             <p>Mentions légales</p>
-            <p>Plan du site</p>
+           
         </div>
     </footer>
                             

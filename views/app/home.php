@@ -47,7 +47,7 @@
 
 
 
-                                <p class="resumeSite">Facile, économique et écologigue, l'échange de livres d'occasion vous permet de lire de nouveaux ouvrages toute l'année. Inscrivez-vous gratuitement et ajoutez vos livres à notre catalogue composé de milliers d'ouvrages</p>
+            <h2 class="resumeSite">Facile, économique et écologigue, l'échange de livres d'occasion vous permet de lire de nouveaux ouvrages toute l'année. Inscrivez-vous gratuitement et ajoutez vos livres à notre catalogue composé de milliers d'ouvrages</h2>
          <container class="boites d-flex" >
 
              <div>
@@ -68,7 +68,7 @@
              <img src="<?=ASSET?>images/mascotte8.png" width="150px" height="150px"alt=" image-mascotte-hibou">
             </div>
              <div class="boite3 d-flex">
-                <p>Pour cela tu peux simplement proposer tes livres en écrivant le code ISBN qui se trouve derrière ton livre"</p>
+                <p>Pour cela tu peux simplement proposer tes livres en écrivant le code ISBN"</p>
              </div>
              
              
