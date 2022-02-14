@@ -22,11 +22,11 @@ if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!----------------------- Links salima------------------------->
-    <link rel="stylesheet" type="text/css" href="../../asset/css/roboto-font.css">
-	  <link rel="stylesheet" type="text/css" href="../../asset/css/fonts/font-awesome-5/css/fontawesome-all.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../../asset/css/roboto-font.css"> -->
+	  <link rel="stylesheet" type="text/css" href="<?=ASSET?>css/fonts/font-awesome-5/css/fontawesome-all.min.css">
     <!------------------------------------------------------------->
 
-    <link rel="stylesheet" href="../../asset/css/style.css">
+    <link rel="stylesheet" href="<?=ASSET?>css/style.css">
 </head>
 <body>                
 <!-- HEADER -->
@@ -38,7 +38,7 @@ if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
 
       <div class="logo">
         <a href="<?= BASE_PATH . "home" ?>">
-          <img src="../../asset/images/logoFinalPlus3Px.png" width="150px" height="150 px" alt="logo_de_la_marque"></a>
+          <img src="<?=ASSET?>images/logoFinalPlus3Px.png" width="150px" height="150 px" alt="logo_de_la_marque"></a>
       </div>
 
 <!--------------------------------- BANNIERE--------------------------------------- -->   
@@ -51,7 +51,7 @@ if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
 <!------------------------------------ Mascotte img----------------------- -->
 
       <div class="mascotte4 d-flex">
-        <img src="../../asset/images/mascotte4.png" width="150px" height="150px" alt="image_mascotte_hibou">
+        <img src="<?=ASSET?>images/mascotte4.png" width="150px" height="150px" alt="image_mascotte_hibou">
       </div>
         
 <!---------------------------------------Navbar------------------------------------------------  -->
