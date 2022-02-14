@@ -10,6 +10,9 @@ include VIEWS.'inc/header.php';
 // echo "</pre>";
 ?>
 <main>
+
+    <?=(isset($msg))?$msg:""?>
+
     <div class="main">
         <h1 class='text-center'>Ajouter une demande</h1>
 
@@ -79,11 +82,8 @@ include VIEWS.'inc/header.php';
 
         </form>
 
-
-<!-- "<\?=//BASE_PATH?>mesOffres" -->
     </div>
 
-    <?=(isset($msg))?$msg:""?>
 
 
 </main>

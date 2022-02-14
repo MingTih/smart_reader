@@ -148,7 +148,7 @@ class ExchangeController
         if(Deal::isOffer($infoDeal[0]["dealing_position"])
             && !Exchange::pointControl($actor[0]['point'],$infoDeal[0]["point_offers"])
         ){
-            $msgDisable = "Vous n'avez pas assez de point pour effectuer cet échange.";
+            $msgDisable .= "Vous n'avez pas assez de point pour effectuer cet échange.";
         }
         //Si acheteur pas assez de point, pour une demande :
         if(!Deal::isOffer($infoDeal[0]["dealing_position"])

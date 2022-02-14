@@ -118,62 +118,62 @@ class UserController
             $photo = $_FILES['photo'];
             $size = $_FILES['photo']["size"];
 
-        // Controle du format de la photo
-        if (!User::verifPhoto($photo)){
-            $msg .= "<div class=\"alert alert-danger\" role=\"alert\">
-            Votre photo n'est pas valide. Seul les jpg, jpeg et png sont acceptés. 
-            </div>";
-        }
-
-        if($size >= 100000){
-            $msg .= "<div class=\"alert alert-danger\" role=\"alert\">
-                 La photo ne doit pas dépasser 100ko.
-            </div>";
-
-        }
-
-        //Vérif chemin photo
-        $cheminDb=User::savePhoto($pseudo, $photo);
-
-        if (!move_uploaded_file($_FILES["photo"]["tmp_name"], $cheminDb)){
-            $msg .= "<div class=\"alert alert-danger\" role=\"alert\">
-            Quelque chose ne s'est pas passé correctement au niveau de l'enregistrement de votre fichier
-            </div>";
-
-    
-        }
-
-       /// insert 
-        if (empty($msg)){
-
-            $resultat = User::insertUser([
-                'id_user' => NULL,
-                'name' => $_POST['name'],
-                'firstname' => $_POST['firstname'],
-                'pseudo' => $_POST['pseudo'],
-                'pw' => password_hash($_POST["pw"],PASSWORD_DEFAULT),
-                'email' => $_POST['email'],
-                'birthdate' => $_POST['birthdate'],
-                'address' => $_POST['address'],
-                'inscription_date' => null,
-                'point' => 0,
-                'photo' => $cheminDb,
-                'admin' => 0,
-                'disabled' => 0,
-                
-
-            ]);
-            if ($resultat){
-                setcookie("success", "Inscription réussie!", time()+5);
-                header("location:".BASE_PATH. "connexion");
-                exit;
-            }else{
+            // Controle du format de la photo
+            if (!User::verifPhoto($photo)){
                 $msg .= "<div class=\"alert alert-danger\" role=\"alert\">
-                Quelque chose ne s'est pas passé correctement au niveau de l'enregistrement en base de donnée
+                Votre photo n'est pas valide. Seul les jpg, jpeg et png sont acceptés. 
                 </div>";
             }
+
+            if($size >= 100000){
+                $msg .= "<div class=\"alert alert-danger\" role=\"alert\">
+                    La photo ne doit pas dépasser 100ko.
+                </div>";
+
+            }
+
+            //Vérif chemin photo
+            $cheminDb=User::savePhoto($pseudo, $photo);
+
+            if (!move_uploaded_file($_FILES["photo"]["tmp_name"], $cheminDb)){
+                $msg .= "<div class=\"alert alert-danger\" role=\"alert\">
+                Quelque chose ne s'est pas passé correctement au niveau de l'enregistrement de votre fichier
+                </div>";
+
+        
+            }
+
+        /// insert 
+            if (empty($msg)){
+
+                $resultat = User::insertUser([
+                    'id_user' => NULL,
+                    'name' => $_POST['name'],
+                    'firstname' => $_POST['firstname'],
+                    'pseudo' => $_POST['pseudo'],
+                    'pw' => password_hash($_POST["pw"],PASSWORD_DEFAULT),
+                    'email' => $_POST['email'],
+                    'birthdate' => $_POST['birthdate'],
+                    'address' => $_POST['address'],
+                    'inscription_date' => null,
+                    'point' => 0,
+                    'photo' => $cheminDb,
+                    'admin' => 0,
+                    'disabled' => 0,
+                    
+
+                ]);
+                if ($resultat){
+                    setcookie("success", "Inscription réussie!", time()+5);
+                    header("location:".BASE_PATH. "connexion");
+                    exit;
+                }else{
+                    $msg .= "<div class=\"alert alert-danger\" role=\"alert\">
+                    Quelque chose ne s'est pas passé correctement au niveau de l'enregistrement en base de donnée
+                    </div>";
+                }
+            }
         }
-      }
                 include VIEWS . 'user/inscription.php';
     }
 
