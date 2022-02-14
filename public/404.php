@@ -15,17 +15,20 @@ include VIEWS . "inc/header.php";
     display: none;
   }
 </style>
-<div class="text">
-  <div>ERREUR</div>
-  <h1>404</h1>
-  <hr>
-  <div>Page Non trouvée</div>
-</div>
+<main class="page-404">
+  <div class="text">
+    <div>ERREUR</div>
+    <h1>404</h1>
+    <hr>
+    <div>Page Non trouvée</div>
+  </div>
 
-<div class="mascotte404">
+  <div class="mascotte404">
 
-  <img src="<?= ASSET ?>images/mascotte1.png" alt="" class="src">
-</div>
+    <img src="<?= ASSET ?>images/mascotte1.png" alt="" class="src">
+  </div>
+
+</main>
 
 
 <?php

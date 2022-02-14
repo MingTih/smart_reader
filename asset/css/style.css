@@ -717,7 +717,7 @@ p{
 
 
 /* -----------------css 404--------- */
-body{
+main.page-404{
    margin:0;
    padding:0;
    font-family: 'beba-neue', sans-serif;
@@ -728,17 +728,17 @@ body{
    align-items:center;
    overflow:hidden;
  }
- .text{
+ .page-404 .text{
      font-size: 70px;
    position:absolute;
    top:10%;
    color:#fff;
    text-align:center;
  }
- h1{
+ .page-404 h1{
    font-size:50px;
  }
- .star{
+ .page-404 .star{
    position:absolute;
    width:2px;
    height:2px;
@@ -746,7 +746,7 @@ body{
    right:0;
    animation:starTwinkle 3s infinite linear;
  }
- .mascotte404 img{
+ .page-404 .mascotte404 img{
    width:300px;
    position:absolute;
    top:50%;
