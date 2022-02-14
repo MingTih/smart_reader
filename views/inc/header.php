@@ -36,7 +36,7 @@
                 <div class="banniere d-flex">    
                     <h1 class="titreSite">Le site d'échange de livres d'occasion</h1></br>
                 </div>
-                    <h3 class="quote">"Lire c'est toucher du doigt les limites de son imagination..."</h3>
+                    <h3 class="quote">"La connaissance ne sera jamais une question de prix"</h3>
                 <!------------------------------------ Mascotte img------------------------------------------ -->
                 
         </div>
