@@ -31,8 +31,8 @@ include VIEWS.'inc/header.php';
                 <th scope="col">Date de la demande</th>
                 <th scope="col">Titre du livre</th>
                 <th scope="col">Auteur</th>
-                <th scope="col">Editeur</th>
-                <th scope="col">Etat</th>
+                <th scope="col" class="colonneNone">Editeur</th>
+                <th scope="col" class="colonneNone">Etat</th>
                 <th scope="col">Point(s)</th>
                 <th scope="col">Demandeur</th>
                 <th scope="col">Modifier</th>
@@ -58,8 +58,8 @@ include VIEWS.'inc/header.php';
                                 }                  
                             ?>
                         </td>
-                        <td><?=$wish['api']['volumeInfo']['publisher']?></td>
-                        <td><?=$wish["etat"]?></td>
+                        <td class="colonneNone"><?=$wish['api']['volumeInfo']['publisher']?></td>
+                        <td class="colonneNone"><?=$wish["etat"]?></td>
                         <td><?=$wish["point_offers"]?></td>
                         <td><?=$wish['user'][0]["pseudo"]?></td>
                         <td><a href="<?=BASE_PATH."tradeDetail?idLivre=".$wish['id_book']."&&idDeal=".$wish['id_deal']?>" class="btn btn-success">Details</a></td>

@@ -10,7 +10,7 @@ include VIEWS.'inc/header.php';
 ?>
 
 <main>
-    <h1>Résultats de votre recherche</h1>
+    <h1 class="m-5">Résultats de votre recherche</h1>
     
     <!-- Affichage livres -->
     <?php
@@ -19,7 +19,7 @@ include VIEWS.'inc/header.php';
     ?>
 
 
-    <div class="card" style="width: 18rem;">
+    <div class="card bookCard" style="width: 18rem;">
         <?php
             if(!isset($book["volumeInfo"]["imageLinks"])){
         ?>

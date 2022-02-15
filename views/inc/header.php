@@ -38,13 +38,13 @@ if(isset($_SESSION["pseudo"]) && isset($_GET["deconnexion"])){
     <div class="logo-banniere d-flex">
 
       <div class="logo">
-        <a href="<?= BASE_PATH . "home" ?>">
+        <a href="<?= BASE_PATH?>">
           <img src="<?=ASSET?>images/logoFinalPlus3Px.png" width="150px" height="150 px" alt="logo_de_la_marque"></a>
       </div>
 
 <!--------------------------------- BANNIERE-------------------------------------------------- -->   
       <div class="banniere d-flex">    
-        <h1 class="titreSite">Le site d'échange de livres d'occasion</h1>
+        <h1 class="titreSite">Le site d'échanges de livres d'occasion</h1>
       </div>
       <h3 class="quote">La connaissance ne sera jamais une question de prix</h3>
     </div>

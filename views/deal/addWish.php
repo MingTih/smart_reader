@@ -10,17 +10,16 @@ include VIEWS.'inc/header.php';
 // echo "</pre>";
 ?>
 <main>
-    <div class="main d-flex">
+    <div id="monCompteCadre" class="container">
+        <h1 class='text-center'>Ajouter une demande</h1>
+                
+        <?=(isset($msg))?$msg:""?>
 
-    <?=(isset($msg))?$msg:""?>
+        <h2 class="m-4"><?=$detailLivre["title"]?></h2>
 
-        <div class="main">
-            <h1 class='text-center'>Ajouter une demande</h1>
+        <div class="container  informations">
 
-            <h2><?=$detailLivre["title"]?></h2>
-
-            <div class="container-fluid">
-            <div class="row">
+            <div class="row flex-column-reverse flex-md-row justify-content-between">
                 <ul class="col-7 text-decoration-none">
                     <li>Titre : <?=$detailLivre["title"]?></li>
                     <li>Auteur : 
@@ -56,11 +55,11 @@ include VIEWS.'inc/header.php';
                     <?php
                         if(!isset($detailLivre["imageLinks"])){
                     ?>
-                        <img class="w-100" src="<?=COVER?>couverture/couverture_non_dispo.png" alt="couverture non disponible">
+                        <img id="photo_profil" src="<?=COVER?>couverture/couverture_non_dispo.png" alt="couverture non disponible">
                     <?php
                         }else{
                     ?>
-                        <img src="<?=$detailLivre["imageLinks"]["thumbnail"];?>" alt="couverture de <?=$detailLivre["title"];?>">
+                        <img id="photo_profil" src="<?=$detailLivre["imageLinks"]["thumbnail"];?>" alt="couverture de <?=$detailLivre["title"];?>">
                     <?php
                         }
                     ?>
@@ -68,23 +67,24 @@ include VIEWS.'inc/header.php';
             </div>
         </div>
 
+        <div id="lien" class="row justify-content-md-evenly">
+            
+            <form action="" method="post" class="m-3">
+                <label for="etat" class='d-block'>Etat du livre</label>
+                <select name="etat" id="etat">
+                    <option value="">--Veuillez sélectionner l'état de votre livre--</option>
+                    <option value="mauvais">Abîmé - 1 point</option>                
+                    <option value="bon">Bon - 2 points</option>
+                    <option value="neuf">Neuf - 3 points</option>
+                    <option value="rare">Rare - 4 points</option>
+                </select>
 
-        <form action="" method="post">
-            <label for="etat" class='d-block'>Etat du livre</label>
-            <select name="etat" id="etat">
-                <option value="">--Veuillez sélectionner l'état de votre livre--</option>
-                <option value="mauvais">Abîmé - 1 point</option>                
-                <option value="bon">Bon - 2 points</option>
-                <option value="neuf">Neuf - 3 points</option>
-                <option value="rare">Rare - 4 points</option>
-            </select>
+                <input type="submit" class="btn btn-primary mx-auto w-25">
 
-            <input type="submit" class="btn btn-primary">
+            </form>
 
-        </form>
-
+        </div>
     </div>
-
 
 
 </main>
