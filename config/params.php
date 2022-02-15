@@ -7,13 +7,13 @@ const CONFIG = [
     'db' => [
         'DB_HOST' => 'localhost',
         'DB_PORT' => '3306',
-        'DB_NAME' => 'smart-reader',
-        'DB_USER' => 'root',
-        'DB_PSWD' => '',
+        'DB_NAME' => 'nasa0443_smart_reader',
+        'DB_USER' => 'nasa0443_smart_reader',
+        'DB_PSWD' => 'smart-reader75!',
     ],
     'app' => [
         'name' => 'smart_reader',
-        'projectBaseUrl' => 'http://localhost:8888/smart_reader'
+        'projectBaseUrl' => 'http://smart_reader.codeyourlife.fr'
     ]
 ];
 
@@ -26,7 +26,7 @@ const PUBLIC_FOLDER = BASE_DIR . 'public/';
 const VIEWS = BASE_DIR . 'views/';
 const MODELS = BASE_DIR . 'src/models/';
 const CONTROLLERS = BASE_DIR . 'src/controllers/';
-const PHOTO = BASE_DIR.'public\\uploads\\';
+const PHOTO = BASE_DIR.'public/uploads/';
 const COVER = '../../public/uploads/';
 const ASSET =  CONFIG['app']['projectBaseUrl'] . '/asset/';
 const API_KEY = "AIzaSyAzFkhp4TZ1_TvOfKk3f7O7r3pgk2lMxFQ";
@@ -37,7 +37,7 @@ const API_KEY = "AIzaSyAzFkhp4TZ1_TvOfKk3f7O7r3pgk2lMxFQ";
 $routes = [
     // Général--------------------------------------------------------------
     ''                           => ['AppController', 'index'],
-    '/'                           => ['AppController', 'index'],
+    '/'                          => ['AppController', 'index'],
     '/qui_sommes_nous'           => ['AppController', 'who'],
     '/contact'                   => ['AppController', 'contact'],
     '/mentions_legales'          => ['AppController', 'legal'],

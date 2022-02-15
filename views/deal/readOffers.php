@@ -47,8 +47,8 @@ include VIEWS.'inc/header.php';
                 <th scope="col">Date de l'offre'</th>
                 <th scope="col">Titre du livre</th>
                 <th scope="col">Auteur</th>
-                <th scope="col">Editeur</th>
-                <th scope="col">Etat</th>
+                <th scope="col" class="colonneNone">Editeur</th>
+                <th scope="col" class="colonneNone">Etat</th>
                 <th scope="col">Point(s)</th>
                 <th scope="col">Modifier</th>
                 <th scope="col">Supprimer</th>
@@ -74,14 +74,14 @@ include VIEWS.'inc/header.php';
                                 }                  
                             ?>
                         </td>
-                        <td><?=$offre['api']['volumeInfo']['publisher']?></td>
-                        <td><?=$offre["etat"]?></td>
+                        <td class="colonneNone"><?=$offre['api']['volumeInfo']['publisher']?></td>
+                        <td class="colonneNone"><?=$offre["etat"]?></td>
                         <td><?=$offre["point_offers"]?></td>
-                        <td><a href="<?=BASE_PATH.'modifDeal?deal='.$offre['id_deal']?>" class="btn btn-warning">Modifier</a></td>
+                        <td><a href="<?=BASE_PATH.'modifDeal?deal='.$offre['id_deal']?>" class="btn btn-warning">Modif</a></td>
                         <td>
                         <!-- Button trigger modal -->
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#supprCompte">
-                                Supprimer
+                                Suppr
                             </button>
 
                             <!-- Modal -->
