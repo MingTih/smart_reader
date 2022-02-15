@@ -11,7 +11,7 @@ include VIEWS.'inc/header.php';
 <main>
 
     <div id="livre" class="container">
-            <h1 class="m-5"><?=$detailLivre["title"]?></h1>
+        <h1 class="m-5"><?=$detailLivre["title"]?></h1>
 
         <div class="container-fluid">
             <div class="row">

@@ -12,6 +12,10 @@ include VIEWS.'inc/header.php';
 <main class="container">
     <h1 class="text-center">Liste de toutes les offres</h1>
 
+    <div class="point alert alert-primary w-50 m-auto my-5" role="alert">
+        Vous possédez : <?= $point?> point(s). 
+    </div>
+    
     <?php
         if(empty($listAllOffres)){
     ?>
@@ -28,8 +32,8 @@ include VIEWS.'inc/header.php';
                 <th scope="col">Date de l'offre</th>
                 <th scope="col">Titre du livre</th>
                 <th scope="col">Auteur</th>
-                <th scope="col">Editeur</th>
-                <th scope="col">Etat</th>
+                <th scope="col" class="colonneNone">Editeur</th>
+                <th scope="col" class="colonneNone">Etat</th>
                 <th scope="col">Point(s)</th>
                 <th scope="col">Possesseur</th>
                 <th scope="col">Modifier</th>
@@ -55,8 +59,8 @@ include VIEWS.'inc/header.php';
                                 }                  
                             ?>
                         </td>
-                        <td><?=$offre['api']['volumeInfo']['publisher']?></td>
-                        <td><?=$offre["etat"]?></td>
+                        <td class="colonneNone"><?=$offre['api']['volumeInfo']['publisher']?></td>
+                        <td class="colonneNone"><?=$offre["etat"]?></td>
                         <td><?=$offre["point_offers"]?></td>
                         <td><?=$offre['user'][0]["pseudo"]?></td>
                         <td><a href="<?=BASE_PATH."tradeDetail?idLivre=".$offre['id_book']."&&idDeal=".$offre['id_deal']?>" class="btn btn-success">Details</a></td>

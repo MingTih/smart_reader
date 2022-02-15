@@ -115,7 +115,7 @@ public static function verifPhoto($photo){
 
 /******************************** Eclater chemin photo*********************************************/
     public static function explodePhoto($photoRoad){
-        return explode("photo_profil\\",$photoRoad);
+        return explode("photo_profil/",$photoRoad);
     }
 
 /***************************************** CONNEXION ********************************************* */
@@ -185,7 +185,7 @@ public static function mailExist($data){
             // On ne procede a l'enregistrement que s'il n'y a pas de message d'erreurs
 
 
-            $cheminTelechargement = PHOTO. 'photo_profil\\' . $pseudo . "-" . time() . "-" . str_replace(' ', '-', $photo["name"]);
+            $cheminTelechargement = PHOTO. 'photo_profil/' . $pseudo . "-" . time() . "-" . str_replace(' ', '-', $photo["name"]);
             return $cheminTelechargement;
 
         }
