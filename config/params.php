@@ -13,7 +13,7 @@ const CONFIG = [
     ],
     'app' => [
         'name' => 'smart_reader',
-        'projectBaseUrl' => 'http://localhost:8888/smart_reader'
+        'projectBaseUrl' => 'http://localhost/smart_reader'
     ]
 ];
 
