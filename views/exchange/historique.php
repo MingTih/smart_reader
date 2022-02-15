@@ -1,8 +1,8 @@
 <?php
 
 // echo "<pre>";
-//     print_r($acquisitionList);
-//     print_r($cessionList);
+    // print_r($acquisitionList);
+    // print_r($cessionList);
 // echo "</pre>";
 include VIEWS.'inc/header.php'; 
 
@@ -10,9 +10,9 @@ include VIEWS.'inc/header.php';
 
 
 <main class="container">
-    <h1 class="text-center">Liste de toutes mes acquisitions</h1>
+    <h1 class="text-center m-5">Liste de toutes mes acquisitions</h1>
 
-    <table class="table" id="tftable">
+    <table class="table m-3" id="tftable">
         <thead>
             <tr>
                 <th scope="col">Identifiant</th>
@@ -44,14 +44,14 @@ include VIEWS.'inc/header.php';
         </tbody>
     </table>
 
-    <h1 class="text-center">Liste de toutes mes ventes</h1>
+    <h1 class="text-center m-5">Liste de toutes mes ventes</h1>
 
-    <table class="table">
+    <table class="table m-5" id="tftable">
         <thead>
             <tr>
                 <th scope="col">Identifiant</th>
                 <th scope="col">Date</th>
-                <th scope="col">Vendeur</th>
+                <th scope="col">Acheteur</th>
                 <th scope="col">Titre du livre</th>
                 <th scope="col">Point(s)</th>
                 <th scope="col">N° du deal</th>
@@ -67,7 +67,7 @@ include VIEWS.'inc/header.php';
             
                         <th scope="row"><?=$cession['id_exchange']?></th>
                         <td><?=$cession['purchase_date']?></td>
-                        <td><?=$cession['id_owner'] . " - " . $cession["owner"][0]['pseudo']?></td>
+                        <td><?=$cession['id_purchaser'] . " - " . $cession["purchaser"][0]['pseudo']?></td>
                         <td><?=$cession['api']['volumeInfo']['title']?></td>
                         <td><?=$cession["dealing_point"]?></td>
                         <td><?=$cession['id_deal']?></td>

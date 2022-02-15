@@ -217,9 +217,11 @@ h3.quote{
    font-size: 20px;
 
 }
-/* Mes offres */
+/* Liste de tous les users admin */
 
-
+img.photoProfil{
+   height: 100px;
+}
 
 
 /*-------------------------formulaire page de connexion fichier index.html ---------------------*/

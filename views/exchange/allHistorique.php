@@ -8,7 +8,7 @@ include VIEWS.'inc/header.php';
 ?>
 
 <main class="container">
-    <h1 class="text-center">Liste de tous les échanges</h1>
+    <h1 class="text-center m-5">Liste de tous les échanges</h1>
 
     <table class="table" id="tftable">
         <thead>
@@ -31,7 +31,7 @@ include VIEWS.'inc/header.php';
                 <tr>
             
                         <th scope="row"><?=$echange['id_exchange']?></th>
-                        <td><?=$echange['purchase_date']?></td>
+                        <td><?=substr($echange['purchase_date'],0,10)?></td>
                         <td><?=$echange['id_owner'] . " - " . $echange["owner"][0]['pseudo']?></td>
                         <td><?=$echange['api']['volumeInfo']['title']?></td>
                         <td><?=$echange['id_purchaser'] . " - " . $echange["purchaser"][0]['pseudo']?></td>

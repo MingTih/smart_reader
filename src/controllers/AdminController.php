@@ -25,7 +25,11 @@ class AdminController
     public static function usersListing(){
         $users = Admin::allUsers();
 
-
+        //Récupération chemin photo :
+        foreach($users as $cle=>$user){
+            $users[$cle]['photoRoad'] = User::explodePhoto($users[$cle]['photo']);
+        }
+        
         //supprimer un user
         if(isset($_GET['deleteUser']) && $_GET['deleteUser'] == "ok"){
             Admin::deleteUser([
@@ -54,9 +58,33 @@ class AdminController
                     'id_user'=>$_GET['id_user']
                 ]);
             }
+            // Redirection liste users
+            header("location:".BASE_PATH."listUsers");
+            exit;
+            
+        }
+
+        //disable un user
+        if(isset($_GET['disableUser']) && $_GET['disableUser'] == "ok"){
+            $infoUser = User::getInfoUser([
+                'id_user'=>$_GET['id_user']
+            ]);
+
+            if($infoUser["disabled"]==0){
+                Admin::disabledSession([
+                    "disabled"=>1,
+                    'id_user'=>$_GET['id_user']
+                ]);
+            }
+            if($infoUser["disabled"]==1){
+                Admin::disabledSession([
+                    "disabled"=>0,
+                    'id_user'=>$_GET['id_user']
+                ]);
+            }
 
 
-            // Redirection accueil
+            // Redirection liste users
             header("location:".BASE_PATH."listUsers");
             exit;
         }

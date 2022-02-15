@@ -37,6 +37,7 @@ const API_KEY = "AIzaSyAzFkhp4TZ1_TvOfKk3f7O7r3pgk2lMxFQ";
 $routes = [
     // Général--------------------------------------------------------------
     ''                           => ['AppController', 'index'],
+    '/'                           => ['AppController', 'index'],
     '/qui_sommes_nous'           => ['AppController', 'who'],
     '/contact'                   => ['AppController', 'contact'],
     '/mentions_legales'          => ['AppController', 'legal'],
@@ -50,6 +51,7 @@ $routes = [
     '/monCompte'            => ['UserController', 'compteDetail'], //OK
     '/modifCompte'          => ['UserController', 'updateUser'],//OK
     '/connexion'            => ['UserController', 'connexion'],//git pulOK
+    
     '/inscription'          => ['UserController', 'replaceUser'],//OK
     // '/suppression'          => ['UserController', 'disabled'],
     //Déconnexion OK
