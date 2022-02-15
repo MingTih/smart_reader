@@ -15,9 +15,7 @@ include VIEWS.'inc/header.php';
 
     <h1 class="text-center my-5">Détail de <?=$title?></h1>
 
-    <div class="alert alert-warning w-75 mx-auto text-center my-3" role="alert">
-        <?=isset($msgDisable)?$msgDisable:"";?>
-    </div>
+    <?=isset($msgDisable)?$msgDisable:"";?>
 
     <h2><?=$detailLivre["title"]?></h2>
 

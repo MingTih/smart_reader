@@ -261,7 +261,7 @@ public static function updateUser()
         
         //Vérif photo---------------------------------------------------
         if (empty($_FILES['photo']["tmp_name"])){
-            $cheminModifPhoto = $_SESSION["readPhoto"][0]."photo_profil\\".$_SESSION['readPhoto'][1];
+            $cheminModifPhoto = $_SESSION["readPhoto"][0]."photo_profil/".$_SESSION['readPhoto'][1];
         }else{
             $cheminModifPhoto = User::savePhoto($pseudo, $_FILES['photo']);
 

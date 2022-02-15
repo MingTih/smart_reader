@@ -21,10 +21,10 @@ include VIEWS.'inc/header.php';
           <th scope="col-1">Nom</th>
           <th scope="col-1">Prenom</th>
           <th scope="col-1">Pseudo</th>
-          <th scope="col-1">Email</th>
-          <th scope="col-1">Date d'anniversaire</th>
-          <th scope="col-1">Adresse</th>
-          <th scope="col-1">Date d'inscription</th>
+          <th scope="col-1" class="colonneNone">Email</th>
+          <th scope="col-1" class="colonneNone">Date d'anniversaire</th>
+          <th scope="col-1" class="colonneNone">Adresse</th>
+          <th scope="col-1" class="colonneNone">Date d'inscription</th>
           <th scope="col-1">Points</th>
           <th scope="col-1">Photo</th>
           <th scope="col-1">Admin</th>
@@ -43,10 +43,10 @@ include VIEWS.'inc/header.php';
           <td><?= $user['name']?></td>
           <td><?= $user['firstname']?></td>
           <td><?= $user['pseudo']?></td>
-          <td><?= $user['email']?></td>
-          <td><?= $user['birthdate']?></td>
-          <td><?= $user['address']?></td>
-          <td><?= $user['inscription_date']?></td>
+          <td class="colonneNone"><?= $user['email']?></td>
+          <td class="colonneNone"><?= $user['birthdate']?></td>
+          <td class="colonneNone"><?= $user['address']?></td>
+          <td class="colonneNone"><?= $user['inscription_date']?></td>
           <td><?= $user['point']?></td>
           <td>
               <img  class="photoProfil" src="<?=COVER.'photo_profil/'.$user['photoRoad'][1]?>" alt="photo profil de <?=$user['pseudo']?>">
