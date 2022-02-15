@@ -234,7 +234,7 @@ class ExchangeController
             exit;
         }
 
-        if(!User::verifAdmin($_SESSION['admin'])){
+        if(User::verifAdmin($_SESSION['admin'])){
             header("location:".BASE_PATH);
             exit;
         }

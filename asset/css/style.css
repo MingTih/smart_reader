@@ -644,14 +644,14 @@ input, #msg {
    text-align: justify;
  }
  
- .mascotte2{
+ .mascotte2 {
    position: relative;
    height:250px;  
    position: absolute; 
    z-index: 10;
    top: 10px;
    right: 10px; 
-   margin: 866px 0px 0px 0px;
+   margin: 410px 302px 0px 0px;
    float: right;
 
 }
