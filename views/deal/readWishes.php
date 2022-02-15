@@ -98,7 +98,7 @@ include VIEWS.'inc/header.php';
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Vous allez suppimer <?=$demande['api']['volumeInfo']['title']?> de votre liste de souhaits. Voulez-vous continuer?</p>
+                                            <p>Vous allez supprimer <?=$demande['api']['volumeInfo']['title']?> de votre liste de souhaits. Voulez-vous continuer?</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
