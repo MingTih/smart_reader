@@ -14,7 +14,7 @@ include VIEWS.'inc/header.php';
 
   <div class="container-fluid" id='cadre'>
     <div class="image">
-      <img src="images/mascotte5.png">
+      <img src="<?=ASSET?>images/mascotte5.png">
     </div>
           <h1 class= "text-center">Inscription</h1>
 

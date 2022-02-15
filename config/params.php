@@ -5,15 +5,15 @@
  */
 const CONFIG = [
     'db' => [
-        'DB_HOST' => 'localhost',
+        'DB_HOST' => 'localhost:8889',
         'DB_PORT' => '3306',
-        'DB_NAME' => 'smart_reader',
+        'DB_NAME' => 'smart-reader',
         'DB_USER' => 'root',
-        'DB_PSWD' => '',
+        'DB_PSWD' => 'root',
     ],
     'app' => [
         'name' => 'smart_reader',
-        'projectBaseUrl' => 'http://localhost/smart_reader'
+        'projectBaseUrl' => 'http://localhost:8888/smart_reader'
     ]
 ];
 
