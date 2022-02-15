@@ -34,7 +34,7 @@ include VIEWS.'inc/header.php';
             </div>
         </div>
         <div id="lien" class="row justify-content-md-evenly">
-            <a id="btnModifProfil" href="http://localhost/smart_reader/public/index.php/modifCompte" class="btn btn-success mx-auto">Modifier mon profil</a>
+            <a id="btnModifProfil" href="<?=BASE_PATH?>modifCompte" class="btn btn-success mx-auto">Modifier mon profil</a>
 
             <!-- Button trigger modal : Pour confirmer la suppression de compte-->
             <button type="button" class="btn btn-danger mx-auto" data-bs-toggle="modal" data-bs-target="#supprCompte">

@@ -12,8 +12,6 @@ include VIEWS.'inc/header.php';
 <main class="container">
     <h1 class="text-center">Liste de toutes les offres</h1>
 
-    <div class="point">Vous avez : <?= $point?> point(s). </div>
-
     <?php
         if(empty($listAllOffres)){
     ?>

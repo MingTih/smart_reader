@@ -26,7 +26,7 @@ class Exchange extends Db
 
     // Afficher toutes les acquisitions d'un utilisateur
     public static function allIGet($data){
-        $request = "SELECT * FROM exchange WHERE id_owner=:id_purchaser ORDER BY id_exchange DESC";
+        $request = "SELECT * FROM exchange WHERE id_purchaser=:id_purchaser ORDER BY id_exchange DESC";
         $preparedRequest = self::getDb()->prepare($request);
         $preparedRequest->execute($data);
         return $preparedRequest->fetchAll(PDO::FETCH_ASSOC);
