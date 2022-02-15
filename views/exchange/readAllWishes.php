@@ -9,9 +9,11 @@ include VIEWS.'inc/header.php';
 ?>
 
 <main class="container">
-    <h1 class="text-center">Liste de toutes les demandes</h1>
+    <h1 class="text-center my-5">Liste de toutes les demandes</h1>
 
-    <div class="point">Vous avez : <?= $point?> point(s). </div>
+    <div class="point alert alert-primary w-50 m-auto my-5" role="alert">
+        Vous possédez : <?= $point?> point(s). 
+    </div>
 
     <?php
         if(empty($listAllWishes)){
@@ -23,7 +25,7 @@ include VIEWS.'inc/header.php';
         }else{
     ?>
     
-    <table class="table" id="tftable">
+    <table class="table my-5" id="tftable">
         <thead>
             <tr>
                 <th scope="col">Date de la demande</th>

@@ -63,7 +63,7 @@ include VIEWS.'inc/header.php';
       </div>
 
       <button type="submit" class="btn btn-primary"><font style="vertical-align: inherit;">Modifier</font></button>
-      <a href="<?=BASE_PATH?>"; class="btn btn-danger">Annuler</a>
+      <a href="<?=BASE_PATH?>monCompte"; class="btn btn-danger">Annuler</a>
 
     </fieldset>
 

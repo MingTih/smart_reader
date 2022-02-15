@@ -2,11 +2,10 @@
 
 <!-- --------------------------------------code de la page --------------------------------------------------->
 
-</div> 
 <?php
     if(isset($_COOKIE["success"])){
 ?>
-    <div class="alert alert-success" role="alert"><?=$_COOKIE["success"]?></div>
+    <div class="alert alert-success m-5 w-75 mx-auto" role="alert"><?=$_COOKIE["success"]?></div>
 
 <?php
     }
@@ -15,7 +14,7 @@
 <?php
     if(isset($_COOKIE["disconnect"])){
 ?>
-    <div class="alert alert-success" role="alert"><?=$_COOKIE["disconnect"]?></div>
+    <div class="alert alert-success m-5 w-75 mx-auto" role="alert"><?=$_COOKIE["disconnect"]?></div>
 
 <?php
     }

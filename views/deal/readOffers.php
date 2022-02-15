@@ -10,7 +10,7 @@ include VIEWS.'inc/header.php';
 ?>
 
 <main class="container">
-    <h1 class="text-center">Liste de mes offres</h1>
+    <h1 class="text-center m-5">Liste de mes offres</h1>
 
     <?php
         if(isset($_COOKIE["modifDeal"])){
