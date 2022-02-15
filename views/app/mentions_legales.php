@@ -4,7 +4,7 @@
             <!-- Content here -->
             <div class="container-mention-legal">
                 <div class="col-2">
-              <img src="../../asset/images/mascotte2.png" class="mascotte2" />
+              <img src="<?=ASSET?>images/mascotte2.png" class="mascotte2" />
             </div>
 
               <h1 class= "text-center"> MENTIONS LEGALES</h1>

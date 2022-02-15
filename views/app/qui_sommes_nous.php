@@ -4,7 +4,7 @@
 <div class="flex">
     <div class="container-qui-nous-sommes">
             <div class="mascotte3">
-                <img src="../../asset/images/mascotte3.png"  />
+                <img src="<?=ASSET?>images/mascotte3.png"  />
             </div>
 
         <h1 id="h1-qsn"> QUI SOMMES NOUS!</h1>   

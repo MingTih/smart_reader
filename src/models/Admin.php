@@ -33,6 +33,12 @@ class Admin extends Db
     
     }
     
+    // DISABLE user ------------------------------------------------------------------------------
+    public static function disabledSession($disabled){
+        $requete = ("UPDATE user SET disabled=:disabled WHERE id_user=:id_user");
+        $requetePrepare = self::getDb()->prepare($requete);
+        $requetePrepare->execute($disabled);
+}
     /********************************************** ADMIN ***************************************************** */
 
 

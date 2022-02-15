@@ -11,6 +11,13 @@ class ExchangeController
 
         $msg1 = "";
 
+        //Afficher points utilisateur:
+        $infoUser = User::getInfoUser([
+            'id_user'=>$_SESSION['id_user']
+        ]);
+
+        $point = $infoUser['point'];
+
         $listAllOffres = Exchange::allAvailableDeals([
             'dealing_position'=>'offer',
             'done'=>'0'
@@ -45,6 +52,14 @@ class ExchangeController
 
         $msg1 = "";
 
+        //Afficher points utilisateur:
+        $infoUser = User::getInfoUser([
+            'id_user'=>$_SESSION['id_user']
+        ]);
+
+        $point = $infoUser['point'];
+        
+        
         $listAllWishes = Exchange::allAvailableDeals([
             'dealing_position'=>'request',
             'done'=>'0'
@@ -108,7 +123,7 @@ class ExchangeController
 
         //Récupération données de celui qui va accepter la proposition grace à Session  
         $actor = Exchange::getUserInfo([
-            "id_user"=>$_SESSION['id_user']
+            "id_user"=>$_SESSION['id_user']    
         ]);
 
         //Récupération données livre API
@@ -121,12 +136,7 @@ class ExchangeController
         // CONTROLES---------------------------------------------------------
         //Si done =1, le livre a déjà été échangé (au cas où quelqu'un tombe sur la page par accident)
         if(Deal::done($infoDeal[0]["done"])){
-            $msgDisable .="Désolée, ce livre a déjà été échangé.<br>";
-        }
-
-        // Ne peut pas échanger avec soi-même
-        if(Exchange::sameUser($infoDeal[0]['id_user'])){
-            $msgDisable .="Attention! Vous ne pouvez pas échanger avec vous-même.<br>";
+            $msgDisable ="Désolée, ce livre a déjà été échangé.<br>";
         }
 
         //Si acheteur pas assez de point, pour une offre :
@@ -139,7 +149,12 @@ class ExchangeController
         if(!Deal::isOffer($infoDeal[0]["dealing_position"])
             && !Exchange::pointControl($proposer[0]['point'],$infoDeal[0]["point_offers"])
         ){
-            $msg = $proposer[0]['pseudo']." n'a pas assez de point pour effectuer cet échange.";
+            $msgDisable = $proposer[0]['pseudo']." n'a pas assez de point pour effectuer cet échange.";
+        }
+
+        // Ne peut pas échanger avec soi-même
+        if(Exchange::sameUser($infoDeal[0]['id_user'])){
+            $msgDisable ="Attention! Vous ne pouvez pas échanger avec vous-même.<br>";
         }
 
         // Si tout est OK -----------------------------------------------: 
@@ -234,7 +249,7 @@ class ExchangeController
             exit;
         }
 
-        if(User::verifAdmin($_SESSION['admin'])){
+        if(!AdminController::isAdmin()){
             header("location:".BASE_PATH);
             exit;
         }
@@ -269,14 +284,17 @@ class ExchangeController
             header("location:".BASE_PATH."connexion");
             exit;
         }
-
+        //Echanges pour lesquels l'user était acquiéreur
         $acquisitionList=Exchange::allIGet([
             'id_purchaser'=>$_SESSION['id_user']
         ]);
+
+        //Echanges pour lesquels l'user était vendeur
         $cessionList=Exchange::allIGive([
             'id_owner'=>$_SESSION['id_user']
         ]);
 
+        //récup liste info de l'autre utilisateur
         foreach($acquisitionList as $cle=>$acquisition){
             $acquisitionList[$cle]['api'] = Book::oneBook($acquisitionList[$cle]["id_book"]);
 
@@ -289,15 +307,11 @@ class ExchangeController
         foreach($cessionList as $cle=>$cession){
             $cessionList[$cle]['api'] = Book::oneBook($cessionList[$cle]["id_book"]);
 
-            $cessionList[$cle]['owner'] = Exchange::getUserInfo([
-                'id_user' => $cessionList[$cle]['id_owner']
+            $cessionList[$cle]['purchaser'] = Exchange::getUserInfo([
+                'id_user' => $cessionList[$cle]['id_purchaser']
             ]);
 
         }
-
-
-
-
 
         include VIEWS . "exchange/historique.php";
     }

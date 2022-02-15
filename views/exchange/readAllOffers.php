@@ -2,10 +2,11 @@
 
 include VIEWS.'inc/header.php'; 
 
-echo "<pre>";
+// echo "<pre>";
 //     print_r($_GET);
+    // print_r($infoUser);
     // print_r($listAllOffres);
-echo "</pre>";
+// echo "</pre>";
 ?>
 
 <main class="container">

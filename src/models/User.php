@@ -185,7 +185,7 @@ public static function mailExist($data){
             // On ne procede a l'enregistrement que s'il n'y a pas de message d'erreurs
 
 
-            $cheminTelechargement = PHOTO. 'photo_profil\\' . $pseudo . "-" . time() . "-" . $photo["name"];
+            $cheminTelechargement = PHOTO. 'photo_profil\\' . $pseudo . "-" . time() . "-" . str_replace(' ', '-', $photo["name"]);
             return $cheminTelechargement;
 
         }
